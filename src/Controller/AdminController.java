@@ -5,18 +5,16 @@ import View.View;
 
 /**
  *
- * @author Angel Ponce
+ * @author samyc
  */
-public class LoginController implements Controller {
+public class AdminController implements Controller {
 
     Model models;
     View views;
-    ATMController atmController;
 
-    public LoginController(Model models, View views) {
+    public AdminController(Model models, View views) {
         this.models = models;
         this.views = views;
-       
     }
 
     @Override
