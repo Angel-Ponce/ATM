@@ -1,4 +1,3 @@
-
 package Entity;
 
 import java.util.Date;
@@ -8,6 +7,7 @@ import java.util.Date;
  * @author samyc
  */
 public class Transaction {
+
     private int amount;
     private String type;
     private Date date;
@@ -44,11 +44,11 @@ public class Transaction {
     public void setDate(Date date) {
         this.date = date;
     }
+
     @Override
-    public String toString(){
-        
-        return this.type+" "+this.date;
-        
-        
+    public String toString() {
+
+        return this.type + " " + this.date;
+
     }
 }

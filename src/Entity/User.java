@@ -1,4 +1,3 @@
-
 package Entity;
 
 import java.util.ArrayList;
@@ -7,11 +6,12 @@ import java.util.ArrayList;
  *
  * @author samyc
  */
-public class User extends Person{
+public class User extends Person {
+
     private int cardNumber;
     private int currentBalance;
     private int maximumAmount;
-    ArrayList<Transaction> latestTransactions= new ArrayList<Transaction>();
+    ArrayList<Transaction> latestTransactions = new ArrayList<Transaction>();
 
     public User(int cardNumber, int currentBalance, int maximumAmount) {
         this.cardNumber = cardNumber;
@@ -45,20 +45,23 @@ public class User extends Person{
     public void setMaximumAmount(int maximumAmount) {
         this.maximumAmount = maximumAmount;
     }
-    
-    public void retreat(int mount){
-        
+
+    public void retreat(int mount) {
+
     }
-    public void deposit(int mount){
-        
+
+    public void deposit(int mount) {
+
     }
-    public ArrayList<Transaction> viewLatestTransactions(){
+
+    public ArrayList<Transaction> viewLatestTransactions() {
         return this.latestTransactions;
     }
+
     @Override
-    public String toString(){
-    
-        return super.getName()+" "+super.getLastName();
-    
-}
+    public String toString() {
+
+        return super.getName() + " " + super.getLastName();
+
+    }
 }
