@@ -96,6 +96,7 @@ public class Person {
         this.pick = pick;
     }
 
+    @Override
     public String toString() {
         return this.name + " " + this.lastName;
     }
