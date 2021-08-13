@@ -1,20 +1,12 @@
 package Controller;
 
-import Model.Model;
-import View.View;
-
 /**
  *
  * @author samyc
  */
 public class UserController implements Controller {
 
-    Model models;
-    View views;
-
-    public UserController(Model models, View views) {
-        this.models = models;
-        this.views = views;
+    public UserController() {
     }
 
     @Override
