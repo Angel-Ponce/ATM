@@ -1,5 +1,6 @@
 package Entity;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -7,22 +8,21 @@ import java.util.Date;
  *
  * @author Angel Ponce
  */
-public class Person {
+public class Person implements Serializable {
 
     private String name;
     private String lastName;
     private int age;
-    private SimpleDateFormat dateFormat;
+    public static SimpleDateFormat dateFormat;
     private String email;
     private int pin;
     private Date lastAccess;
     private String pick;
 
-    public Person(String name, String lastName, int age, SimpleDateFormat dateFormat, String email, int pin, Date lastAccess, String pick) {
+    public Person(String name, String lastName, int age, String email, int pin, Date lastAccess, String pick) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.dateFormat = dateFormat;
         this.email = email;
         this.pin = pin;
         this.lastAccess = lastAccess;
@@ -54,14 +54,6 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public SimpleDateFormat getDateFormat() {
-        return dateFormat;
-    }
-
-    public void setDateFormat(SimpleDateFormat dateFormat) {
-        this.dateFormat = dateFormat;
     }
 
     public String getEmail() {

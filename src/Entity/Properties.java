@@ -1,10 +1,12 @@
 package Entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samyc
  */
-public class Properties {
+public class Properties implements Serializable{
 
     private String theme;
     private int currentBalance;
