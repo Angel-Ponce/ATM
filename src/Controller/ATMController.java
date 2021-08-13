@@ -18,8 +18,8 @@ public class ATMController implements Controller {
     LoginController loginController;
     UserController userController;
     AdminController adminController;
-    ArrayList<Person>persons;
-    ArrayList<Ticket>tickets;
+    ArrayList<Person> persons;
+    ArrayList<Ticket> tickets;
     Properties properties;
     Person currentPerson;
 
@@ -32,7 +32,6 @@ public class ATMController implements Controller {
         this.properties = propertie;
         this.currentPerson = currentPerson;
     }
-    
 
     @Override
     public void start() {
