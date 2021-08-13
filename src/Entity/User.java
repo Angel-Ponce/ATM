@@ -1,12 +1,13 @@
 package Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author samyc
  */
-public class User extends Person {
+public class User extends Person implements Serializable{
 
     private int cardNumber;
     private int currentBalance;

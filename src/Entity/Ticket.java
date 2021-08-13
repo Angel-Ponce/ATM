@@ -1,14 +1,15 @@
 package Entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samyc
  */
-public class Ticket {
+public class Ticket implements Serializable{
 
     private int type;
     private int size;
-
     public Ticket(int type, int size) {
         this.type = type;
         this.size = size;

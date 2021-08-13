@@ -1,12 +1,13 @@
 package Entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author samyc
  */
-public class Transaction {
+public class Transaction implements Serializable {
 
     private int amount;
     private String type;
