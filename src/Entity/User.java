@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author samyc
  */
-public class User extends Person implements Serializable{
+public class User extends Person implements Serializable {
 
     private int cardNumber;
     private int currentBalance;
@@ -48,11 +48,11 @@ public class User extends Person implements Serializable{
     }
 
     public void retreat(int mount) {
-
+        this.currentBalance -= mount;
     }
 
     public void deposit(int mount) {
-
+        this.currentBalance += mount;
     }
 
     public ArrayList<Transaction> viewLatestTransactions() {
@@ -61,8 +61,6 @@ public class User extends Person implements Serializable{
 
     @Override
     public String toString() {
-
         return super.getName() + " " + super.getLastName();
-
     }
 }
