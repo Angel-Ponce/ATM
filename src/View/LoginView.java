@@ -148,12 +148,12 @@ public class LoginView extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel container;
-    private javax.swing.JTextField email;
-    private javax.swing.JPanel image;
-    private javax.swing.JPanel login;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JButton signin;
-    private javax.swing.JLabel title;
+    public javax.swing.JPanel container;
+    public javax.swing.JTextField email;
+    public javax.swing.JPanel image;
+    public javax.swing.JPanel login;
+    public javax.swing.JPasswordField password;
+    public javax.swing.JButton signin;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
