@@ -6,6 +6,7 @@
 package View;
 
 import Others.Image;
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.*;
 import javax.swing.UIManager;
 
@@ -36,6 +37,7 @@ public class LoginView extends javax.swing.JFrame {
         UIManager.put("Component.arc", 999);
         UIManager.put("ProgressBar.arc", 999);
         UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**
