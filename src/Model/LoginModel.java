@@ -2,7 +2,6 @@ package Model;
 
 import Entity.Person;
 import Others.Helper;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -11,11 +10,17 @@ import java.util.ArrayList;
  */
 public class LoginModel {
 
-    public boolean authenticate(String email, int pin) {
+    public static boolean authenticate(String email, int pin, ArrayList<Person>persons) {
+    
+        for(Person person:persons){
+            if(email.equals(person.getEmail()) && pin==person.getPin()){
+                return true;
+            }
+        }
         return false;
     }
 
-    public ArrayList<Person> getPersons() throws IOException {
+    public static  ArrayList<Person> getPersons()  {
         ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("/Files/Persons.txt");
         if (persons != null) {
             return persons;
