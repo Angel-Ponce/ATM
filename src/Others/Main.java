@@ -1,7 +1,6 @@
 package Others;
 
 import Controller.LoginController;
-
 /**
  *
  * @author Angel Ponce

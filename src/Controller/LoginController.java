@@ -24,7 +24,7 @@ public class LoginController implements Controller {
     public void start() {
         View.loginView.setVisible(true);
         persons=Model.LoginModel.getPersons();
-       
+        System.out.println(persons.size());
     }
 
     @Override
