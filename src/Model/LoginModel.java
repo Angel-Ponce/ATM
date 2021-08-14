@@ -1,6 +1,8 @@
 package Model;
 
 import Entity.Person;
+import Others.Helper;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,13 @@ public class LoginModel {
         return false;
     }
 
-    public ArrayList<Person> getPersons() {
-        return null;
+    public ArrayList<Person> getPersons() throws IOException {
+        ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("/Files/Persons.txt");
+        if (persons != null) {
+            return persons;
+        }
+        {
+            return new ArrayList<>();
+        }
     }
 }
