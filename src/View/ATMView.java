@@ -1,5 +1,10 @@
-
 package View;
+
+import Others.Helper;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
+import javax.swing.UIManager;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
  *
@@ -11,7 +16,26 @@ public class ATMView extends javax.swing.JFrame {
      * Creates new form ATMView
      */
     public ATMView() {
+        defaultTheme();
         initComponents();
+        pick.putClientProperty("JButton.buttonType", "roundRect");
+        addUser.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 32, new Color(10, 61, 98)));
+        initATM.setIcon(Helper.icon(GoogleMaterialDesignIcons.PLAY_CIRCLE_FILLED, 32, new Color(10, 61, 98)));
+        addCash.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 32, new Color(10, 61, 98)));
+        updateCard.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 32, new Color(10, 61, 98)));
+        updateLimit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONEY_OFF, 32, new Color(10, 61, 98)));
+        userConsult.setIcon(Helper.icon(GoogleMaterialDesignIcons.PERSON, 32, new Color(10, 61, 98)));
+        userControl.setIcon(Helper.icon(GoogleMaterialDesignIcons.PEOPLE, 32, new Color(10, 61, 98)));
+        updatePin.setIcon(Helper.icon(GoogleMaterialDesignIcons.LOCK_OPEN, 32, new Color(10, 61, 98)));
+        retreat.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 32, new Color(10, 61, 98)));
+        deposit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
+        transactions.setIcon(Helper.icon(GoogleMaterialDesignIcons.HISTORY, 32, new Color(10, 61, 98)));
+        amount.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
+        super.setLocationRelativeTo(null);
+    }
+    
+    public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
     }
 
     /**
@@ -26,20 +50,20 @@ public class ATMView extends javax.swing.JFrame {
 
         container = new javax.swing.JPanel();
         barNavigation = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        pick = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        addUser = new javax.swing.JButton();
+        initATM = new javax.swing.JButton();
+        addCash = new javax.swing.JButton();
+        updateCard = new javax.swing.JButton();
+        updateLimit = new javax.swing.JButton();
+        userConsult = new javax.swing.JButton();
+        userControl = new javax.swing.JButton();
+        updatePin = new javax.swing.JButton();
+        retreat = new javax.swing.JButton();
+        deposit = new javax.swing.JButton();
+        transactions = new javax.swing.JButton();
+        amount = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,218 +73,204 @@ public class ATMView extends javax.swing.JFrame {
         container.setMinimumSize(new java.awt.Dimension(1080, 752));
         container.setLayout(new java.awt.GridBagLayout());
 
+        barNavigation.setBackground(new java.awt.Color(64, 64, 122));
         barNavigation.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Add user");
-        jButton1.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton1, gridBagConstraints);
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Add user");
-        jButton2.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton2, gridBagConstraints);
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Add user");
-        jButton3.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton3, gridBagConstraints);
-
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("Add user");
-        jButton4.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton4, gridBagConstraints);
-
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setText("Add user");
-        jButton5.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton5, gridBagConstraints);
-
-        jButton6.setBackground(new java.awt.Color(204, 204, 204));
-        jButton6.setText("Add user");
-        jButton6.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton6, gridBagConstraints);
-
-        jButton7.setBackground(new java.awt.Color(204, 204, 204));
-        jButton7.setText("Add user");
-        jButton7.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton7, gridBagConstraints);
-
-        jButton8.setBackground(new java.awt.Color(204, 204, 204));
-        jButton8.setText("Add user");
-        jButton8.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton8, gridBagConstraints);
-
-        jButton9.setBackground(new java.awt.Color(204, 204, 204));
-        jButton9.setText("Add user");
-        jButton9.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton9, gridBagConstraints);
-
-        jButton10.setBackground(new java.awt.Color(204, 204, 204));
-        jButton10.setText("Add user");
-        jButton10.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton10, gridBagConstraints);
-
-        jButton11.setBackground(new java.awt.Color(204, 204, 204));
-        jButton11.setText("Add user");
-        jButton11.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton11, gridBagConstraints);
-
-        jButton12.setBackground(new java.awt.Color(204, 204, 204));
-        jButton12.setText("Add user");
-        jButton12.setPreferredSize(new java.awt.Dimension(250, 32));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        barNavigation.add(jButton12, gridBagConstraints);
-
-        jButton13.setText("jButton13");
+        pick.setMaximumSize(new java.awt.Dimension(192, 192));
+        pick.setMinimumSize(new java.awt.Dimension(192, 192));
+        pick.setPreferredSize(new java.awt.Dimension(192, 192));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        barNavigation.add(jButton13, gridBagConstraints);
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        barNavigation.add(pick, gridBagConstraints);
 
-        jLabel1.setText("Nombre Apellido");
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Name Lastname");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         barNavigation.add(jLabel1, gridBagConstraints);
+
+        addUser.setBackground(new java.awt.Color(99, 167, 212));
+        addUser.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        addUser.setForeground(new java.awt.Color(255, 255, 255));
+        addUser.setText("Add user");
+        addUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(addUser, gridBagConstraints);
+
+        initATM.setBackground(new java.awt.Color(99, 167, 212));
+        initATM.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        initATM.setForeground(new java.awt.Color(255, 255, 255));
+        initATM.setText("Init ATM");
+        initATM.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(initATM, gridBagConstraints);
+
+        addCash.setBackground(new java.awt.Color(99, 167, 212));
+        addCash.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        addCash.setForeground(new java.awt.Color(255, 255, 255));
+        addCash.setText("Add cash");
+        addCash.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(addCash, gridBagConstraints);
+
+        updateCard.setBackground(new java.awt.Color(99, 167, 212));
+        updateCard.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        updateCard.setForeground(new java.awt.Color(255, 255, 255));
+        updateCard.setText("Update card");
+        updateCard.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(updateCard, gridBagConstraints);
+
+        updateLimit.setBackground(new java.awt.Color(99, 167, 212));
+        updateLimit.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        updateLimit.setForeground(new java.awt.Color(255, 255, 255));
+        updateLimit.setText("Update limit");
+        updateLimit.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(updateLimit, gridBagConstraints);
+
+        userConsult.setBackground(new java.awt.Color(99, 167, 212));
+        userConsult.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        userConsult.setForeground(new java.awt.Color(255, 255, 255));
+        userConsult.setText("User consult");
+        userConsult.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(userConsult, gridBagConstraints);
+
+        userControl.setBackground(new java.awt.Color(99, 167, 212));
+        userControl.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        userControl.setForeground(new java.awt.Color(255, 255, 255));
+        userControl.setText("User control");
+        userControl.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(userControl, gridBagConstraints);
+
+        updatePin.setBackground(new java.awt.Color(99, 167, 212));
+        updatePin.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        updatePin.setForeground(new java.awt.Color(255, 255, 255));
+        updatePin.setText("Update pin");
+        updatePin.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(updatePin, gridBagConstraints);
+
+        retreat.setBackground(new java.awt.Color(99, 167, 212));
+        retreat.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        retreat.setForeground(new java.awt.Color(255, 255, 255));
+        retreat.setText("Retreat");
+        retreat.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(retreat, gridBagConstraints);
+
+        deposit.setBackground(new java.awt.Color(99, 167, 212));
+        deposit.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        deposit.setForeground(new java.awt.Color(255, 255, 255));
+        deposit.setText("Deposit");
+        deposit.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(deposit, gridBagConstraints);
+
+        transactions.setBackground(new java.awt.Color(99, 167, 212));
+        transactions.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        transactions.setForeground(new java.awt.Color(255, 255, 255));
+        transactions.setText("Transactions");
+        transactions.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(transactions, gridBagConstraints);
+
+        amount.setBackground(new java.awt.Color(99, 167, 212));
+        amount.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        amount.setForeground(new java.awt.Color(255, 255, 255));
+        amount.setText("Amount");
+        amount.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        barNavigation.add(amount, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weightx = 25.0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 15.0;
         gridBagConstraints.weighty = 100.0;
         container.add(barNavigation, gridBagConstraints);
 
@@ -279,7 +289,7 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 75.0;
+        gridBagConstraints.weightx = 85.0;
         gridBagConstraints.weighty = 100.0;
         container.add(content, gridBagConstraints);
 
@@ -287,54 +297,6 @@ public class ATMView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,22 +334,22 @@ public class ATMView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCash;
+    private javax.swing.JButton addUser;
+    private javax.swing.JButton amount;
     private javax.swing.JPanel barNavigation;
     private javax.swing.JPanel container;
     private javax.swing.JPanel content;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton deposit;
+    private javax.swing.JButton initATM;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton pick;
+    private javax.swing.JButton retreat;
+    private javax.swing.JButton transactions;
+    private javax.swing.JButton updateCard;
+    private javax.swing.JButton updateLimit;
+    private javax.swing.JButton updatePin;
+    private javax.swing.JButton userConsult;
+    private javax.swing.JButton userControl;
     // End of variables declaration//GEN-END:variables
 }
