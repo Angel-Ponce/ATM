@@ -8,6 +8,7 @@ package View;
 import Others.Image;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.*;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**

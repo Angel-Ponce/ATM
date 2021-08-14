@@ -53,7 +53,7 @@ public class ATMView extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
         barNavigation = new javax.swing.JPanel();
         pick = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         addUser = new javax.swing.JButton();
         initATM = new javax.swing.JButton();
         addCash = new javax.swing.JButton();
@@ -67,8 +67,8 @@ public class ATMView extends javax.swing.JFrame {
         transactions = new javax.swing.JButton();
         amount = new javax.swing.JButton();
         content = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        bar = new javax.swing.JMenuBar();
+        settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 752));
@@ -96,9 +96,9 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         barNavigation.add(pick, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Name Lastname");
+        userName.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
+        userName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userName.setText("Name Lastname");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -106,7 +106,7 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
-        barNavigation.add(jLabel1, gridBagConstraints);
+        barNavigation.add(userName, gridBagConstraints);
 
         addUser.setBackground(new java.awt.Color(99, 167, 212));
         addUser.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
@@ -317,10 +317,10 @@ public class ATMView extends javax.swing.JFrame {
 
         getContentPane().add(container, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("Settings");
-        jMenuBar1.add(jMenu1);
+        settings.setText("Settings");
+        bar.add(settings);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(bar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -361,24 +361,24 @@ public class ATMView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addCash;
-    private javax.swing.JButton addUser;
-    private javax.swing.JButton amount;
-    private javax.swing.JPanel barNavigation;
-    private javax.swing.JPanel container;
-    private javax.swing.JPanel content;
-    private javax.swing.JButton deposit;
-    private javax.swing.JButton initATM;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JButton pick;
-    private javax.swing.JButton retreat;
-    private javax.swing.JButton transactions;
-    private javax.swing.JButton updateCard;
-    private javax.swing.JButton updateLimit;
-    private javax.swing.JButton updatePin;
-    private javax.swing.JButton userConsult;
-    private javax.swing.JButton userControl;
+    public javax.swing.JButton addCash;
+    public javax.swing.JButton addUser;
+    public javax.swing.JButton amount;
+    public javax.swing.JMenuBar bar;
+    public javax.swing.JPanel barNavigation;
+    public javax.swing.JPanel container;
+    public javax.swing.JPanel content;
+    public javax.swing.JButton deposit;
+    public javax.swing.JButton initATM;
+    public javax.swing.JButton pick;
+    public javax.swing.JButton retreat;
+    public javax.swing.JMenu settings;
+    public javax.swing.JButton transactions;
+    public javax.swing.JButton updateCard;
+    public javax.swing.JButton updateLimit;
+    public javax.swing.JButton updatePin;
+    public javax.swing.JButton userConsult;
+    public javax.swing.JButton userControl;
+    public javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }

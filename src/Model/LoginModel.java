@@ -3,6 +3,7 @@ package Model;
 import Entity.Person;
 import Others.Helper;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  *
@@ -10,8 +11,8 @@ import java.util.ArrayList;
  */
 public class LoginModel {
 
-    public static boolean authenticate(String email, int pin, ArrayList<Person> persons) {
-        return persons.stream().anyMatch(person -> person.getEmail().equals(email) && person.getPin() == pin);
+    public static Optional<Person> authenticate(String email, int pin, ArrayList<Person> persons) {
+        return persons.stream().filter(person -> person.getEmail().equals(email) && person.getPin() == pin).findAny();
     }
 
     public static ArrayList<Person> getPersons() {

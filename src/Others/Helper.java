@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URISyntaxException;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import jiconfont.IconCode;
 import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 import jiconfont.swing.IconFontSwing;
@@ -54,5 +55,9 @@ public class Helper {
             System.err.println(ex);
         }
         return false;
+    }
+
+    public static void error(String error) {
+        JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
