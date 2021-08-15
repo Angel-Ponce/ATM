@@ -34,7 +34,7 @@ public class ATMView extends javax.swing.JFrame {
         transactions.setIcon(Helper.icon(GoogleMaterialDesignIcons.HISTORY, 64, new Color(10, 61, 98)));
         amount.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 64, new Color(10, 61, 98)));
         logout.setIcon(Helper.icon(GoogleMaterialDesignIcons.EXIT_TO_APP, 16, Color.LIGHT_GRAY));
-        ImageIcon ic = Helper.roundImage("/Resources/fake.jpeg");
+        ImageIcon ic = Helper.roundImage("/Resources/default.png", 192, 192);
         Image image = ic.getImage().getScaledInstance(192, 192, Image.SCALE_SMOOTH);
         pick.setIcon(new ImageIcon(image));
         super.setLocationRelativeTo(null);
