@@ -101,9 +101,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="pick">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Resources/fake.jpeg"/>
-                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>

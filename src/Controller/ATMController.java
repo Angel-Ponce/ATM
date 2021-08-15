@@ -36,8 +36,10 @@ public class ATMController implements Controller {
 
     @Override
     public void start() {
+        //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(this.currentPerson.getName());
+        //Check if the person is a User or Admin
         if (this.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);
             View.atmView.retreat.setVisible(false);

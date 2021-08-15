@@ -4,6 +4,8 @@ import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
@@ -19,19 +21,22 @@ public class ATMView extends javax.swing.JFrame {
         defaultTheme();
         initComponents();
         pick.putClientProperty("JButton.buttonType", "roundRect");
-        addUser.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 32, new Color(10, 61, 98)));
-        initATM.setIcon(Helper.icon(GoogleMaterialDesignIcons.PLAY_CIRCLE_FILLED, 32, new Color(10, 61, 98)));
-        addCash.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 32, new Color(10, 61, 98)));
-        updateCard.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 32, new Color(10, 61, 98)));
-        updateLimit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONEY_OFF, 32, new Color(10, 61, 98)));
-        userConsult.setIcon(Helper.icon(GoogleMaterialDesignIcons.PERSON, 32, new Color(10, 61, 98)));
-        userControl.setIcon(Helper.icon(GoogleMaterialDesignIcons.PEOPLE, 32, new Color(10, 61, 98)));
-        updatePin.setIcon(Helper.icon(GoogleMaterialDesignIcons.LOCK_OPEN, 32, new Color(10, 61, 98)));
-        retreat.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 32, new Color(10, 61, 98)));
-        deposit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
-        transactions.setIcon(Helper.icon(GoogleMaterialDesignIcons.HISTORY, 32, new Color(10, 61, 98)));
-        amount.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
+        addUser.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 64, new Color(10, 61, 98)));
+        initATM.setIcon(Helper.icon(GoogleMaterialDesignIcons.PLAY_CIRCLE_FILLED, 64, new Color(10, 61, 98)));
+        addCash.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 64, new Color(10, 61, 98)));
+        updateCard.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 64, new Color(10, 61, 98)));
+        updateLimit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONEY_OFF, 64, new Color(10, 61, 98)));
+        userConsult.setIcon(Helper.icon(GoogleMaterialDesignIcons.PERSON, 64, new Color(10, 61, 98)));
+        userControl.setIcon(Helper.icon(GoogleMaterialDesignIcons.PEOPLE, 64, new Color(10, 61, 98)));
+        updatePin.setIcon(Helper.icon(GoogleMaterialDesignIcons.LOCK_OPEN, 64, new Color(10, 61, 98)));
+        retreat.setIcon(Helper.icon(GoogleMaterialDesignIcons.PAYMENT, 64, new Color(10, 61, 98)));
+        deposit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 64, new Color(10, 61, 98)));
+        transactions.setIcon(Helper.icon(GoogleMaterialDesignIcons.HISTORY, 64, new Color(10, 61, 98)));
+        amount.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 64, new Color(10, 61, 98)));
         logout.setIcon(Helper.icon(GoogleMaterialDesignIcons.EXIT_TO_APP, 16, Color.LIGHT_GRAY));
+        ImageIcon ic = Helper.roundImage("/Resources/fake.jpeg");
+        Image image = ic.getImage().getScaledInstance(192, 192, Image.SCALE_SMOOTH);
+        pick.setIcon(new ImageIcon(image));
         super.setLocationRelativeTo(null);
     }
 
@@ -83,7 +88,7 @@ public class ATMView extends javax.swing.JFrame {
         barNavigation.setBackground(new java.awt.Color(64, 64, 122));
         barNavigation.setLayout(new java.awt.GridBagLayout());
 
-        pick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/fake.jpeg"))); // NOI18N
+        pick.setBorderPainted(false);
         pick.setFocusable(false);
         pick.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pick.setIconTextGap(0);
