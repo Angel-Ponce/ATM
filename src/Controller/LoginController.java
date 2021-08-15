@@ -5,6 +5,8 @@ import Others.Helper;
 import View.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -58,6 +60,35 @@ public class LoginController implements Controller {
                     }
                 } else {
                     Helper.error("The email and pin are required");
+                }
+            }
+        });
+
+        View.loginView.password.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+                    String email = View.loginView.email.getText();
+                    String password = String.valueOf(View.loginView.password.getPassword());
+                    if (!email.trim().isEmpty() && !password.isEmpty()) {
+                        if (password.matches("\\d+")) {
+                            int pin = Integer.parseInt(password);
+                            Optional<Person> authenticated = Model.LoginModel.authenticate(email, pin, persons);
+                            if (authenticated.isPresent()) {
+                                //Enter to the system
+                                atmController.setPersons(persons);
+                                atmController.setCurrentPerson(authenticated.get());
+                                atmController.start();
+                                end();
+                            } else {
+                                Helper.error("Email or password are invalid");
+                            }
+                        } else {
+                            Helper.error("The pin would be a number");
+                        }
+                    } else {
+                        Helper.error("The email and pin are required");
+                    }
                 }
             }
         });
