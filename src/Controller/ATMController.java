@@ -39,6 +39,7 @@ public class ATMController implements Controller {
         //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(this.currentPerson.getName());
+        View.atmView.pick.setIcon(Helper.roundImage(this.currentPerson.getPick(), 192, 192));
         //Check if the person is a User or Admin
         if (this.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);

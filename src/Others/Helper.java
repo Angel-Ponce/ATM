@@ -3,6 +3,7 @@ package Others;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -67,7 +68,7 @@ public class Helper {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    public static ImageIcon roundImage(String path) {
+    public static ImageIcon roundImage(String path, int width, int height) {
         try {
             BufferedImage master = ImageIO.read(Helper.class.getResource(path));
 
@@ -89,10 +90,12 @@ public class Helper {
             g2d.drawImage(mask, 0, 0, null);
             g2d.dispose();
 
-            return new ImageIcon(masked);
+            ImageIcon imageIcon = new ImageIcon(masked);
+            Image image = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(image);
         } catch (IOException ex) {
         }
-        return null;
+        return new ImageIcon(Helper.class.getResource("/Resources/default.png"));
     }
 
     private static void applyQualityRenderingHints(Graphics2D g2d) {

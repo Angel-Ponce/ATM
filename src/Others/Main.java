@@ -19,9 +19,9 @@ public class Main {
 
     private static void register() {
         ArrayList<Person> persons = new ArrayList();
-        Admin angel = new Admin("Angel", "Ponce", 20, "angel@gmail.com", 2304, null, "");
-        Admin sami = new Admin("Samantha", "Chub", 19, "sami@gmail.com", 12345, null, "");
-        User jossi = new User(3415170, 1000, 2000, "Josselin", "Tot", 20, "jossi@gmail.com", 2304, null, "");
+        Admin angel = new Admin("Angel", "Ponce", 20, "angel@gmail.com", 2304, null, "/Resources/angel.jpg");
+        Admin sami = new Admin("Samantha", "Chub", 19, "sami@gmail.com", 12345, null, "/Resources/sami.jpg");
+        User jossi = new User(3415170, 1000, 2000, "Josselin", "Tot", 20, "jossi@gmail.com", 2304, null, "/Resources/jossi.jpg");
         persons.add(angel);
         persons.add(sami);
         persons.add(jossi);
