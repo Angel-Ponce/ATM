@@ -27,6 +27,8 @@ public class LoginController implements Controller {
     @Override
     public void start() {
         persons = Model.LoginModel.getPersons();
+        View.loginView.email.setText("");
+        View.loginView.password.setText("");
         View.loginView.setVisible(true);
     }
 

@@ -31,6 +31,7 @@ public class ATMView extends javax.swing.JFrame {
         deposit.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
         transactions.setIcon(Helper.icon(GoogleMaterialDesignIcons.HISTORY, 32, new Color(10, 61, 98)));
         amount.setIcon(Helper.icon(GoogleMaterialDesignIcons.MONETIZATION_ON, 32, new Color(10, 61, 98)));
+        logout.setIcon(Helper.icon(GoogleMaterialDesignIcons.EXIT_TO_APP, 16, Color.LIGHT_GRAY));
         super.setLocationRelativeTo(null);
     }
 
@@ -69,6 +70,8 @@ public class ATMView extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
         bar = new javax.swing.JMenuBar();
         settings = new javax.swing.JMenu();
+        user = new javax.swing.JMenu();
+        logout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 752));
@@ -320,6 +323,13 @@ public class ATMView extends javax.swing.JFrame {
         settings.setText("Settings");
         bar.add(settings);
 
+        user.setText("user");
+
+        logout.setText("Logout");
+        user.add(logout);
+
+        bar.add(user);
+
         setJMenuBar(bar);
 
         pack();
@@ -370,6 +380,7 @@ public class ATMView extends javax.swing.JFrame {
     public javax.swing.JPanel content;
     public javax.swing.JButton deposit;
     public javax.swing.JButton initATM;
+    public javax.swing.JMenuItem logout;
     public javax.swing.JButton pick;
     public javax.swing.JButton retreat;
     public javax.swing.JMenu settings;
@@ -377,6 +388,7 @@ public class ATMView extends javax.swing.JFrame {
     public javax.swing.JButton updateCard;
     public javax.swing.JButton updateLimit;
     public javax.swing.JButton updatePin;
+    public javax.swing.JMenu user;
     public javax.swing.JButton userConsult;
     public javax.swing.JButton userControl;
     public javax.swing.JLabel userName;

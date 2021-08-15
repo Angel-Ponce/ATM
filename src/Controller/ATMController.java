@@ -5,8 +5,11 @@ import Entity.Person;
 import Entity.Properties;
 import Entity.Ticket;
 import Entity.User;
+import Others.Helper;
 import java.util.ArrayList;
 import View.View;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -28,11 +31,13 @@ public class ATMController implements Controller {
         this.tickets = tickets;
         this.properties = propertie;
         this.currentPerson = currentPerson;
+        events();
     }
 
     @Override
     public void start() {
         View.atmView.userName.setText(currentPerson.toString());
+        View.atmView.user.setText(this.currentPerson.getName());
         if (this.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);
             View.atmView.retreat.setVisible(false);
@@ -53,10 +58,20 @@ public class ATMController implements Controller {
 
     @Override
     public void end() {
+        Helper.saveObjectToFile(persons, "/Files/Persons.txt");
+        viewButtons();
+        View.atmView.dispose();
     }
 
     @Override
     public void events() {
+        View.atmView.logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                end();
+                loginController.start();
+            }
+        });
     }
 
     public void setPersons(ArrayList<Person> persons) {
@@ -73,6 +88,22 @@ public class ATMController implements Controller {
 
     public void setCurrentPerson(Person currentPerson) {
         this.currentPerson = currentPerson;
+    }
+
+    private void viewButtons() {
+        View.atmView.deposit.setVisible(true);
+        View.atmView.retreat.setVisible(true);
+        View.atmView.updatePin.setVisible(true);
+        View.atmView.amount.setVisible(true);
+        View.atmView.transactions.setVisible(true);
+        View.atmView.addUser.setVisible(true);
+        View.atmView.initATM.setVisible(true);
+        View.atmView.addCash.setVisible(true);
+        View.atmView.updateCard.setVisible(true);
+        View.atmView.updateLimit.setVisible(true);
+        View.atmView.userConsult.setVisible(true);
+        View.atmView.userControl.setVisible(true);
+
     }
 
 }
