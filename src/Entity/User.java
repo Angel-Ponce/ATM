@@ -2,6 +2,7 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +16,13 @@ public class User extends Person implements Serializable {
     ArrayList<Transaction> latestTransactions = new ArrayList<Transaction>();
 
     public User(int cardNumber, int currentBalance, int maximumAmount) {
+        this.cardNumber = cardNumber;
+        this.currentBalance = currentBalance;
+        this.maximumAmount = maximumAmount;
+    }
+
+    public User(int cardNumber, int currentBalance, int maximumAmount, String name, String lastName, int age, String email, int pin, Date lastAccess, String pick) {
+        super(name, lastName, age, email, pin, lastAccess, pick);
         this.cardNumber = cardNumber;
         this.currentBalance = currentBalance;
         this.maximumAmount = maximumAmount;

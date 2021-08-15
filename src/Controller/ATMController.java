@@ -1,8 +1,10 @@
 package Controller;
 
+import Entity.Admin;
 import Entity.Person;
 import Entity.Properties;
 import Entity.Ticket;
+import Entity.User;
 import java.util.ArrayList;
 import View.View;
 
@@ -31,6 +33,21 @@ public class ATMController implements Controller {
     @Override
     public void start() {
         View.atmView.userName.setText(currentPerson.toString());
+        if (this.currentPerson instanceof Admin) {
+            View.atmView.deposit.setVisible(false);
+            View.atmView.retreat.setVisible(false);
+            View.atmView.updatePin.setVisible(false);
+            View.atmView.amount.setVisible(false);
+            View.atmView.transactions.setVisible(false);
+        } else if (this.currentPerson instanceof User) {
+            View.atmView.addUser.setVisible(false);
+            View.atmView.initATM.setVisible(false);
+            View.atmView.addCash.setVisible(false);
+            View.atmView.updateCard.setVisible(false);
+            View.atmView.updateLimit.setVisible(false);
+            View.atmView.userConsult.setVisible(false);
+            View.atmView.userControl.setVisible(false);
+        }
         View.atmView.setVisible(true);
     }
 
