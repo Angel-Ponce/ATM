@@ -95,7 +95,11 @@ public class Helper {
             return new ImageIcon(image);
         } catch (IOException ex) {
         }
-        return new ImageIcon(Helper.class.getResource("/Resources/default.png"));
+        return new ImageIcon(
+                new ImageIcon(Helper.class.getResource("/Resources/default.png"))
+                        .getImage()
+                        .getScaledInstance(width, height, Image.SCALE_SMOOTH)
+        );
     }
 
     private static void applyQualityRenderingHints(Graphics2D g2d) {
