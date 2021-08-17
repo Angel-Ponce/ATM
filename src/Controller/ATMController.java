@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import View.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -40,6 +41,7 @@ public class ATMController implements Controller {
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(this.currentPerson.getName());
         View.atmView.pick.setIcon(Helper.roundImage(this.currentPerson.getPick(), 192, 192));
+        this.currentPerson.setLastAccess(new Date());
         //Check if the person is a User or Admin
         if (this.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);

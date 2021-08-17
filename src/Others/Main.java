@@ -3,6 +3,8 @@ package Others;
 import Controller.LoginController;
 import Entity.Admin;
 import Entity.Person;
+import Entity.Properties;
+import Entity.Ticket;
 import Entity.User;
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        register();
         LoginController loginController = new LoginController();
         loginController.start();
     }
@@ -26,6 +29,21 @@ public class Main {
         persons.add(sami);
         persons.add(jossi);
         boolean saved = Helper.saveObjectToFile(persons, "/Files/Persons.txt");
+        System.out.println(saved);
+
+        ArrayList<Ticket> tickets = new ArrayList();
+        Ticket Q1 = new Ticket(1, 100);
+        Ticket Q5 = new Ticket(5, 52);
+        Ticket Q10 = new Ticket(10, 30);
+        Ticket Q20 = new Ticket(20, 22);
+        Ticket Q50 = new Ticket(50, 10);
+        Ticket Q100 = new Ticket(100, 52);
+        Ticket Q200 = new Ticket(200, 16);
+        saved = Helper.saveObjectToFile(tickets, "/Files/Tickets.txt");
+        System.out.println(saved);
+
+        Properties properties = new Properties("", 10000, null);
+        saved = Helper.saveObjectToFile(properties, "/Files/Properties.txt");
         System.out.println(saved);
     }
 }
