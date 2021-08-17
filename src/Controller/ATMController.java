@@ -9,6 +9,8 @@ import Others.Helper;
 import java.util.ArrayList;
 import View.View;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Date;
 
 /**
@@ -80,6 +82,14 @@ public class ATMController implements Controller {
 
         View.atmView.addUser.addActionListener((ActionEvent ae) -> {
             adminController.addUser();
+        });
+
+        View.atmView.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                end();
+                loginController.start();
+            }
         });
     }
 

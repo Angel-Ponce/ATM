@@ -78,7 +78,7 @@ public class ATMView extends javax.swing.JFrame {
         user = new javax.swing.JMenu();
         logout = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 752));
         setPreferredSize(new java.awt.Dimension(1080, 800));
 
