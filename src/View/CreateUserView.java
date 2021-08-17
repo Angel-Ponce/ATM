@@ -5,6 +5,13 @@
  */
 package View;
 
+import Others.Helper;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
+import javax.swing.UIManager;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
+
 /**
  *
  * @author samyc
@@ -15,7 +22,23 @@ public class CreateUserView extends javax.swing.JPanel {
      * Creates new form CreateUserView
      */
     public CreateUserView() {
+        defaultTheme();
         initComponents();
+        name.putClientProperty("JTextField.placeholderText", "Name");
+        numberCard.putClientProperty("JTextField.placeholderText", "Number Card");
+        pin.putClientProperty("JTextField.placeholderText", "Pin");
+        initialAmount.putClientProperty("JTextField.placeholderText", "Initial Amount");
+        maximumAmount.putClientProperty("JTextField.placeholderText", "Maximum Amount");
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 64, Color.decode("#0A3D62")));
+        choosePick.setIcon(Helper.icon(GoogleMaterialDesignIcons.IMAGE, 64, Color.LIGHT_GRAY));
+    }
+  public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**
@@ -26,20 +49,135 @@ public class CreateUserView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        save = new javax.swing.JButton();
+        container = new javax.swing.JPanel();
+        numberCard = new javax.swing.JTextField();
+        initialAmount = new javax.swing.JTextField();
+        maximumAmount = new javax.swing.JTextField();
+        pin = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        footer = new javax.swing.JPanel();
+        pick = new javax.swing.JButton();
+        choosePick = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(918, 800));
+        setLayout(new java.awt.BorderLayout());
+
+        header.setLayout(new java.awt.GridBagLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("Add User");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
+        header.add(title, gridBagConstraints);
+
+        save.setBackground(new java.awt.Color(68, 189, 50));
+        save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        save.setText("Save");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        header.add(save, gridBagConstraints);
+
+        add(header, java.awt.BorderLayout.NORTH);
+
+        container.setLayout(new java.awt.GridBagLayout());
+
+        numberCard.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        numberCard.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add(numberCard, gridBagConstraints);
+
+        initialAmount.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        initialAmount.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add(initialAmount, gridBagConstraints);
+
+        maximumAmount.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        maximumAmount.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add(maximumAmount, gridBagConstraints);
+
+        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        pin.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add(pin, gridBagConstraints);
+
+        name.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        name.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        container.add(name, gridBagConstraints);
+
+        add(container, java.awt.BorderLayout.CENTER);
+
+        footer.setLayout(new javax.swing.BoxLayout(footer, javax.swing.BoxLayout.Y_AXIS));
+
+        pick.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        pick.setMaximumSize(new java.awt.Dimension(256, 256));
+        pick.setMinimumSize(new java.awt.Dimension(256, 256));
+        pick.setPreferredSize(new java.awt.Dimension(256, 256));
+        footer.add(pick);
+
+        choosePick.setBackground(new java.awt.Color(10, 61, 98));
+        choosePick.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        choosePick.setText("Choose a pick");
+        footer.add(choosePick);
+
+        add(footer, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton choosePick;
+    public javax.swing.JPanel container;
+    public javax.swing.JPanel footer;
+    public javax.swing.JPanel header;
+    public javax.swing.JTextField initialAmount;
+    public javax.swing.JTextField maximumAmount;
+    public javax.swing.JTextField name;
+    public javax.swing.JTextField numberCard;
+    public javax.swing.JButton pick;
+    public javax.swing.JTextField pin;
+    public javax.swing.JButton save;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
