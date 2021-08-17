@@ -86,11 +86,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="barNavigation">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7a" green="40" red="40" type="rgb"/>
-            </Property>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -149,9 +144,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="addUser">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -174,9 +166,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="initATM">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -199,9 +188,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="addCash">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -224,9 +210,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="updateCard">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -249,9 +232,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="updateLimit">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -274,9 +254,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="userConsult">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -299,9 +276,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="userControl">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -324,9 +298,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="updatePin">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -349,9 +320,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="retreat">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -374,9 +342,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="deposit">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -399,9 +364,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="transactions">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -424,9 +386,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="amount">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7a" green="40" red="40" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
@@ -444,6 +403,16 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="0" gridY="13" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="100.0" weightY="100.0"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="separator">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                  <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="14" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="100.0" weightY="100.0"/>
                 </Constraint>
               </Constraints>
             </Component>

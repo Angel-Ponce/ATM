@@ -51,7 +51,7 @@ public class AdminController implements Controller {
             String initialAmount = View.createUserView.initialAmount.getText();
             String maximumAmount = View.createUserView.maximumAmount.getText();
             File pick = View.createUserView.fileChooser.getSelectedFile();
-            int age = (int) View.createUserView.age.getValue();
+            String age = View.createUserView.age.getText();
             if (!name.isEmpty() && !lastName.isEmpty()) {
                 if (!email.isEmpty()) {
                     if (numberCard.matches("\\d+")) {
@@ -63,13 +63,13 @@ public class AdminController implements Controller {
                                             BufferedImage buffer = ImageIO.read(pick);
                                             boolean moved = ImageIO.write(buffer, "png", new File(System.getProperty("user.dir") + "/src/Resources/" + pick.getName()));
                                             if (moved) {
-                                                User user = new User(Integer.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, age, email, Integer.valueOf(pin), null, "/Resources/" + pick.getName());
+                                                User user = new User(Integer.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "/Resources/" + pick.getName());
                                                 if (Model.AdminModel.addUser(user)) {
                                                     Helper.success("User added successfly");
                                                     View.createUserView.name.setText("");
                                                     View.createUserView.lastName.setText("");
                                                     View.createUserView.email.setText("");
-                                                    View.createUserView.age.setValue(0);
+                                                    View.createUserView.age.setText("");
                                                     View.createUserView.numberCard.setText("");
                                                     View.createUserView.pin.setText("");
                                                     View.createUserView.initialAmount.setText("");
@@ -112,12 +112,15 @@ public class AdminController implements Controller {
     public void addUser() {
         View.atmView.content.removeAll();
         View.createUserView.name.setText("");
+        View.createUserView.lastName.setText("");
+        View.createUserView.email.setText("");
+        View.createUserView.age.setText("");
         View.createUserView.numberCard.setText("");
         View.createUserView.initialAmount.setText("");
         View.createUserView.maximumAmount.setText("");
         View.createUserView.pin.setText("");
-        View.createUserView.pick.removeAll();
         View.createUserView.pick.setIcon(Helper.roundImage("/Resources/default.png", 256, 256));
+        View.createUserView.fileChooser.setSelectedFile(null);
         View.atmView.content.add(View.createUserView);
         View.atmView.content.repaint();
         View.atmView.pack();

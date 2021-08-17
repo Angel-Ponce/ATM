@@ -72,6 +72,7 @@ public class ATMView extends javax.swing.JFrame {
         deposit = new javax.swing.JButton();
         transactions = new javax.swing.JButton();
         amount = new javax.swing.JButton();
+        separator = new javax.swing.JSeparator();
         content = new javax.swing.JPanel();
         bar = new javax.swing.JMenuBar();
         settings = new javax.swing.JMenu();
@@ -85,7 +86,6 @@ public class ATMView extends javax.swing.JFrame {
         container.setMinimumSize(new java.awt.Dimension(1080, 752));
         container.setLayout(new java.awt.GridBagLayout());
 
-        barNavigation.setBackground(new java.awt.Color(64, 64, 122));
         barNavigation.setLayout(new java.awt.GridBagLayout());
 
         pick.setBorderPainted(false);
@@ -116,7 +116,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         barNavigation.add(userName, gridBagConstraints);
 
-        addUser.setBackground(new java.awt.Color(64, 64, 122));
         addUser.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         addUser.setForeground(new java.awt.Color(255, 255, 255));
         addUser.setText("Add user");
@@ -132,7 +131,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(addUser, gridBagConstraints);
 
-        initATM.setBackground(new java.awt.Color(64, 64, 122));
         initATM.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         initATM.setForeground(new java.awt.Color(255, 255, 255));
         initATM.setText("Init ATM");
@@ -148,7 +146,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(initATM, gridBagConstraints);
 
-        addCash.setBackground(new java.awt.Color(64, 64, 122));
         addCash.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         addCash.setForeground(new java.awt.Color(255, 255, 255));
         addCash.setText("Add cash");
@@ -164,7 +161,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(addCash, gridBagConstraints);
 
-        updateCard.setBackground(new java.awt.Color(64, 64, 122));
         updateCard.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         updateCard.setForeground(new java.awt.Color(255, 255, 255));
         updateCard.setText("Update card");
@@ -180,7 +176,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(updateCard, gridBagConstraints);
 
-        updateLimit.setBackground(new java.awt.Color(64, 64, 122));
         updateLimit.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         updateLimit.setForeground(new java.awt.Color(255, 255, 255));
         updateLimit.setText("Update limit");
@@ -196,7 +191,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(updateLimit, gridBagConstraints);
 
-        userConsult.setBackground(new java.awt.Color(64, 64, 122));
         userConsult.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         userConsult.setForeground(new java.awt.Color(255, 255, 255));
         userConsult.setText("User consult");
@@ -212,7 +206,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(userConsult, gridBagConstraints);
 
-        userControl.setBackground(new java.awt.Color(64, 64, 122));
         userControl.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         userControl.setForeground(new java.awt.Color(255, 255, 255));
         userControl.setText("User control");
@@ -228,7 +221,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(userControl, gridBagConstraints);
 
-        updatePin.setBackground(new java.awt.Color(64, 64, 122));
         updatePin.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         updatePin.setForeground(new java.awt.Color(255, 255, 255));
         updatePin.setText("Update pin");
@@ -244,7 +236,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(updatePin, gridBagConstraints);
 
-        retreat.setBackground(new java.awt.Color(64, 64, 122));
         retreat.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         retreat.setForeground(new java.awt.Color(255, 255, 255));
         retreat.setText("Retreat");
@@ -260,7 +251,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(retreat, gridBagConstraints);
 
-        deposit.setBackground(new java.awt.Color(64, 64, 122));
         deposit.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         deposit.setForeground(new java.awt.Color(255, 255, 255));
         deposit.setText("Deposit");
@@ -276,7 +266,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(deposit, gridBagConstraints);
 
-        transactions.setBackground(new java.awt.Color(64, 64, 122));
         transactions.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         transactions.setForeground(new java.awt.Color(255, 255, 255));
         transactions.setText("Transactions");
@@ -292,7 +281,6 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(transactions, gridBagConstraints);
 
-        amount.setBackground(new java.awt.Color(64, 64, 122));
         amount.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         amount.setForeground(new java.awt.Color(255, 255, 255));
         amount.setText("Amount");
@@ -307,6 +295,16 @@ public class ATMView extends javax.swing.JFrame {
         gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         barNavigation.add(amount, gridBagConstraints);
+
+        separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 14;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        barNavigation.add(separator, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -389,6 +387,7 @@ public class ATMView extends javax.swing.JFrame {
     public javax.swing.JMenuItem logout;
     public javax.swing.JButton pick;
     public javax.swing.JButton retreat;
+    private javax.swing.JSeparator separator;
     public javax.swing.JMenu settings;
     public javax.swing.JButton transactions;
     public javax.swing.JButton updateCard;

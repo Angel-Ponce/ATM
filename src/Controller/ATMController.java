@@ -61,6 +61,8 @@ public class ATMController implements Controller {
         }
         View.atmView.content.removeAll();
         View.atmView.setVisible(true);
+        View.atmView.repaint();
+        View.atmView.pack();
     }
 
     @Override

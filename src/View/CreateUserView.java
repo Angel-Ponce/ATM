@@ -61,12 +61,12 @@ public class CreateUserView extends javax.swing.JPanel {
         container = new javax.swing.JPanel();
         name = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
-        email = new javax.swing.JTextField();
-        age = new javax.swing.JSpinner();
         numberCard = new javax.swing.JFormattedTextField();
         initialAmount = new javax.swing.JFormattedTextField();
         pin = new javax.swing.JFormattedTextField();
         maximumAmount = new javax.swing.JFormattedTextField();
+        email = new javax.swing.JTextField();
+        age = new javax.swing.JFormattedTextField();
         footer = new javax.swing.JPanel();
         pick = new javax.swing.JButton();
         choosePick = new javax.swing.JButton();
@@ -122,29 +122,6 @@ public class CreateUserView extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         container.add(lastName, gridBagConstraints);
 
-        email.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        email.setPreferredSize(new java.awt.Dimension(50, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.8;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        container.add(email, gridBagConstraints);
-
-        age.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        age.setToolTipText("Age");
-        age.setPreferredSize(new java.awt.Dimension(37, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.8;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        container.add(age, gridBagConstraints);
-
         numberCard.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
         numberCard.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         numberCard.setPreferredSize(new java.awt.Dimension(4, 50));
@@ -193,6 +170,29 @@ public class CreateUserView extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         container.add(maximumAmount, gridBagConstraints);
 
+        email.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        email.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add(email, gridBagConstraints);
+
+        age.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        age.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        age.setPreferredSize(new java.awt.Dimension(4, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add(age, gridBagConstraints);
+
         add(container, java.awt.BorderLayout.CENTER);
 
         footer.setLayout(new javax.swing.BoxLayout(footer, javax.swing.BoxLayout.X_AXIS));
@@ -217,7 +217,7 @@ public class CreateUserView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JSpinner age;
+    public javax.swing.JFormattedTextField age;
     public javax.swing.JButton choosePick;
     public javax.swing.JPanel container;
     public javax.swing.JTextField email;
