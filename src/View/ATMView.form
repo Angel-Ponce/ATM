@@ -17,6 +17,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="user">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Resources/on.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="user"/>
           </Properties>
           <AuxValues>
@@ -147,7 +150,7 @@
             <Component class="javax.swing.JButton" name="addUser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -156,6 +159,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add user"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -171,7 +175,7 @@
             <Component class="javax.swing.JButton" name="initATM">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -180,6 +184,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Init ATM"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -195,7 +200,7 @@
             <Component class="javax.swing.JButton" name="addCash">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -204,6 +209,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add cash"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -219,7 +225,7 @@
             <Component class="javax.swing.JButton" name="updateCard">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -228,6 +234,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Update card"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -243,7 +250,7 @@
             <Component class="javax.swing.JButton" name="updateLimit">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -252,6 +259,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Update limit"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -267,7 +275,7 @@
             <Component class="javax.swing.JButton" name="userConsult">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -276,6 +284,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="User consult"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -291,7 +300,7 @@
             <Component class="javax.swing.JButton" name="userControl">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -300,6 +309,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="User control"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -315,7 +325,7 @@
             <Component class="javax.swing.JButton" name="updatePin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -324,6 +334,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Update pin"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -339,7 +350,7 @@
             <Component class="javax.swing.JButton" name="retreat">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -348,6 +359,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Retreat"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -363,7 +375,7 @@
             <Component class="javax.swing.JButton" name="deposit">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -372,6 +384,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Deposit"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -387,7 +400,7 @@
             <Component class="javax.swing.JButton" name="transactions">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -396,6 +409,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Transactions"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -411,7 +425,7 @@
             <Component class="javax.swing.JButton" name="amount">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="a7" red="63" type="rgb"/>
+                  <Color blue="7a" green="40" red="40" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
@@ -420,6 +434,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Amount"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
