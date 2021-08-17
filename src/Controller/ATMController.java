@@ -9,7 +9,6 @@ import Others.Helper;
 import java.util.ArrayList;
 import View.View;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 /**
@@ -21,17 +20,14 @@ public class ATMController implements Controller {
     LoginController loginController;
     UserController userController;
     AdminController adminController;
-    private ArrayList<Person> persons;
-    private ArrayList<Ticket> tickets;
-    private Properties properties;
-    private Person currentPerson;
+    public static ArrayList<Ticket> tickets;
+    public static Properties properties;
+    public static Person currentPerson;
 
-    public ATMController(LoginController loginController, ArrayList<Person> persons, ArrayList<Ticket> tickets, Properties propertie, Person currentPerson) {
+    public ATMController(LoginController loginController) {
         this.loginController = loginController;
-        this.persons = persons;
-        this.tickets = tickets;
-        this.properties = propertie;
-        this.currentPerson = currentPerson;
+        userController = new UserController();
+        adminController = new AdminController();
         events();
     }
 
@@ -42,17 +38,17 @@ public class ATMController implements Controller {
         properties = Model.ATMModel.getProperties();
         //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
-        View.atmView.user.setText(this.currentPerson.getName());
-        View.atmView.pick.setIcon(Helper.roundImage(this.currentPerson.getPick(), 192, 192));
-        this.currentPerson.setLastAccess(new Date());
+        View.atmView.user.setText(ATMController.currentPerson.getName());
+        View.atmView.pick.setIcon(Helper.roundImage(ATMController.currentPerson.getPick(), 192, 192));
+        ATMController.currentPerson.setLastAccess(new Date());
         //Check if the person is a User or Admin
-        if (this.currentPerson instanceof Admin) {
+        if (ATMController.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);
             View.atmView.retreat.setVisible(false);
             View.atmView.updatePin.setVisible(false);
             View.atmView.amount.setVisible(false);
             View.atmView.transactions.setVisible(false);
-        } else if (this.currentPerson instanceof User) {
+        } else if (ATMController.currentPerson instanceof User) {
             View.atmView.addUser.setVisible(false);
             View.atmView.initATM.setVisible(false);
             View.atmView.addCash.setVisible(false);
@@ -61,6 +57,7 @@ public class ATMController implements Controller {
             View.atmView.userConsult.setVisible(false);
             View.atmView.userControl.setVisible(false);
         }
+        View.atmView.content.removeAll();
         View.atmView.setVisible(true);
     }
 
@@ -69,36 +66,21 @@ public class ATMController implements Controller {
         properties.setLastPerson(currentPerson);
         Helper.saveObjectToFile(tickets, "/Files/Tickets.txt");
         Helper.saveObjectToFile(properties, "/Files/Properties.txt");
-        Helper.saveObjectToFile(persons, "/Files/Persons.txt");
+        Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
         viewButtons();
         View.atmView.dispose();
     }
 
     @Override
     public void events() {
-        View.atmView.logout.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                end();
-                loginController.start();
-            }
+        View.atmView.logout.addActionListener((ActionEvent ae) -> {
+            end();
+            loginController.start();
         });
-    }
 
-    public void setPersons(ArrayList<Person> persons) {
-        this.persons = persons;
-    }
-
-    public void setTickets(ArrayList<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
-    public void setProperties(Properties properties) {
-        this.properties = properties;
-    }
-
-    public void setCurrentPerson(Person currentPerson) {
-        this.currentPerson = currentPerson;
+        View.atmView.addUser.addActionListener((ActionEvent ae) -> {
+            adminController.addUser();
+        });
     }
 
     private void viewButtons() {

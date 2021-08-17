@@ -17,10 +17,10 @@ import java.util.Optional;
 public class LoginController implements Controller {
 
     ATMController atmController;
-    ArrayList<Person> persons;
+    public static ArrayList<Person> persons;
 
     public LoginController() {
-        atmController = new ATMController(this, null, null, null, null);
+        atmController = new ATMController(this);
         this.events();
     }
 
@@ -50,8 +50,7 @@ public class LoginController implements Controller {
                         Optional<Person> authenticated = Model.LoginModel.authenticate(email, pin, persons);
                         if (authenticated.isPresent()) {
                             //Enter to the system
-                            atmController.setPersons(persons);
-                            atmController.setCurrentPerson(authenticated.get());
+                            ATMController.currentPerson = authenticated.get();
                             atmController.start();
                             end();
                         } else {
@@ -78,8 +77,7 @@ public class LoginController implements Controller {
                             Optional<Person> authenticated = Model.LoginModel.authenticate(email, pin, persons);
                             if (authenticated.isPresent()) {
                                 //Enter to the system
-                                atmController.setPersons(persons);
-                                atmController.setCurrentPerson(authenticated.get());
+                                ATMController.currentPerson = authenticated.get();
                                 atmController.start();
                                 end();
                             } else {

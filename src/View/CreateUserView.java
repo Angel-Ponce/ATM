@@ -29,8 +29,8 @@ public class CreateUserView extends javax.swing.JPanel {
         pin.putClientProperty("JTextField.placeholderText", "Pin");
         initialAmount.putClientProperty("JTextField.placeholderText", "Initial Amount");
         maximumAmount.putClientProperty("JTextField.placeholderText", "Maximum Amount");
-        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 64, Color.decode("#0A3D62")));
-        choosePick.setIcon(Helper.icon(GoogleMaterialDesignIcons.IMAGE, 64, Color.LIGHT_GRAY));
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
+        choosePick.setIcon(Helper.icon(GoogleMaterialDesignIcons.IMAGE, 32, Color.LIGHT_GRAY));
     }
   public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
@@ -80,6 +80,7 @@ public class CreateUserView extends javax.swing.JPanel {
 
         save.setBackground(new java.awt.Color(68, 189, 50));
         save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
         save.setText("Save");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -149,7 +150,7 @@ public class CreateUserView extends javax.swing.JPanel {
 
         add(container, java.awt.BorderLayout.CENTER);
 
-        footer.setLayout(new javax.swing.BoxLayout(footer, javax.swing.BoxLayout.Y_AXIS));
+        footer.setLayout(new javax.swing.BoxLayout(footer, javax.swing.BoxLayout.X_AXIS));
 
         pick.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         pick.setMaximumSize(new java.awt.Dimension(256, 256));
@@ -160,6 +161,9 @@ public class CreateUserView extends javax.swing.JPanel {
         choosePick.setBackground(new java.awt.Color(10, 61, 98));
         choosePick.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         choosePick.setText("Choose a pick");
+        choosePick.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        choosePick.setMinimumSize(new java.awt.Dimension(256, 40));
+        choosePick.setPreferredSize(new java.awt.Dimension(256, 40));
         footer.add(choosePick);
 
         add(footer, java.awt.BorderLayout.PAGE_END);
