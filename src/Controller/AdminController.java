@@ -28,6 +28,11 @@ public class AdminController implements Controller {
 
     @Override
     public void events() {
+        /*
+            Events Area
+         */
+
+        //<editor-fold defaultstate="collapsed" desc="Choose a Pick Event">
         View.createUserView.choosePick.addActionListener(((ae) -> {
             int opened = View.createUserView.fileChooser.showOpenDialog(View.createUserView);
             if (opened == 0) {
@@ -41,7 +46,9 @@ public class AdminController implements Controller {
                 }
             }
         }));
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Add User Event">
         View.createUserView.save.addActionListener((ae) -> {
             String name = View.createUserView.name.getText();
             String lastName = View.createUserView.lastName.getText();
@@ -107,8 +114,14 @@ public class AdminController implements Controller {
                 Helper.error("The name and lastname are required");
             }
         });
+        //</editor-fold>
+
     }
 
+    /**
+     * Methods area
+     */
+    //<editor-fold defaultstate="collapsed" desc="Init add User Module">
     public void addUser() {
         View.atmView.content.removeAll();
         View.createUserView.name.setText("");
@@ -125,5 +138,6 @@ public class AdminController implements Controller {
         View.atmView.content.repaint();
         View.atmView.pack();
     }
+    //</editor-fold>
 
 }
