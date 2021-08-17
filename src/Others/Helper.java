@@ -70,6 +70,10 @@ public class Helper {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    public static void success(String message) {
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static ImageIcon roundImage(Object o, int width, int height) {
         try {
             BufferedImage master = ImageIO.read(new File(Helper.class.getResource("/Resources/default.png").toURI()));

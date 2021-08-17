@@ -25,6 +25,9 @@ public class CreateUserView extends javax.swing.JPanel {
         defaultTheme();
         initComponents();
         name.putClientProperty("JTextField.placeholderText", "Name");
+        lastName.putClientProperty("JTextField.placeholderText", "Lastname");
+        email.putClientProperty("JTextField.placeholderText", "Email");
+        age.putClientProperty("JTextField.placeholderText", "Age");
         numberCard.putClientProperty("JTextField.placeholderText", "Number Card");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
         initialAmount.putClientProperty("JTextField.placeholderText", "Initial Amount");
@@ -56,11 +59,14 @@ public class CreateUserView extends javax.swing.JPanel {
         title = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         container = new javax.swing.JPanel();
-        numberCard = new javax.swing.JTextField();
-        initialAmount = new javax.swing.JTextField();
-        maximumAmount = new javax.swing.JTextField();
-        pin = new javax.swing.JTextField();
         name = new javax.swing.JTextField();
+        lastName = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        age = new javax.swing.JSpinner();
+        numberCard = new javax.swing.JFormattedTextField();
+        initialAmount = new javax.swing.JFormattedTextField();
+        pin = new javax.swing.JFormattedTextField();
+        maximumAmount = new javax.swing.JFormattedTextField();
         footer = new javax.swing.JPanel();
         pick = new javax.swing.JButton();
         choosePick = new javax.swing.JButton();
@@ -94,30 +100,78 @@ public class CreateUserView extends javax.swing.JPanel {
 
         container.setLayout(new java.awt.GridBagLayout());
 
-        numberCard.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        numberCard.setPreferredSize(new java.awt.Dimension(50, 50));
+        name.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        name.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add(name, gridBagConstraints);
+
+        lastName.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        lastName.setPreferredSize(new java.awt.Dimension(50, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add(lastName, gridBagConstraints);
+
+        email.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        email.setPreferredSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add(email, gridBagConstraints);
+
+        age.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        age.setToolTipText("Age");
+        age.setPreferredSize(new java.awt.Dimension(37, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add(age, gridBagConstraints);
+
+        numberCard.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        numberCard.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        numberCard.setPreferredSize(new java.awt.Dimension(4, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.8;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         container.add(numberCard, gridBagConstraints);
 
+        initialAmount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
         initialAmount.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        initialAmount.setPreferredSize(new java.awt.Dimension(50, 50));
+        initialAmount.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.8;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         container.add(initialAmount, gridBagConstraints);
 
-        maximumAmount.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        maximumAmount.setPreferredSize(new java.awt.Dimension(50, 50));
+        pin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        pin.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -125,29 +179,19 @@ public class CreateUserView extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.8;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        container.add(maximumAmount, gridBagConstraints);
+        container.add(pin, gridBagConstraints);
 
-        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        pin.setPreferredSize(new java.awt.Dimension(50, 50));
+        maximumAmount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        maximumAmount.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        maximumAmount.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.8;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        container.add(pin, gridBagConstraints);
-
-        name.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        name.setPreferredSize(new java.awt.Dimension(50, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.8;
-        container.add(name, gridBagConstraints);
+        container.add(maximumAmount, gridBagConstraints);
 
         add(container, java.awt.BorderLayout.CENTER);
 
@@ -173,17 +217,20 @@ public class CreateUserView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JSpinner age;
     public javax.swing.JButton choosePick;
     public javax.swing.JPanel container;
+    public javax.swing.JTextField email;
     public javax.swing.JFileChooser fileChooser;
     public javax.swing.JPanel footer;
     public javax.swing.JPanel header;
-    public javax.swing.JTextField initialAmount;
-    public javax.swing.JTextField maximumAmount;
+    public javax.swing.JFormattedTextField initialAmount;
+    public javax.swing.JTextField lastName;
+    public javax.swing.JFormattedTextField maximumAmount;
     public javax.swing.JTextField name;
-    public javax.swing.JTextField numberCard;
+    public javax.swing.JFormattedTextField numberCard;
     public javax.swing.JButton pick;
-    public javax.swing.JTextField pin;
+    public javax.swing.JFormattedTextField pin;
     public javax.swing.JButton save;
     public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
