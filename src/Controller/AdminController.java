@@ -140,4 +140,12 @@ public class AdminController implements Controller {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Init ATM Module">
+    public void initATM() {
+        View.atmView.content.removeAll();
+        View.atmView.content.add(View.initATMView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
+    }
+    //</editor-fold>
 }

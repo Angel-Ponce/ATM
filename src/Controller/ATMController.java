@@ -86,6 +86,10 @@ public class ATMController implements Controller {
             adminController.addUser();
         });
 
+        View.atmView.initATM.addActionListener((ae) -> {
+            adminController.initATM();
+        });
+
         View.atmView.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
