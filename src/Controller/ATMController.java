@@ -37,6 +37,9 @@ public class ATMController implements Controller {
 
     @Override
     public void start() {
+        //Read data
+        tickets = Model.ATMModel.getTickets();
+        properties = Model.ATMModel.getProperties();
         //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(this.currentPerson.getName());
@@ -63,6 +66,9 @@ public class ATMController implements Controller {
 
     @Override
     public void end() {
+        properties.setLastPerson(currentPerson);
+        Helper.saveObjectToFile(tickets, "/Files/Tickets.txt");
+        Helper.saveObjectToFile(properties, "/Files/Properties.txt");
         Helper.saveObjectToFile(persons, "/Files/Persons.txt");
         viewButtons();
         View.atmView.dispose();

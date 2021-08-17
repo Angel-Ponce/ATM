@@ -13,7 +13,7 @@ public class Person implements Serializable {
     private String name;
     private String lastName;
     private int age;
-    public static SimpleDateFormat dateFormat;
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("'Date: ' dd/MM/YYYY '\nTime: ' hh:mm");
     private String email;
     private int pin;
     private Date lastAccess;
