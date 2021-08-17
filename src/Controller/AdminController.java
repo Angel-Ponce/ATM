@@ -1,6 +1,8 @@
 package Controller;
 
+import Others.Helper;
 import View.View;
+import java.io.File;
 
 /**
  *
@@ -9,7 +11,7 @@ import View.View;
 public class AdminController implements Controller {
 
     public AdminController() {
-
+        events();
     }
 
     @Override
@@ -22,6 +24,19 @@ public class AdminController implements Controller {
 
     @Override
     public void events() {
+        View.createUserView.choosePick.addActionListener(((ae) -> {
+            int opened = View.createUserView.fileChooser.showOpenDialog(View.createUserView);
+            if (opened == 0) {
+                File file = View.createUserView.fileChooser.getSelectedFile();
+                if (file != null) {
+                    if (file.getName().matches(".*\\.(png|PNG|jpe?g|JPE?G|)")) {
+                        View.createUserView.pick.setIcon(Helper.roundImage(file, 256, 256));
+                    } else {
+                        Helper.error("Error, the file would be a Image");
+                    }
+                }
+            }
+        }));
     }
 
     public void addUser() {

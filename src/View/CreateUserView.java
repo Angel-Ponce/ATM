@@ -51,6 +51,7 @@ public class CreateUserView extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        fileChooser = new javax.swing.JFileChooser();
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         save = new javax.swing.JButton();
@@ -153,6 +154,7 @@ public class CreateUserView extends javax.swing.JPanel {
         footer.setLayout(new javax.swing.BoxLayout(footer, javax.swing.BoxLayout.X_AXIS));
 
         pick.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        pick.setBorderPainted(false);
         pick.setMaximumSize(new java.awt.Dimension(256, 256));
         pick.setMinimumSize(new java.awt.Dimension(256, 256));
         pick.setPreferredSize(new java.awt.Dimension(256, 256));
@@ -173,6 +175,7 @@ public class CreateUserView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton choosePick;
     public javax.swing.JPanel container;
+    public javax.swing.JFileChooser fileChooser;
     public javax.swing.JPanel footer;
     public javax.swing.JPanel header;
     public javax.swing.JTextField initialAmount;
