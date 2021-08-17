@@ -38,6 +38,13 @@ public class Main {
         Ticket Q50 = new Ticket(50, 10);
         Ticket Q100 = new Ticket(100, 52);
         Ticket Q200 = new Ticket(200, 16);
+        tickets.add(Q1);
+        tickets.add(Q5);
+        tickets.add(Q10);
+        tickets.add(Q20);
+        tickets.add(Q50);
+        tickets.add(Q100);
+        tickets.add(Q200);
         saved = Helper.saveObjectToFile(tickets, "/Files/Tickets.txt");
         System.out.println(saved);
 
