@@ -5,8 +5,11 @@
  */
 package View;
 
+import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
  *
@@ -27,6 +30,7 @@ public class InitATMView extends javax.swing.JPanel {
         $50.putClientProperty("JTextField.placeholderText", "$50");
         $100.putClientProperty("JTextField.placeholderText", "$100");
         $200.putClientProperty("JTextField.placeholderText", "$200");
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
     }
 
     public void defaultTheme() {
