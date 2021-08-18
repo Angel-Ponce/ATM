@@ -62,6 +62,13 @@ public class InitATMView extends javax.swing.JPanel {
         $50 = new javax.swing.JFormattedTextField();
         $100 = new javax.swing.JFormattedTextField();
         $200 = new javax.swing.JFormattedTextField();
+        $1Label = new javax.swing.JLabel();
+        $5Label = new javax.swing.JLabel();
+        $10Label = new javax.swing.JLabel();
+        $20Label = new javax.swing.JLabel();
+        $50Label = new javax.swing.JLabel();
+        $100Label = new javax.swing.JLabel();
+        $200Label = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -89,10 +96,10 @@ public class InitATMView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 531;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 13, 21, 0);
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
         header.add(title, gridBagConstraints);
 
         save.setBackground(new java.awt.Color(68, 189, 50));
@@ -102,8 +109,6 @@ public class InitATMView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 14);
         header.add(save, gridBagConstraints);
 
         add(header, java.awt.BorderLayout.PAGE_START);
@@ -114,9 +119,10 @@ public class InitATMView extends javax.swing.JPanel {
         $1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $1.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         container.add($1, gridBagConstraints);
 
@@ -124,18 +130,20 @@ public class InitATMView extends javax.swing.JPanel {
         $5.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $5.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         container.add($5, gridBagConstraints);
 
         $10.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
         $10.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $10.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         container.add($10, gridBagConstraints);
 
@@ -144,10 +152,9 @@ public class InitATMView extends javax.swing.JPanel {
         $20.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         container.add($20, gridBagConstraints);
 
@@ -156,10 +163,9 @@ public class InitATMView extends javax.swing.JPanel {
         $50.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         container.add($50, gridBagConstraints);
 
         $100.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
@@ -167,10 +173,9 @@ public class InitATMView extends javax.swing.JPanel {
         $100.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
-        gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         container.add($100, gridBagConstraints);
 
@@ -179,11 +184,99 @@ public class InitATMView extends javax.swing.JPanel {
         $200.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        container.add($200, gridBagConstraints);
+
+        $1Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $1Label.setText("$1");
+        $1Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
-        container.add($200, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add($1Label, gridBagConstraints);
+
+        $5Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $5Label.setText("$5");
+        $5Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        container.add($5Label, gridBagConstraints);
+
+        $10Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $10Label.setText("$10");
+        $10Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add($10Label, gridBagConstraints);
+
+        $20Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $20Label.setText("$20");
+        $20Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        container.add($20Label, gridBagConstraints);
+
+        $50Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $50Label.setText("$50");
+        $50Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        container.add($50Label, gridBagConstraints);
+
+        $100Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $100Label.setText("$100");
+        $100Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        container.add($100Label, gridBagConstraints);
+
+        $200Label.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $200Label.setText("$200");
+        $200Label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        container.add($200Label, gridBagConstraints);
 
         add(container, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -193,10 +286,17 @@ public class InitATMView extends javax.swing.JPanel {
     public javax.swing.JFormattedTextField $1;
     public javax.swing.JFormattedTextField $10;
     public javax.swing.JFormattedTextField $100;
+    public javax.swing.JLabel $100Label;
+    public javax.swing.JLabel $10Label;
+    public javax.swing.JLabel $1Label;
     public javax.swing.JFormattedTextField $20;
     public javax.swing.JFormattedTextField $200;
+    public javax.swing.JLabel $200Label;
+    public javax.swing.JLabel $20Label;
     public javax.swing.JFormattedTextField $5;
     public javax.swing.JFormattedTextField $50;
+    public javax.swing.JLabel $50Label;
+    public javax.swing.JLabel $5Label;
     public javax.swing.JPanel container;
     public javax.swing.JPanel footer;
     public javax.swing.JPanel header;
