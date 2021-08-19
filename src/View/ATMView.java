@@ -6,6 +6,7 @@ import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
@@ -37,12 +38,27 @@ public class ATMView extends javax.swing.JFrame {
         ImageIcon ic = Helper.roundImage("/Resources/default.png", 192, 192);
         Image image = ic.getImage().getScaledInstance(192, 192, Image.SCALE_SMOOTH);
         pick.setIcon(new ImageIcon(image));
+        addUser.putClientProperty("JButton.buttonType", "square");
+        initATM.putClientProperty("JButton.buttonType", "square");
+        addCash.putClientProperty("JButton.buttonType", "square");
+        updateCard.putClientProperty("JButton.buttonType", "square");
+        updateLimit.putClientProperty("JButton.buttonType", "square");
+        userConsult.putClientProperty("JButton.buttonType", "square");
+        userControl.putClientProperty("JButton.buttonType", "square");
+        updatePin.putClientProperty("JButton.buttonType", "square");
+        retreat.putClientProperty("JButton.buttonType", "square");
+        deposit.putClientProperty("JButton.buttonType", "square");
+        transactions.putClientProperty("JButton.buttonType", "square");
+        amount.putClientProperty("JButton.buttonType", "square");
         super.setLocationRelativeTo(null);
     }
 
     public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
-        System.setProperty("FlatLaf.useWindowDecorations", "true");
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
         FlatLaf.updateUI();
     }
 

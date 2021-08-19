@@ -9,6 +9,7 @@ import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import java.awt.Color;
+import javax.swing.UIManager;
 import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
@@ -35,6 +36,10 @@ public class InitATMView extends javax.swing.JPanel {
 
     public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
         FlatLaf.updateUI();
     }
 

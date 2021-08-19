@@ -171,6 +171,55 @@ public class AdminController implements Controller {
 
         });
 //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Add cash Event">
+        PropertyChangeListener addCashEvent = (PropertyChangeEvent pce) -> {
+            try {
+                int $1new = Integer.parseInt(View.addCashView.$1new.getText()) * 1 + Integer.parseInt(View.addCashView.$1actual.getText()) * 1;
+                int $5new = Integer.parseInt(View.addCashView.$5new.getText()) * 5 + Integer.parseInt(View.addCashView.$5actual.getText()) * 5;
+                int $10new = Integer.parseInt(View.addCashView.$10new.getText()) * 10 + Integer.parseInt(View.addCashView.$10actual.getText()) * 10;
+                int $20new = Integer.parseInt(View.addCashView.$20new.getText()) * 20 + Integer.parseInt(View.addCashView.$20actual.getText()) * 20;
+                int $50new = Integer.parseInt(View.addCashView.$50new.getText()) * 50 + Integer.parseInt(View.addCashView.$50actual.getText()) * 50;
+                int $100new = Integer.parseInt(View.addCashView.$100new.getText()) * 100 + Integer.parseInt(View.addCashView.$100actual.getText()) * 100;
+                int $200new = Integer.parseInt(View.addCashView.$200new.getText()) * 200 + Integer.parseInt(View.addCashView.$200actual.getText()) * 200;
+                if (($1new + $5new + $10new + $20new + $50new + $100new + $200new) <= 30000) {
+                    View.addCashView.limitBar.setValue($1new + $5new + $10new + $20new + $50new + $100new + $200new);
+                } else {
+                    Helper.error("The maximum limit is $30000");
+                    JFormattedTextField field = (JFormattedTextField) pce.getSource();
+                    field.setText("0");
+                }
+            } catch (NumberFormatException e) {
+                System.err.println(e);
+            }
+        };
+        View.addCashView.$1new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$5new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$10new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$20new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$50new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$100new.addPropertyChangeListener("value", addCashEvent);
+        View.addCashView.$200new.addPropertyChangeListener("value", addCashEvent);
+
+        View.addCashView.save.addActionListener((ae) -> {
+            try {
+                int $1new = Integer.parseInt(View.addCashView.$1new.getText()) + Integer.parseInt(View.addCashView.$1actual.getText());
+                int $5new = Integer.parseInt(View.addCashView.$5new.getText()) + Integer.parseInt(View.addCashView.$5actual.getText());
+                int $10new = Integer.parseInt(View.addCashView.$10new.getText()) + Integer.parseInt(View.addCashView.$10actual.getText());
+                int $20new = Integer.parseInt(View.addCashView.$20new.getText()) + Integer.parseInt(View.addCashView.$20actual.getText());
+                int $50new = Integer.parseInt(View.addCashView.$50new.getText()) + Integer.parseInt(View.addCashView.$50actual.getText());
+                int $100new = Integer.parseInt(View.addCashView.$100new.getText()) + Integer.parseInt(View.addCashView.$100actual.getText());
+                int $200new = Integer.parseInt(View.addCashView.$200new.getText()) + Integer.parseInt(View.addCashView.$200actual.getText());
+                if (Model.AdminModel.addCash($1new, $5new, $10new, $20new, $50new, $100new, $200new)) {
+                    Helper.success("Cash added success");
+                } else {
+                    Helper.error("Something went wrong");
+                }
+            } catch (Exception e) {
+                Helper.error("Tickets must be a numeric values");
+            }
+        });
+        //</editor-fold>
     }
 
     /**
@@ -209,6 +258,32 @@ public class AdminController implements Controller {
         int total = (int) tickets.stream().mapToDouble(ticket -> ticket.getSize() * ticket.getType()).sum();
         View.initATMView.limitBar.setValue(total);
         View.atmView.content.add(View.initATMView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init add cash Module">
+    public void addCash() {
+        View.atmView.content.removeAll();
+        ArrayList<Ticket> tickets = Model.ATMModel.getTickets();
+        View.addCashView.$1actual.setText("" + tickets.get(0).getSize());
+        View.addCashView.$5actual.setText("" + tickets.get(1).getSize());
+        View.addCashView.$10actual.setText("" + tickets.get(2).getSize());
+        View.addCashView.$20actual.setText("" + tickets.get(3).getSize());
+        View.addCashView.$50actual.setText("" + tickets.get(4).getSize());
+        View.addCashView.$100actual.setText("" + tickets.get(5).getSize());
+        View.addCashView.$200actual.setText("" + tickets.get(6).getSize());
+        View.addCashView.$1new.setText("0");
+        View.addCashView.$5new.setText("0");
+        View.addCashView.$10new.setText("0");
+        View.addCashView.$20new.setText("0");
+        View.addCashView.$50new.setText("0");
+        View.addCashView.$100new.setText("0");
+        View.addCashView.$200new.setText("0");
+        int total = (int) tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum();
+        View.addCashView.limitBar.setValue(total);
+        View.atmView.content.add(View.addCashView);
         View.atmView.content.repaint();
         View.atmView.pack();
     }

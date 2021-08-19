@@ -9,6 +9,7 @@ import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import java.awt.Color;
+import javax.swing.UIManager;
 import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
@@ -23,7 +24,7 @@ public class AddCashView extends javax.swing.JPanel {
     public AddCashView() {
         defaultTheme();
         initComponents();
-         $1new.putClientProperty("JTextField.placeholderText", "$1");
+        $1new.putClientProperty("JTextField.placeholderText", "$1");
         $5new.putClientProperty("JTextField.placeholderText", "$5");
         $10new.putClientProperty("JTextField.placeholderText", "$10");
         $20new.putClientProperty("JTextField.placeholderText", "$20");
@@ -31,12 +32,14 @@ public class AddCashView extends javax.swing.JPanel {
         $100new.putClientProperty("JTextField.placeholderText", "$100");
         $200new.putClientProperty("JTextField.placeholderText", "$200");
         save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
-        
-        
     }
-    
+
     public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
         FlatLaf.updateUI();
     }
 
@@ -91,9 +94,8 @@ public class AddCashView extends javax.swing.JPanel {
         footer.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
 
         limitBar.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        limitBar.setMaximum(10000);
+        limitBar.setMaximum(30000);
         limitBar.setToolTipText("");
-        limitBar.setValue(10000);
         limitBar.setPreferredSize(new java.awt.Dimension(146, 50));
         limitBar.setStringPainted(true);
         footer.add(limitBar);
@@ -329,8 +331,8 @@ public class AddCashView extends javax.swing.JPanel {
         $10new.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $10new.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -340,7 +342,7 @@ public class AddCashView extends javax.swing.JPanel {
         $20new.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $20new.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
@@ -351,7 +353,7 @@ public class AddCashView extends javax.swing.JPanel {
         $50new.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $50new.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
@@ -363,7 +365,7 @@ public class AddCashView extends javax.swing.JPanel {
         $100new.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
