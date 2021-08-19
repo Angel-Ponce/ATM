@@ -42,7 +42,7 @@ public class ATMController implements Controller {
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(ATMController.currentPerson.getName());
         View.atmView.pick.setIcon(Helper.roundImage(ATMController.currentPerson.getPick(), 192, 192));
-        ATMController.currentPerson.setLastAccess(new Date());
+        Model.ATMModel.updateLastAccess(currentPerson, new Date());
         //Check if the person is a User or Admin
         if (ATMController.currentPerson instanceof Admin) {
             View.atmView.deposit.setVisible(false);
@@ -67,8 +67,7 @@ public class ATMController implements Controller {
 
     @Override
     public void end() {
-        properties.setLastPerson(currentPerson);
-        Model.ATMModel.logout();
+        Model.ATMModel.logout(currentPerson);
         viewButtons();
         View.atmView.dispose();
     }
