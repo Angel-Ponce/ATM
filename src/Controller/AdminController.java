@@ -10,6 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JFormattedTextField;
 
@@ -159,14 +160,11 @@ public class AdminController implements Controller {
                 int $50 = Integer.parseInt(View.initATMView.$50.getText());
                 int $100 = Integer.parseInt(View.initATMView.$100.getText());
                 int $200 = Integer.parseInt(View.initATMView.$200.getText());
-                ATMController.tickets.set(0, new Ticket(1, $1));
-                ATMController.tickets.set(1, new Ticket(5, $5));
-                ATMController.tickets.set(2, new Ticket(10, $10));
-                ATMController.tickets.set(3, new Ticket(20, $20));
-                ATMController.tickets.set(4, new Ticket(50, $50));
-                ATMController.tickets.set(5, new Ticket(100, $100));
-                ATMController.tickets.set(6, new Ticket(200, $200));
-                Helper.success("Tickets saved correctly");
+                if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200)) {
+                    Helper.success("Tickets saved correctly");
+                } else {
+                    Helper.error("Something went wrong");
+                }
             } catch (NumberFormatException er) {
                 Helper.error("Tickets must be numeric values");
             }
@@ -200,14 +198,15 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init ATM Module">
     public void initATM() {
         View.atmView.content.removeAll();
-        View.initATMView.$1.setText(ATMController.tickets.get(0).getSize() + "");
-        View.initATMView.$5.setText(ATMController.tickets.get(1).getSize() + "");
-        View.initATMView.$10.setText(ATMController.tickets.get(2).getSize() + "");
-        View.initATMView.$20.setText(ATMController.tickets.get(3).getSize() + "");
-        View.initATMView.$50.setText(ATMController.tickets.get(4).getSize() + "");
-        View.initATMView.$100.setText(ATMController.tickets.get(5).getSize() + "");
-        View.initATMView.$200.setText(ATMController.tickets.get(6).getSize() + "");
-        int total = (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getSize() * ticket.getType()).sum();
+        ArrayList<Ticket> tickets = Model.ATMModel.getTickets();
+        View.initATMView.$1.setText(tickets.get(0).getSize() + "");
+        View.initATMView.$5.setText(tickets.get(1).getSize() + "");
+        View.initATMView.$10.setText(tickets.get(2).getSize() + "");
+        View.initATMView.$20.setText(tickets.get(3).getSize() + "");
+        View.initATMView.$50.setText(tickets.get(4).getSize() + "");
+        View.initATMView.$100.setText(tickets.get(5).getSize() + "");
+        View.initATMView.$200.setText(tickets.get(6).getSize() + "");
+        int total = (int) tickets.stream().mapToDouble(ticket -> ticket.getSize() * ticket.getType()).sum();
         View.initATMView.limitBar.setValue(total);
         View.atmView.content.add(View.initATMView);
         View.atmView.content.repaint();

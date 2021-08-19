@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.ATMController;
 import Controller.LoginController;
 import Entity.Person;
 import Entity.Ticket;
@@ -17,7 +18,18 @@ public class AdminModel {
         return true;
     }
 
-    public static boolean initATM(ArrayList<Ticket> tickets) {
+    public static boolean initATM(int $1, int $5, int $10, int $20, int $50, int $100, int $200) {
+        try {
+            ATMController.tickets.set(0, new Ticket(1, $1));
+            ATMController.tickets.set(1, new Ticket(5, $5));
+            ATMController.tickets.set(2, new Ticket(10, $10));
+            ATMController.tickets.set(3, new Ticket(20, $20));
+            ATMController.tickets.set(4, new Ticket(50, $50));
+            ATMController.tickets.set(5, new Ticket(100, $100));
+            ATMController.tickets.set(6, new Ticket(200, $200));
+            return true;
+        } catch (Exception e) {
+        }
         return false;
     }
 

@@ -68,9 +68,7 @@ public class ATMController implements Controller {
     @Override
     public void end() {
         properties.setLastPerson(currentPerson);
-        Helper.saveObjectToFile(tickets, "/Files/Tickets.txt");
-        Helper.saveObjectToFile(properties, "/Files/Properties.txt");
-        Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+        Model.ATMModel.logout();
         viewButtons();
         View.atmView.dispose();
     }
