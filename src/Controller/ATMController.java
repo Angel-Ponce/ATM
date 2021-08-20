@@ -91,6 +91,10 @@ public class ATMController implements Controller {
             adminController.addCash();
         });
 
+        View.atmView.updateCard.addActionListener((ae) -> {
+            adminController.updateCard();
+        });
+
         View.atmView.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {

@@ -288,4 +288,10 @@ public class AdminController implements Controller {
         View.atmView.pack();
     }
     //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init Update card Module">
+    public void updateCard() {
+        View.changeCardNumberView.setVisible(true);
+    }
+    //</editor-fold>
 }

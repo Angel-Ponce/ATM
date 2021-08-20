@@ -5,17 +5,36 @@
  */
 package View;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import javax.swing.UIManager;
+
 /**
  *
- * @author samyc
+ * @author Angel Ponce
  */
-public class ChangeCardNumberView extends javax.swing.JPanel {
+public class ChangeCardNumberView extends javax.swing.JDialog {
 
     /**
      * Creates new form ChangeCardNumberView
      */
-    public ChangeCardNumberView() {
+    public ChangeCardNumberView(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        defaultTheme();
         initComponents();
+        super.setLocationRelativeTo(parent);
+        oldCardNumber.putClientProperty("JTextField.placeholderText", "Old card number");
+        newCardNumber.putClientProperty("JTextField.placeholderText", "New card number");
+        pin.putClientProperty("JTextField.placeholderText", "Pin");
+    }
+
+    public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**
@@ -26,20 +45,125 @@ public class ChangeCardNumberView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        container = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        oldCardNumber = new javax.swing.JFormattedTextField();
+        newCardNumber = new javax.swing.JFormattedTextField();
+        pin = new javax.swing.JPasswordField();
+        save = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 500));
+
+        container.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        jLabel1.setText("Update Card");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(jLabel1, gridBagConstraints);
+
+        oldCardNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        oldCardNumber.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        oldCardNumber.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(oldCardNumber, gridBagConstraints);
+
+        newCardNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        newCardNumber.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        newCardNumber.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(newCardNumber, gridBagConstraints);
+
+        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        pin.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(pin, gridBagConstraints);
+
+        save.setBackground(new java.awt.Color(68, 189, 50));
+        save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        save.setText("Save");
+        save.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(save, gridBagConstraints);
+
+        getContentPane().add(container, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ChangeCardNumberView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ChangeCardNumberView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ChangeCardNumberView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ChangeCardNumberView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ChangeCardNumberView dialog = new ChangeCardNumberView(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel container;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JFormattedTextField newCardNumber;
+    private javax.swing.JFormattedTextField oldCardNumber;
+    private javax.swing.JPasswordField pin;
+    private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 }
