@@ -5,9 +5,12 @@
  */
 package View;
 
+import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
 import javax.swing.UIManager;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
  *
@@ -26,6 +29,7 @@ public class ChangeCardNumberView extends javax.swing.JDialog {
         oldCardNumber.putClientProperty("JTextField.placeholderText", "Old card number");
         newCardNumber.putClientProperty("JTextField.placeholderText", "New card number");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
     }
 
     public void defaultTheme() {
@@ -55,6 +59,8 @@ public class ChangeCardNumberView extends javax.swing.JDialog {
         save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 500));
+        setPreferredSize(new java.awt.Dimension(400, 500));
 
         container.setLayout(new java.awt.GridBagLayout());
 
@@ -100,6 +106,7 @@ public class ChangeCardNumberView extends javax.swing.JDialog {
 
         save.setBackground(new java.awt.Color(68, 189, 50));
         save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
         save.setText("Save");
         save.setPreferredSize(new java.awt.Dimension(300, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
