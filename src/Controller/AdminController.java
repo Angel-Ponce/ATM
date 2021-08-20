@@ -263,7 +263,43 @@ public class AdminController implements Controller {
             }
         });
 
-//</editor-fold>
+        //</editor-fold>
+        
+        //<editor-fold defaultstate="collapsed" desc="Change limit Event">
+        View.changeMaximumAmountView.save.addActionListener((ae) -> {
+            String newLimit = View.changeMaximumAmountView.newLimit.getText();
+            String card = View.changeMaximumAmountView.cardNumber.getText();
+            String pin = String.valueOf(View.changeMaximumAmountView.pin.getPassword());
+            if (!newLimit.isEmpty()) {
+                if (!card.isEmpty()) {
+                    if (pin.matches("\\d+")) {
+                        Optional<Person> authenticated = Model.LoginModel.authenticate(card, Integer.parseInt(pin), LoginController.persons);
+                        if (authenticated.isPresent()) {
+                            User user = (User) authenticated.get();
+                            if (Model.AdminModel.changeLimit(Integer.parseInt(newLimit), user)) {
+                                Helper.success("New limit has been update");
+                                View.changeMaximumAmountView.newLimit.setText("");
+                                View.changeMaximumAmountView.cardNumber.setText("");
+                                View.changeMaximumAmountView.pin.setText("");
+                            } else {
+                                Helper.error("Something went wrong");
+                            }
+
+                        } else {
+                            Helper.error("Invalid data");
+                        }
+                    } else {
+                        Helper.error("The pin must be a numeric value");
+                    }
+                } else {
+                    Helper.error("Please fill in the card field");
+                }
+            } else {
+                Helper.error("Please fill in the new limit field");
+            }
+        });
+
+        //</editor-fold>
     }
 
     /**
@@ -335,10 +371,20 @@ public class AdminController implements Controller {
 
     //<editor-fold defaultstate="collapsed" desc="Init Update card Module">
     public void updateCard() {
-        View.changeCardNumberView.setVisible(true);
+
         View.changeCardNumberView.newCardNumber.setText("");
         View.changeCardNumberView.oldCardNumber.setText("");
         View.changeCardNumberView.pin.setText("");
+        View.changeCardNumberView.setVisible(true);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init Update Limit Module">
+    public void updateLimit() {
+        View.changeMaximumAmountView.newLimit.setText("");
+        View.changeMaximumAmountView.cardNumber.setText("");
+        View.changeMaximumAmountView.pin.setText("");
+        View.changeMaximumAmountView.setVisible(true);
     }
     //</editor-fold>
 }

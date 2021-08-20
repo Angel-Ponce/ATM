@@ -26,8 +26,8 @@ public class ChangeMaximumAmountView extends javax.swing.JDialog {
         defaultTheme();
         initComponents();
         super.setLocationRelativeTo(parent);
-        newLimit.putClientProperty("JTextField.placeholderText", "Old card number");
-        cardNumber.putClientProperty("JTextField.placeholderText", "New card number");
+        newLimit.putClientProperty("JTextField.placeholderText", "New limit");
+        cardNumber.putClientProperty("JTextField.placeholderText", "Card number");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
         save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
     }

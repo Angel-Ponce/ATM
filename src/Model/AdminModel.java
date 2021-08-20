@@ -2,7 +2,6 @@ package Model;
 
 import Controller.ATMController;
 import Controller.LoginController;
-import Entity.Person;
 import Entity.Ticket;
 import Entity.User;
 import Others.Helper;
@@ -16,8 +15,7 @@ public class AdminModel {
 
     public static boolean addUser(User user) {
         LoginController.persons.add(user);
-        Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
-        return true;
+        return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
     }
 
     public static boolean initATM(int $1, int $5, int $10, int $20, int $50, int $100, int $200) {
@@ -29,8 +27,7 @@ public class AdminModel {
             ATMController.tickets.set(4, new Ticket(50, $50));
             ATMController.tickets.set(5, new Ticket(100, $100));
             ATMController.tickets.set(6, new Ticket(200, $200));
-            Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
-            return true;
+            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
         } catch (Exception e) {
         }
         return false;
@@ -45,8 +42,7 @@ public class AdminModel {
             ATMController.tickets.set(4, new Ticket(50, $50));
             ATMController.tickets.set(5, new Ticket(100, $100));
             ATMController.tickets.set(6, new Ticket(200, $200));
-            Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
-            return true;
+            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
         } catch (Exception e) {
         }
         return false;
@@ -56,15 +52,19 @@ public class AdminModel {
         try {
             user.setCardNumber(newCardNumber);
             user.setEmail(String.valueOf(newCardNumber));
-            Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
-            return true;
+            return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
         } catch (Exception e) {
         }
 
         return false;
     }
 
-    public static boolean changeLimit(int newLimit, Person person) {
+    public static boolean changeLimit(int newLimit, User user) {
+        try {
+            user.setMaximumAmount(newLimit);
+            return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+        } catch (Exception e) {
+        }
         return false;
     }
 
