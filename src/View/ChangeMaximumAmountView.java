@@ -5,17 +5,40 @@
  */
 package View;
 
+import Others.Helper;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
+import javax.swing.UIManager;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
+
 /**
  *
- * @author samyc
+ * @author Angel Ponce
  */
-public class ChangeMaximumAmountView extends javax.swing.JPanel {
+public class ChangeMaximumAmountView extends javax.swing.JDialog {
 
     /**
-     * Creates new form ChangeMaximumAmountView
+     * Creates new form ChangeCardNumberView
      */
-    public ChangeMaximumAmountView() {
+    public ChangeMaximumAmountView(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        defaultTheme();
         initComponents();
+        super.setLocationRelativeTo(parent);
+        newLimit.putClientProperty("JTextField.placeholderText", "Old card number");
+        cardNumber.putClientProperty("JTextField.placeholderText", "New card number");
+        pin.putClientProperty("JTextField.placeholderText", "Pin");
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
+    }
+
+    public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**
@@ -26,20 +49,127 @@ public class ChangeMaximumAmountView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        container = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        newLimit = new javax.swing.JFormattedTextField();
+        cardNumber = new javax.swing.JFormattedTextField();
+        pin = new javax.swing.JPasswordField();
+        save = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 500));
+
+        container.setLayout(new java.awt.GridBagLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("Change Limit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(title, gridBagConstraints);
+
+        newLimit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        newLimit.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        newLimit.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(newLimit, gridBagConstraints);
+
+        cardNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        cardNumber.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        cardNumber.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(cardNumber, gridBagConstraints);
+
+        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        pin.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(pin, gridBagConstraints);
+
+        save.setBackground(new java.awt.Color(68, 189, 50));
+        save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setText("Save");
+        save.setPreferredSize(new java.awt.Dimension(300, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        container.add(save, gridBagConstraints);
+
+        getContentPane().add(container, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ChangeMaximumAmountView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ChangeMaximumAmountView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ChangeMaximumAmountView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ChangeMaximumAmountView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ChangeMaximumAmountView dialog = new ChangeMaximumAmountView(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JFormattedTextField cardNumber;
+    private javax.swing.JPanel container;
+    public javax.swing.JFormattedTextField newLimit;
+    public javax.swing.JPasswordField pin;
+    public javax.swing.JButton save;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
