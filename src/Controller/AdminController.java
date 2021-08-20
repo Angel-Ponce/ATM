@@ -1,5 +1,6 @@
 package Controller;
 
+import Entity.Person;
 import Entity.Ticket;
 import Entity.User;
 import Others.Helper;
@@ -11,6 +12,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 import javax.imageio.ImageIO;
 import javax.swing.JFormattedTextField;
 
@@ -19,19 +21,19 @@ import javax.swing.JFormattedTextField;
  * @author samyc
  */
 public class AdminController implements Controller {
-
+    
     public AdminController() {
         events();
     }
-
+    
     @Override
     public void start() {
     }
-
+    
     @Override
     public void end() {
     }
-
+    
     @Override
     public void events() {
         /*
@@ -142,7 +144,7 @@ public class AdminController implements Controller {
             } catch (NumberFormatException e) {
                 System.err.println(e);
             }
-
+            
         };
         View.initATMView.$1.addPropertyChangeListener("value", ticketEvent);
         View.initATMView.$5.addPropertyChangeListener("value", ticketEvent);
@@ -168,7 +170,7 @@ public class AdminController implements Controller {
             } catch (NumberFormatException er) {
                 Helper.error("Tickets must be numeric values");
             }
-
+            
         });
 //</editor-fold>
 
@@ -200,7 +202,7 @@ public class AdminController implements Controller {
         View.addCashView.$50new.addPropertyChangeListener("value", addCashEvent);
         View.addCashView.$100new.addPropertyChangeListener("value", addCashEvent);
         View.addCashView.$200new.addPropertyChangeListener("value", addCashEvent);
-
+        
         View.addCashView.save.addActionListener((ae) -> {
             try {
                 int $1new = Integer.parseInt(View.addCashView.$1new.getText()) + Integer.parseInt(View.addCashView.$1actual.getText());
@@ -220,6 +222,42 @@ public class AdminController implements Controller {
             }
         });
         //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Change card number Event">
+        View.changeCardNumberView.save.addActionListener((e) -> {
+            String oldCard = View.changeCardNumberView.oldCardNumber.getText();
+            String newCard = View.changeCardNumberView.newCardNumber.getText();
+            String pin = String.valueOf(View.changeCardNumberView.pin.getPassword());
+            if (!oldCard.isEmpty()) {
+                if (!newCard.isEmpty()) {
+                    if (pin.matches("\\d+")) {
+                        Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
+                        if (authenticated.isPresent()) {
+                            User user = (User) authenticated.get();
+                            if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
+                                Helper.success("New card number has been update");
+                                View.changeCardNumberView.newCardNumber.setText("");
+                                View.changeCardNumberView.oldCardNumber.setText("");
+                                View.changeCardNumberView.pin.setText("");
+                            } else {
+                                Helper.error("Something went wrong");
+                            }
+                            
+                        } else {
+                            Helper.error("Invalid data");
+                        }
+                    } else {
+                        Helper.error("The pin must be a numeric value");
+                    }
+                } else {
+                    Helper.error("Please fill in the new card field");
+                }
+            } else {
+                Helper.error("Please fill in the old card field");
+            }
+        });
+
+//</editor-fold>
     }
 
     /**
@@ -292,6 +330,9 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init Update card Module">
     public void updateCard() {
         View.changeCardNumberView.setVisible(true);
+        View.changeCardNumberView.newCardNumber.setText("");
+        View.changeCardNumberView.oldCardNumber.setText("");
+        View.changeCardNumberView.pin.setText("");
     }
     //</editor-fold>
 }

@@ -52,7 +52,15 @@ public class AdminModel {
         return false;
     }
 
-    public static boolean changeCardNumber(int newCardNumber, Person person) {
+    public static boolean changeCardNumber(int newCardNumber, User user) {
+        try {
+            user.setCardNumber(newCardNumber);
+            user.setEmail(String.valueOf(newCardNumber));
+            Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+            return true;
+        } catch (Exception e) {
+        }
+
         return false;
     }
 

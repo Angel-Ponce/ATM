@@ -48,24 +48,23 @@ public class ChangeCardNumberView extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         container = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         oldCardNumber = new javax.swing.JFormattedTextField();
         newCardNumber = new javax.swing.JFormattedTextField();
         pin = new javax.swing.JPasswordField();
         save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         container.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
-        jLabel1.setText("Update Card");
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("Update Card");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
-        container.add(jLabel1, gridBagConstraints);
+        container.add(title, gridBagConstraints);
 
         oldCardNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
         oldCardNumber.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
@@ -160,10 +159,10 @@ public class ChangeCardNumberView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JFormattedTextField newCardNumber;
-    private javax.swing.JFormattedTextField oldCardNumber;
-    private javax.swing.JPasswordField pin;
-    private javax.swing.JButton save;
+    public javax.swing.JFormattedTextField newCardNumber;
+    public javax.swing.JFormattedTextField oldCardNumber;
+    public javax.swing.JPasswordField pin;
+    public javax.swing.JButton save;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

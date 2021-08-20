@@ -8,7 +8,6 @@ package View;
 import Others.Image;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.*;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -23,8 +22,8 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         defaultTheme();
         initComponents();
-        email.putClientProperty("JTextField.placeholderText", "email");
-        password.putClientProperty("JTextField.placeholderText", "password");
+        email.putClientProperty("JTextField.placeholderText", "Email or card number");
+        password.putClientProperty("JTextField.placeholderText", "Password");
         super.setLocationRelativeTo(null);
         Image image = new Image(540, 752, "/Resources/login.png");
         this.image.add(image);
