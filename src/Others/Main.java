@@ -15,10 +15,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        register();
         LoginController loginController = new LoginController();
         loginController.start();
-        
-        
     }
 
     private static void register() {
@@ -33,13 +32,13 @@ public class Main {
         System.out.println(saved);
 
         ArrayList<Ticket> tickets = new ArrayList();
-        Ticket Q1 = new Ticket(1, 100);
-        Ticket Q5 = new Ticket(5, 52);
-        Ticket Q10 = new Ticket(10, 30);
-        Ticket Q20 = new Ticket(20, 22);
-        Ticket Q50 = new Ticket(50, 10);
-        Ticket Q100 = new Ticket(100, 52);
-        Ticket Q200 = new Ticket(200, 16);
+        Ticket Q1 = new Ticket(1, 0);
+        Ticket Q5 = new Ticket(5, 0);
+        Ticket Q10 = new Ticket(10, 0);
+        Ticket Q20 = new Ticket(20, 0);
+        Ticket Q50 = new Ticket(50, 0);
+        Ticket Q100 = new Ticket(100, 0);
+        Ticket Q200 = new Ticket(200, 0);
         tickets.add(Q1);
         tickets.add(Q5);
         tickets.add(Q10);
