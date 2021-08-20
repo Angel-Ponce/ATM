@@ -21,19 +21,19 @@ import javax.swing.JFormattedTextField;
  * @author samyc
  */
 public class AdminController implements Controller {
-    
+
     public AdminController() {
         events();
     }
-    
+
     @Override
     public void start() {
     }
-    
+
     @Override
     public void end() {
     }
-    
+
     @Override
     public void events() {
         /*
@@ -144,7 +144,7 @@ public class AdminController implements Controller {
             } catch (NumberFormatException e) {
                 System.err.println(e);
             }
-            
+
         };
         View.initATMView.$1.addPropertyChangeListener("value", ticketEvent);
         View.initATMView.$5.addPropertyChangeListener("value", ticketEvent);
@@ -170,7 +170,7 @@ public class AdminController implements Controller {
             } catch (NumberFormatException er) {
                 Helper.error("Tickets must be numeric values");
             }
-            
+
         });
 //</editor-fold>
 
@@ -202,7 +202,7 @@ public class AdminController implements Controller {
         View.addCashView.$50new.addPropertyChangeListener("value", addCashEvent);
         View.addCashView.$100new.addPropertyChangeListener("value", addCashEvent);
         View.addCashView.$200new.addPropertyChangeListener("value", addCashEvent);
-        
+
         View.addCashView.save.addActionListener((ae) -> {
             try {
                 int $1new = Integer.parseInt(View.addCashView.$1new.getText()) + Integer.parseInt(View.addCashView.$1actual.getText());
@@ -242,7 +242,7 @@ public class AdminController implements Controller {
                             } else {
                                 Helper.error("Something went wrong");
                             }
-                            
+
                         } else {
                             Helper.error("Invalid data");
                         }
@@ -285,7 +285,7 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init ATM Module">
     public void initATM() {
         View.atmView.content.removeAll();
-        ArrayList<Ticket> tickets = Model.ATMModel.getTickets();
+        ArrayList<Ticket> tickets = ATMController.tickets;
         View.initATMView.$1.setText(tickets.get(0).getSize() + "");
         View.initATMView.$5.setText(tickets.get(1).getSize() + "");
         View.initATMView.$10.setText(tickets.get(2).getSize() + "");
@@ -304,7 +304,7 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init add cash Module">
     public void addCash() {
         View.atmView.content.removeAll();
-        ArrayList<Ticket> tickets = Model.ATMModel.getTickets();
+        ArrayList<Ticket> tickets = ATMController.tickets;
         View.addCashView.$1actual.setText("" + tickets.get(0).getSize());
         View.addCashView.$5actual.setText("" + tickets.get(1).getSize());
         View.addCashView.$10actual.setText("" + tickets.get(2).getSize());
