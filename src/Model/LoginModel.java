@@ -15,6 +15,10 @@ public class LoginModel {
         return persons.stream().filter(person -> person.getEmail().equals(email) && person.getPin() == pin).findAny();
     }
 
+    public static boolean alreadyExist(String email, ArrayList<Person> persons) {
+        return persons.stream().anyMatch(person -> person.getEmail().equals(email));
+    }
+
     public static ArrayList<Person> getPersons() {
         ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("/Files/Persons.txt");
         if (persons != null) {
