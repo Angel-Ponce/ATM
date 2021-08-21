@@ -22,7 +22,6 @@ public class UserConsultView extends javax.swing.JPanel {
     public UserConsultView() {
         defaultTheme();
         initComponents();
-        search.putClientProperty("JTextField.placeholderText", "Search by name");
         maxRetreat.setIcon(Helper.roundImage("/Resources/c1.png", 192, 192));
         retreats.setIcon(Helper.roundImage("/Resources/c2.png", 192, 192));
         actualAmount.setIcon(Helper.roundImage("/Resources/c3.png", 192, 192));
@@ -63,7 +62,6 @@ public class UserConsultView extends javax.swing.JPanel {
         panel2 = new javax.swing.JPanel();
         retreats = new javax.swing.JButton();
         retreatsLabel = new javax.swing.JLabel();
-        search = new javax.swing.JTextField();
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
 
@@ -85,6 +83,8 @@ public class UserConsultView extends javax.swing.JPanel {
         panel1.setLayout(new java.awt.GridBagLayout());
 
         maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        maxRetreat.setBorderPainted(false);
+        maxRetreat.setFocusable(false);
         maxRetreat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         maxRetreat.setPreferredSize(new java.awt.Dimension(192, 192));
         panel1.add(maxRetreat, new java.awt.GridBagConstraints());
@@ -107,6 +107,8 @@ public class UserConsultView extends javax.swing.JPanel {
         panel4.setLayout(new java.awt.GridBagLayout());
 
         lastAccess.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        lastAccess.setBorderPainted(false);
+        lastAccess.setFocusable(false);
         lastAccess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lastAccess.setPreferredSize(new java.awt.Dimension(192, 192));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -133,6 +135,8 @@ public class UserConsultView extends javax.swing.JPanel {
         panel3.setLayout(new java.awt.GridBagLayout());
 
         actualAmount.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        actualAmount.setBorderPainted(false);
+        actualAmount.setFocusable(false);
         actualAmount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         actualAmount.setPreferredSize(new java.awt.Dimension(192, 192));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -159,6 +163,8 @@ public class UserConsultView extends javax.swing.JPanel {
         panel2.setLayout(new java.awt.GridBagLayout());
 
         retreats.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        retreats.setBorderPainted(false);
+        retreats.setFocusable(false);
         retreats.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         retreats.setPreferredSize(new java.awt.Dimension(192, 192));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -181,15 +187,6 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         information.add(panel2, gridBagConstraints);
-
-        search.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        search.setPreferredSize(new java.awt.Dimension(73, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        information.add(search, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -231,7 +228,6 @@ public class UserConsultView extends javax.swing.JPanel {
     public javax.swing.JButton retreats;
     public javax.swing.JLabel retreatsLabel;
     public javax.swing.JScrollPane scroll;
-    public javax.swing.JTextField search;
     public javax.swing.JLabel title;
     public javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables

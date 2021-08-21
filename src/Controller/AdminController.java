@@ -402,18 +402,24 @@ public class AdminController implements Controller {
         });
         View.userConsultView.users.repaint();
         for (Component component : View.userConsultView.users.getComponents()) {
-            JUser juser = (JUser) component;
-            ActionListener event = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    View.userConsultView.maxRetreat.setText(juser.getUser().getMaximumAmount()+"");
-                    View.userConsultView.actualAmount.setText(juser.getUser().getCurrentBalance()+"");
-                    //View.userConsultView.retreats.setText(juser.getUser().getRetreats());
-                    View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
-                }
-            };
-            juser.name.addActionListener(event);
-            juser.pick.addActionListener(event);
+            try {
+                JUser juser = (JUser) component;
+                ActionListener event = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            View.userConsultView.maxRetreat.setText(juser.getUser().getMaximumAmount() + "");
+                            View.userConsultView.actualAmount.setText(juser.getUser().getCurrentBalance() + "");
+                            //View.userConsultView.retreats.setText(juser.getUser().getRetreats());
+                            View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
+                        } catch (Exception e2) {
+                        }
+                    }
+                };
+                juser.name.addActionListener(event);
+                juser.pick.addActionListener(event);
+            } catch (Exception e) {
+            }
         }
         View.atmView.content.add(View.userConsultView);
         View.atmView.content.repaint();

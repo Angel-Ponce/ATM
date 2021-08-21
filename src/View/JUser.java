@@ -8,8 +8,8 @@ package View;
 import Entity.User;
 import Others.Helper;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  *
@@ -22,28 +22,35 @@ public class JUser extends javax.swing.JPanel {
      *
      * @param user
      */
-    
     private User user;
+
     public JUser(User user) {
         initComponents();
         event();
-        this.user=user;
+        this.user = user;
         name.setText(user.toString());
         pick.setIcon(Helper.roundImage(user.getPick(), 64, 64));
         name.putClientProperty("JButton.buttonType", "square");
     }
 
     private void event() {
-        ActionListener event = new ActionListener() {
+        FocusListener focusEvent = new FocusListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void focusGained(FocusEvent fe) {
                 name.setBackground(Color.decode("#0099FF"));
                 pick.setBackground(Color.decode("#0099FF"));
                 setBackground(Color.decode("#0099FF"));
             }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                name.setBackground(null);
+                pick.setBackground(null);
+                setBackground(null);
+            }
         };
-        name.addActionListener(event);
-        pick.addActionListener(event);
+        name.addFocusListener(focusEvent);
+        pick.addFocusListener(focusEvent);
     }
 
     /**
@@ -68,7 +75,7 @@ public class JUser extends javax.swing.JPanel {
         name.setForeground(new java.awt.Color(255, 255, 255));
         name.setBorderPainted(false);
         name.setContentAreaFilled(false);
-        name.setFocusable(false);
+        name.setFocusPainted(false);
         name.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         name.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         name.setMaximumSize(new java.awt.Dimension(30, 64));
@@ -81,7 +88,7 @@ public class JUser extends javax.swing.JPanel {
 
         pick.setBorderPainted(false);
         pick.setContentAreaFilled(false);
-        pick.setFocusable(false);
+        pick.setFocusPainted(false);
         pick.setMaximumSize(new java.awt.Dimension(64, 64));
         pick.setMinimumSize(new java.awt.Dimension(64, 64));
         pick.setPreferredSize(new java.awt.Dimension(64, 64));
