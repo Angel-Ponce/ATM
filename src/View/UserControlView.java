@@ -26,20 +26,127 @@ public class UserControlView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
+        graph1 = new javax.swing.JPanel();
+        graph2 = new javax.swing.JPanel();
+        graph3 = new javax.swing.JPanel();
+        jPanelLastAcces = new javax.swing.JPanel();
+        lastAcces = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        pick = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        header.setLayout(new java.awt.BorderLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("User Control");
+        header.add(title, java.awt.BorderLayout.PAGE_END);
+
+        add(header, java.awt.BorderLayout.PAGE_START);
+
+        container.setLayout(new java.awt.GridLayout(2, 2));
+
+        javax.swing.GroupLayout graph1Layout = new javax.swing.GroupLayout(graph1);
+        graph1.setLayout(graph1Layout);
+        graph1Layout.setHorizontalGroup(
+            graph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 255, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        graph1Layout.setVerticalGroup(
+            graph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
         );
+
+        container.add(graph1);
+
+        javax.swing.GroupLayout graph2Layout = new javax.swing.GroupLayout(graph2);
+        graph2.setLayout(graph2Layout);
+        graph2Layout.setHorizontalGroup(
+            graph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 255, Short.MAX_VALUE)
+        );
+        graph2Layout.setVerticalGroup(
+            graph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
+        );
+
+        container.add(graph2);
+
+        javax.swing.GroupLayout graph3Layout = new javax.swing.GroupLayout(graph3);
+        graph3.setLayout(graph3Layout);
+        graph3Layout.setHorizontalGroup(
+            graph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 255, Short.MAX_VALUE)
+        );
+        graph3Layout.setVerticalGroup(
+            graph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
+        );
+
+        container.add(graph3);
+
+        jPanelLastAcces.setLayout(new java.awt.GridBagLayout());
+
+        lastAcces.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        lastAcces.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lastAcces.setText("Last acces");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        jPanelLastAcces.add(lastAcces, gridBagConstraints);
+
+        date.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        jPanelLastAcces.add(date, gridBagConstraints);
+
+        name.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        jPanelLastAcces.add(name, gridBagConstraints);
+
+        pick.setPreferredSize(new java.awt.Dimension(192, 192));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        jPanelLastAcces.add(pick, gridBagConstraints);
+
+        container.add(jPanelLastAcces);
+
+        add(container, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel container;
+    public javax.swing.JLabel date;
+    public javax.swing.JPanel graph1;
+    public javax.swing.JPanel graph2;
+    public javax.swing.JPanel graph3;
+    public javax.swing.JPanel header;
+    public javax.swing.JPanel jPanelLastAcces;
+    public javax.swing.JLabel lastAcces;
+    public javax.swing.JLabel name;
+    public javax.swing.JButton pick;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
