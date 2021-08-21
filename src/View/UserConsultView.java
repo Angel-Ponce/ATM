@@ -67,6 +67,8 @@ public class UserConsultView extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
+        scroll.setMinimumSize(new java.awt.Dimension(250, 20));
+
         users.setLayout(new javax.swing.BoxLayout(users, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(users);
 
@@ -74,7 +76,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 30.0;
+        gridBagConstraints.weightx = 40.0;
         gridBagConstraints.weighty = 100.0;
         add(scroll, gridBagConstraints);
 
@@ -192,7 +194,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 70.0;
+        gridBagConstraints.weightx = 60.0;
         gridBagConstraints.weighty = 100.0;
         add(information, gridBagConstraints);
 
