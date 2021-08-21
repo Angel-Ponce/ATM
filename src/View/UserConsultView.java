@@ -5,7 +5,6 @@
  */
 package View;
 
-import Entity.User;
 import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
@@ -52,14 +51,18 @@ public class UserConsultView extends javax.swing.JPanel {
         scroll = new javax.swing.JScrollPane();
         users = new javax.swing.JPanel();
         information = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        panel1 = new javax.swing.JPanel();
         maxRetreat = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        maxRetreatLabel = new javax.swing.JLabel();
+        panel4 = new javax.swing.JPanel();
         lastAccess = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        lastAccessLabel = new javax.swing.JLabel();
+        panel3 = new javax.swing.JPanel();
         actualAmount = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        actualAmountLabel = new javax.swing.JLabel();
+        panel2 = new javax.swing.JPanel();
         retreats = new javax.swing.JButton();
+        retreatsLabel = new javax.swing.JLabel();
         search = new javax.swing.JTextField();
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
@@ -79,12 +82,19 @@ public class UserConsultView extends javax.swing.JPanel {
 
         information.setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        panel1.setLayout(new java.awt.GridBagLayout());
 
         maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         maxRetreat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         maxRetreat.setPreferredSize(new java.awt.Dimension(192, 192));
-        jPanel1.add(maxRetreat, new java.awt.GridBagConstraints());
+        panel1.add(maxRetreat, new java.awt.GridBagConstraints());
+
+        maxRetreatLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        maxRetreatLabel.setText("Max Retreat");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        panel1.add(maxRetreatLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -92,9 +102,9 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        information.add(jPanel1, gridBagConstraints);
+        information.add(panel1, gridBagConstraints);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        panel4.setLayout(new java.awt.GridBagLayout());
 
         lastAccess.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         lastAccess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -103,7 +113,14 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel2.add(lastAccess, gridBagConstraints);
+        panel4.add(lastAccess, gridBagConstraints);
+
+        lastAccessLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        lastAccessLabel.setText("Last Access");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        panel4.add(lastAccessLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -111,9 +128,9 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        information.add(jPanel2, gridBagConstraints);
+        information.add(panel4, gridBagConstraints);
 
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        panel3.setLayout(new java.awt.GridBagLayout());
 
         actualAmount.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         actualAmount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -122,7 +139,14 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel3.add(actualAmount, gridBagConstraints);
+        panel3.add(actualAmount, gridBagConstraints);
+
+        actualAmountLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        actualAmountLabel.setText("Actual Amount");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        panel3.add(actualAmountLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -130,9 +154,9 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        information.add(jPanel3, gridBagConstraints);
+        information.add(panel3, gridBagConstraints);
 
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        panel2.setLayout(new java.awt.GridBagLayout());
 
         retreats.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         retreats.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -141,7 +165,14 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel4.add(retreats, gridBagConstraints);
+        panel2.add(retreats, gridBagConstraints);
+
+        retreatsLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        retreatsLabel.setText("Retreats");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        panel2.add(retreatsLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -149,7 +180,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        information.add(jPanel4, gridBagConstraints);
+        information.add(panel2, gridBagConstraints);
 
         search.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         search.setPreferredSize(new java.awt.Dimension(73, 50));
@@ -168,7 +199,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.weighty = 100.0;
         add(information, gridBagConstraints);
 
-        header.setLayout(new java.awt.GridLayout());
+        header.setLayout(new java.awt.GridLayout(1, 0));
 
         title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
         title.setText("Users");
@@ -185,19 +216,23 @@ public class UserConsultView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actualAmount;
-    private javax.swing.JPanel header;
-    private javax.swing.JPanel information;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JButton lastAccess;
-    private javax.swing.JButton maxRetreat;
-    private javax.swing.JButton retreats;
-    private javax.swing.JScrollPane scroll;
-    private javax.swing.JTextField search;
-    private javax.swing.JLabel title;
-    private javax.swing.JPanel users;
+    public javax.swing.JButton actualAmount;
+    public javax.swing.JLabel actualAmountLabel;
+    public javax.swing.JPanel header;
+    public javax.swing.JPanel information;
+    public javax.swing.JButton lastAccess;
+    public javax.swing.JLabel lastAccessLabel;
+    public javax.swing.JButton maxRetreat;
+    public javax.swing.JLabel maxRetreatLabel;
+    public javax.swing.JPanel panel1;
+    public javax.swing.JPanel panel2;
+    public javax.swing.JPanel panel3;
+    public javax.swing.JPanel panel4;
+    public javax.swing.JButton retreats;
+    public javax.swing.JLabel retreatsLabel;
+    public javax.swing.JScrollPane scroll;
+    public javax.swing.JTextField search;
+    public javax.swing.JLabel title;
+    public javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables
 }
