@@ -74,7 +74,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 50.0;
+        gridBagConstraints.weightx = 30.0;
         gridBagConstraints.weighty = 100.0;
         add(scroll, gridBagConstraints);
 
@@ -192,7 +192,7 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 50.0;
+        gridBagConstraints.weightx = 70.0;
         gridBagConstraints.weighty = 100.0;
         add(information, gridBagConstraints);
 

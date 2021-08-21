@@ -67,8 +67,8 @@ public class JUser extends javax.swing.JPanel {
         pick = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(2147483647, 64));
-        setMinimumSize(new java.awt.Dimension(300, 64));
-        setPreferredSize(new java.awt.Dimension(300, 64));
+        setMinimumSize(new java.awt.Dimension(250, 64));
+        setPreferredSize(new java.awt.Dimension(250, 64));
         setLayout(new java.awt.GridBagLayout());
 
         name.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
