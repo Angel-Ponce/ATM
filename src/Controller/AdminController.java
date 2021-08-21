@@ -4,8 +4,11 @@ import Entity.Person;
 import Entity.Ticket;
 import Entity.User;
 import Others.Helper;
+import View.JUser;
 import View.View;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -390,9 +393,32 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init User Consult Module">
     public void userConsult() {
         View.atmView.content.removeAll();
+        View.userConsultView.users.removeAll();
+        LoginController.persons.forEach(person -> {
+            if (person instanceof User) {
+                View.userConsultView.users.add(new JUser((User) person));
+            }
+
+        });
+        View.userConsultView.users.repaint();
+        for (Component component : View.userConsultView.users.getComponents()) {
+            JUser juser = (JUser) component;
+            ActionListener event = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    View.userConsultView.maxRetreat.setText(juser.getUser().getMaximumAmount()+"");
+                    View.userConsultView.actualAmount.setText(juser.getUser().getCurrentBalance()+"");
+                    //View.userConsultView.retreats.setText(juser.getUser().getRetreats());
+                    View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
+                }
+            };
+            juser.name.addActionListener(event);
+            juser.pick.addActionListener(event);
+        }
         View.atmView.content.add(View.userConsultView);
         View.atmView.content.repaint();
         View.atmView.pack();
+
     }
     //</editor-fold>
 }

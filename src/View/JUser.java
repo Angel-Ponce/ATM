@@ -22,9 +22,12 @@ public class JUser extends javax.swing.JPanel {
      *
      * @param user
      */
+    
+    private User user;
     public JUser(User user) {
         initComponents();
         event();
+        this.user=user;
         name.setText(user.toString());
         pick.setIcon(Helper.roundImage(user.getPick(), 64, 64));
         name.putClientProperty("JButton.buttonType", "square");
@@ -87,7 +90,15 @@ public class JUser extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton name;
-    private javax.swing.JButton pick;
+    public javax.swing.JButton name;
+    public javax.swing.JButton pick;
     // End of variables declaration//GEN-END:variables
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
