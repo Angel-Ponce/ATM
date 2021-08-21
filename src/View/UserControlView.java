@@ -52,50 +52,20 @@ public class UserControlView extends javax.swing.JPanel {
 
         container.setLayout(new java.awt.GridLayout(2, 2));
 
-        javax.swing.GroupLayout graph1Layout = new javax.swing.GroupLayout(graph1);
-        graph1.setLayout(graph1Layout);
-        graph1Layout.setHorizontalGroup(
-            graph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
-        );
-        graph1Layout.setVerticalGroup(
-            graph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
-        );
-
+        graph1.setLayout(new java.awt.BorderLayout());
         container.add(graph1);
 
-        javax.swing.GroupLayout graph2Layout = new javax.swing.GroupLayout(graph2);
-        graph2.setLayout(graph2Layout);
-        graph2Layout.setHorizontalGroup(
-            graph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
-        );
-        graph2Layout.setVerticalGroup(
-            graph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
-        );
-
+        graph2.setLayout(new java.awt.BorderLayout());
         container.add(graph2);
 
-        javax.swing.GroupLayout graph3Layout = new javax.swing.GroupLayout(graph3);
-        graph3.setLayout(graph3Layout);
-        graph3Layout.setHorizontalGroup(
-            graph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
-        );
-        graph3Layout.setVerticalGroup(
-            graph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
-        );
-
+        graph3.setLayout(new java.awt.BorderLayout());
         container.add(graph3);
 
         jPanelLastAcces.setLayout(new java.awt.GridBagLayout());
 
         lastAcces.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         lastAcces.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lastAcces.setText("Last acces");
+        lastAcces.setText("Last Access");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -105,7 +75,8 @@ public class UserControlView extends javax.swing.JPanel {
         gridBagConstraints.weighty = 100.0;
         jPanelLastAcces.add(lastAcces, gridBagConstraints);
 
-        date.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        date.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        date.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -115,6 +86,7 @@ public class UserControlView extends javax.swing.JPanel {
         jPanelLastAcces.add(date, gridBagConstraints);
 
         name.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        name.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -123,6 +95,8 @@ public class UserControlView extends javax.swing.JPanel {
         gridBagConstraints.weighty = 100.0;
         jPanelLastAcces.add(name, gridBagConstraints);
 
+        pick.setBorderPainted(false);
+        pick.setFocusable(false);
         pick.setPreferredSize(new java.awt.Dimension(192, 192));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

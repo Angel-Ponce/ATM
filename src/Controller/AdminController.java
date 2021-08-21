@@ -6,6 +6,7 @@ import Entity.User;
 import Others.Helper;
 import View.JUser;
 import View.View;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,15 @@ import java.util.ArrayList;
 import java.util.Optional;
 import javax.imageio.ImageIO;
 import javax.swing.JFormattedTextField;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.chart.title.LegendTitle;
+import org.jfree.chart.util.DefaultShadowGenerator;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYSeries;
 
 /**
  *
@@ -425,6 +435,39 @@ public class AdminController implements Controller {
         View.atmView.content.repaint();
         View.atmView.pack();
 
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init User Control Module">
+    public void userControl() {
+        View.atmView.content.removeAll();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(1500, "Retreat", "Angel");
+        dataset.addValue(2000, "Deposit", "Angel");
+        dataset.addValue(3000, "Retreat", "Jossi");
+        dataset.addValue(2000, "Deposit", "Jossi");
+        dataset.addValue(7000, "Retreat", "Juana");
+        dataset.addValue(2500, "Deposit", "Juana");
+        dataset.addValue(5000, "Retreat", "Carlos");
+        dataset.addValue(1000, "Deposit", "Carlos");
+        dataset.addValue(1000, "Retreat", "Sami");
+        dataset.addValue(800, "Deposit", "Sami");
+        JFreeChart lineChart = ChartFactory.createLineChart("Retreats by all users", "Users", "Retreats", dataset);
+        lineChart.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
+        lineChart.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
+        lineChart.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
+        LineAndShapeRenderer figures = (LineAndShapeRenderer) lineChart.getCategoryPlot().getRenderer();
+        figures.setDefaultShapesVisible(true);
+        ChartPanel chartPanel = new ChartPanel(lineChart);
+        chartPanel.setVisible(true);
+        View.userControlView.graph1.add(chartPanel);
+        View.userControlView.pick.setIcon(Helper.roundImage(ATMController.properties.getLastPerson().getPick(), 192, 192));
+        View.userControlView.name.setText(ATMController.properties.getLastPerson().toString());
+        View.userControlView.date.setText(Person.dateFormat.format(ATMController.properties.getLastPerson().getLastAccess()));
+        View.userControlView.graph1.repaint();
+        View.atmView.content.add(View.userControlView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
     }
     //</editor-fold>
 }

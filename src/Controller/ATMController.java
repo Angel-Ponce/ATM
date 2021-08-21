@@ -103,6 +103,10 @@ public class ATMController implements Controller {
             adminController.userConsult();
         });
 
+        View.atmView.userControl.addActionListener((ae) -> {
+            adminController.userControl();
+        });
+
         View.atmView.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
