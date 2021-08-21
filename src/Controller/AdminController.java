@@ -264,7 +264,6 @@ public class AdminController implements Controller {
         });
 
         //</editor-fold>
-        
         //<editor-fold defaultstate="collapsed" desc="Change limit Event">
         View.changeMaximumAmountView.save.addActionListener((ae) -> {
             String newLimit = View.changeMaximumAmountView.newLimit.getText();
@@ -385,6 +384,15 @@ public class AdminController implements Controller {
         View.changeMaximumAmountView.cardNumber.setText("");
         View.changeMaximumAmountView.pin.setText("");
         View.changeMaximumAmountView.setVisible(true);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init User Consult Module">
+    public void userConsult() {
+        View.atmView.content.removeAll();
+        View.atmView.content.add(View.userConsultView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
     }
     //</editor-fold>
 }

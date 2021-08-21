@@ -5,6 +5,12 @@
  */
 package View;
 
+import Entity.User;
+import Others.Helper;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import javax.swing.UIManager;
+
 /**
  *
  * @author samyc
@@ -15,7 +21,22 @@ public class UserConsultView extends javax.swing.JPanel {
      * Creates new form UserConsultView
      */
     public UserConsultView() {
+        defaultTheme();
         initComponents();
+        search.putClientProperty("JTextField.placeholderText", "Search by name");
+        maxRetreat.setIcon(Helper.roundImage("/Resources/c1.png", 192, 192));
+        retreats.setIcon(Helper.roundImage("/Resources/c2.png", 192, 192));
+        actualAmount.setIcon(Helper.roundImage("/Resources/c3.png", 192, 192));
+        lastAccess.setIcon(Helper.roundImage("/Resources/c4.png", 192, 192));
+    }
+
+    public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**
@@ -26,20 +47,157 @@ public class UserConsultView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        scroll = new javax.swing.JScrollPane();
+        users = new javax.swing.JPanel();
+        information = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        maxRetreat = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lastAccess = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        actualAmount = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        retreats = new javax.swing.JButton();
+        search = new javax.swing.JTextField();
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+
+        setLayout(new java.awt.GridBagLayout());
+
+        users.setLayout(new javax.swing.BoxLayout(users, javax.swing.BoxLayout.Y_AXIS));
+        scroll.setViewportView(users);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 50.0;
+        gridBagConstraints.weighty = 100.0;
+        add(scroll, gridBagConstraints);
+
+        information.setLayout(new java.awt.GridBagLayout());
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        maxRetreat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        maxRetreat.setPreferredSize(new java.awt.Dimension(192, 192));
+        jPanel1.add(maxRetreat, new java.awt.GridBagConstraints());
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        information.add(jPanel1, gridBagConstraints);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        lastAccess.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        lastAccess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lastAccess.setPreferredSize(new java.awt.Dimension(192, 192));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        jPanel2.add(lastAccess, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        information.add(jPanel2, gridBagConstraints);
+
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        actualAmount.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        actualAmount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        actualAmount.setPreferredSize(new java.awt.Dimension(192, 192));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        jPanel3.add(actualAmount, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        information.add(jPanel3, gridBagConstraints);
+
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        retreats.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        retreats.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        retreats.setPreferredSize(new java.awt.Dimension(192, 192));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        jPanel4.add(retreats, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        information.add(jPanel4, gridBagConstraints);
+
+        search.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        search.setPreferredSize(new java.awt.Dimension(73, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        information.add(search, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 50.0;
+        gridBagConstraints.weighty = 100.0;
+        add(information, gridBagConstraints);
+
+        header.setLayout(new java.awt.GridLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("Users");
+        header.add(title);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 100.0;
+        add(header, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualAmount;
+    private javax.swing.JPanel header;
+    private javax.swing.JPanel information;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton lastAccess;
+    private javax.swing.JButton maxRetreat;
+    private javax.swing.JButton retreats;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JTextField search;
+    private javax.swing.JLabel title;
+    private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables
 }
