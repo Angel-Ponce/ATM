@@ -13,6 +13,7 @@ public class User extends Person implements Serializable {
     private int cardNumber;
     private int currentBalance;
     private int maximumAmount;
+    private int countPinChanged = 0;
     ArrayList<Transaction> latestTransactions = new ArrayList<Transaction>();
 
     public User(int cardNumber, int currentBalance, int maximumAmount) {
@@ -68,7 +69,22 @@ public class User extends Person implements Serializable {
     }
 
     @Override
+    public void setPin(int Pin) {
+        super.setPin(Pin);
+        this.countPinChanged++;
+    }
+
+    public int getCountPinChanged() {
+        return countPinChanged;
+    }
+
+    public void setCountPinChanged(int countPinChanged) {
+        this.countPinChanged = countPinChanged;
+    }
+
+    @Override
     public String toString() {
         return super.getName() + " " + super.getLastName();
     }
+
 }

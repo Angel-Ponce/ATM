@@ -12,21 +12,21 @@ import java.util.Optional;
  * @author samyc
  */
 public class UserController implements Controller {
-    
+
     public UserController() {
         events();
     }
-    
+
     @Override
     public void start() {
-        
+
     }
-    
+
     @Override
     public void end() {
-        
+
     }
-    
+
     @Override
     public void events() {
 //<editor-fold defaultstate="collapsed" desc="Change pin event">
@@ -38,7 +38,7 @@ public class UserController implements Controller {
                 if (newPin.matches("\\d+")) {
                     if (confirmPin.matches("\\d+")) {
                         if (newPin.equals(confirmPin)) {
-                            if (oldPin.equals(ATMController.currentPerson.getPin()+"")) {
+                            if (oldPin.equals(String.valueOf(ATMController.currentPerson.getPin()))) {
                                 if (Model.userModel.changePin(Integer.parseInt(newPin), ATMController.currentPerson)) {
                                     Helper.success("The new pin has been saved successfully");
                                     View.changePinView.oldPassword.setText("");
@@ -50,7 +50,7 @@ public class UserController implements Controller {
                             } else {
                                 Helper.error("The old pin is wrong");
                             }
-                            
+
                         } else {
                             Helper.error("The pins are not the same");
                         }
@@ -58,10 +58,10 @@ public class UserController implements Controller {
                         Helper.error("The pin must be a numeric value");
                     }
                 } else {
-                    Helper.error("Please fill in the new card field");
+                    Helper.error("The new pin must be a numeric value");
                 }
             } else {
-                Helper.error("Please fill in the old card field");
+                Helper.error("The old pin must be a numeric value");
             }
         });
 

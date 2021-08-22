@@ -67,7 +67,7 @@ public class ATMController implements Controller {
 
     @Override
     public void end() {
-        Model.ATMModel.logout(currentPerson);
+        Model.ATMModel.logout(currentPerson instanceof User ? currentPerson : properties.getLastPerson());
         viewButtons();
         View.atmView.dispose();
     }

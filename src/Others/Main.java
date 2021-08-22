@@ -23,7 +23,7 @@ public class Main {
         ArrayList<Person> persons = new ArrayList();
         Admin angel = new Admin("Angel", "Ponce", 20, "angel@gmail.com", 2304, null, "/Resources/angel.jpg");
         Admin sami = new Admin("Samantha", "Chub", 19, "sami@gmail.com", 12345, null, "/Resources/sami.jpg");
-        User jossi = new User(3415170, 1000, 2000, "Josselin", "Tot", 20, "3415170", 2304, null, "/Resources/jossi.jpg");
+        User jossi = new User(2304, 1000, 2000, "Josselin", "Tot", 20, "2304", 2304, null, "/Resources/jossi.jpg");
         persons.add(angel);
         persons.add(sami);
         persons.add(jossi);
