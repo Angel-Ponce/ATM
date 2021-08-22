@@ -107,6 +107,10 @@ public class ATMController implements Controller {
             adminController.userControl();
         });
 
+        View.atmView.updatePin.addActionListener((ae) -> {
+            userController.updatePin();
+        });
+
         View.atmView.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {

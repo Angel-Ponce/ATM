@@ -11,7 +11,7 @@ public class View {
     public static BalanceView balanceView = new BalanceView();
     public static ChangeCardNumberView changeCardNumberView = new ChangeCardNumberView(atmView, true);
     public static ChangeMaximumAmountView changeMaximumAmountView = new ChangeMaximumAmountView(atmView, true);
-    public static ChangePinView changePinView = new ChangePinView();
+    public static ChangePinView changePinView = new ChangePinView(atmView, true);
     public static CreateUserView createUserView = new CreateUserView();
     public static DepositView depositView = new DepositView();
     public static InitATMView initATMView = new InitATMView();
