@@ -1,7 +1,9 @@
 package Model;
 
+import Controller.LoginController;
 import Entity.Person;
 import Entity.Transaction;
+import Others.Helper;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,9 @@ import java.util.ArrayList;
 public class UserModel {
 
     public boolean changePin(int newPin, Person person) {
-        return false;
+        person.setPin(newPin);
+        return Helper.saveObjectToFile(LoginController.persons,"/Files/Persons.txt");
+        
     }
 
     public boolean retreat(int amount, Person person) {
