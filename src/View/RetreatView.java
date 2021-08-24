@@ -8,7 +8,9 @@ package View;
 import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Color;
 import javax.swing.UIManager;
+import jiconfont.icons.google_material_design_icons.GoogleMaterialDesignIcons;
 
 /**
  *
@@ -24,6 +26,14 @@ public class RetreatView extends javax.swing.JPanel {
         initComponents();
         pick.putClientProperty("JButton.buttonType", "square");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
+        $1.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $5.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $10.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $20.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $50.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $100.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        $200.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
     }
 
     public void defaultTheme() {
@@ -96,7 +106,7 @@ public class RetreatView extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(pin, gridBagConstraints);
 
-        save.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        save.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         save.setText("Continue");
         save.setPreferredSize(new java.awt.Dimension(250, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -109,22 +119,23 @@ public class RetreatView extends javax.swing.JPanel {
 
         jPanel4.setLayout(new java.awt.GridLayout(4, 1, 0, 100));
 
-        $50.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $50.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $50.setText("$50");
         $50.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel4.add($50);
 
-        $100.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $100.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $100.setText("$100");
         $100.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel4.add($100);
 
-        $200.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $200.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $200.setText("$200");
         $200.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel4.add($200);
 
-        total.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        total.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         total.setEnabled(false);
         total.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel4.add(total);
@@ -133,22 +144,22 @@ public class RetreatView extends javax.swing.JPanel {
 
         jPanel5.setLayout(new java.awt.GridLayout(4, 1, 0, 100));
 
-        $1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $1.setText("$1");
         $1.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel5.add($1);
 
-        $5.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $5.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $5.setText("$5");
         $5.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel5.add($5);
 
-        $10.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $10.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $10.setText("$10");
         $10.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel5.add($10);
 
-        $20.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $20.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         $20.setText("$20");
         $20.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel5.add($20);

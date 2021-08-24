@@ -1,5 +1,8 @@
 package Others;
 
+import Entity.Admin;
+import Entity.Person;
+import Entity.User;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -124,5 +127,13 @@ public class Helper {
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    }
+
+    public static User personToUser(Person person) {
+        return (User) person;
+    }
+
+    public static Admin personToAdmin(Person person) {
+        return (Admin) person;
     }
 }

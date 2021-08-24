@@ -37,6 +37,9 @@ public class ATMController implements Controller {
     public void start() {
         //Read data
         tickets = Model.ATMModel.getTickets();
+        for (Ticket t : tickets) {
+            System.out.println(t.getType() + ", " + t.getSize());
+        }
         properties = Model.ATMModel.getProperties();
         //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
