@@ -1,11 +1,8 @@
 package Controller;
 
-import Entity.Person;
-import Entity.User;
 import Model.Model;
 import Others.Helper;
 import View.View;
-import java.util.Optional;
 
 /**
  *
@@ -29,7 +26,7 @@ public class UserController implements Controller {
 
     @Override
     public void events() {
-//<editor-fold defaultstate="collapsed" desc="Change pin event">
+        //<editor-fold defaultstate="collapsed" desc="Change pin event">
         View.changePinView.save.addActionListener((e) -> {
             String oldPin = String.valueOf(View.changePinView.oldPassword.getPassword());
             String newPin = String.valueOf(View.changePinView.newPassword.getPassword());
@@ -77,4 +74,12 @@ public class UserController implements Controller {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Init Retreat Module">
+    public void retreat() {
+        View.atmView.content.removeAll();
+        View.atmView.content.add(View.retreatView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
+    }
+    //</editor-fold>
 }

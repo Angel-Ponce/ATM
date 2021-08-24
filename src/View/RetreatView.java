@@ -8,8 +8,6 @@ package View;
 import Others.Helper;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
@@ -24,20 +22,19 @@ public class RetreatView extends javax.swing.JPanel {
     public RetreatView() {
         defaultTheme();
         initComponents();
-        pick.setIcon(Helper.roundImage("/Resources/retirada.png", 256, 256));
+        pick.putClientProperty("JButton.buttonType", "square");
+        pin.putClientProperty("JTextField.placeholderText", "Pin");
     }
 
-    
-     public void defaultTheme() {
+    public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
         UIManager.put("Button.arc", 999);
         UIManager.put("Component.arc", 999);
         UIManager.put("ProgressBar.arc", 999);
         UIManager.put("TextComponent.arc", 999);
         FlatLaf.updateUI();
-         
-         
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +67,10 @@ public class RetreatView extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        pick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retirada.png"))); // NOI18N
+        pick.setBorderPainted(false);
+        pick.setContentAreaFilled(false);
+        pick.setFocusable(false);
         pick.setPreferredSize(new java.awt.Dimension(256, 256));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -90,18 +91,23 @@ public class RetreatView extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        jPanel3.add(pin, new java.awt.GridBagConstraints());
+        pin.setPreferredSize(new java.awt.Dimension(250, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel3.add(pin, gridBagConstraints);
 
         save.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         save.setText("Continue");
+        save.setPreferredSize(new java.awt.Dimension(250, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(save, gridBagConstraints);
 
         add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        jPanel4.setLayout(new java.awt.GridLayout(4, 1, 0, 20));
+        jPanel4.setLayout(new java.awt.GridLayout(4, 1, 0, 100));
 
         $50.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $50.setText("$50");
@@ -119,12 +125,13 @@ public class RetreatView extends javax.swing.JPanel {
         jPanel4.add($200);
 
         total.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        total.setEnabled(false);
         total.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel4.add(total);
 
         add(jPanel4, java.awt.BorderLayout.LINE_END);
 
-        jPanel5.setLayout(new java.awt.GridLayout(4, 1, 0, 20));
+        jPanel5.setLayout(new java.awt.GridLayout(4, 1, 0, 100));
 
         $1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         $1.setText("$1");
