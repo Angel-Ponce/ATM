@@ -5,6 +5,13 @@
  */
 package View;
 
+import Others.Helper;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+
 /**
  *
  * @author samyc
@@ -15,9 +22,22 @@ public class RetreatView extends javax.swing.JPanel {
      * Creates new form RetreatView
      */
     public RetreatView() {
+        defaultTheme();
         initComponents();
+        pick.setIcon(Helper.roundImage("/Resources/retirada.png", 256, 256));
     }
 
+    
+     public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
+         
+         
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,20 +46,127 @@ public class RetreatView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        pick = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        pin = new javax.swing.JPasswordField();
+        save = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        $50 = new javax.swing.JButton();
+        $100 = new javax.swing.JButton();
+        $200 = new javax.swing.JButton();
+        total = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        $1 = new javax.swing.JButton();
+        $5 = new javax.swing.JButton();
+        $10 = new javax.swing.JButton();
+        $20 = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        pick.setPreferredSize(new java.awt.Dimension(256, 256));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        jPanel1.add(pick, gridBagConstraints);
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setText("To retreat");
+        jPanel2.add(title, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        pin.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        jPanel3.add(pin, new java.awt.GridBagConstraints());
+
+        save.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        save.setText("Continue");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel3.add(save, gridBagConstraints);
+
+        add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
+        jPanel4.setLayout(new java.awt.GridLayout(4, 1, 0, 20));
+
+        $50.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $50.setText("$50");
+        $50.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel4.add($50);
+
+        $100.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $100.setText("$100");
+        $100.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel4.add($100);
+
+        $200.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $200.setText("$200");
+        $200.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel4.add($200);
+
+        total.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        total.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel4.add(total);
+
+        add(jPanel4, java.awt.BorderLayout.LINE_END);
+
+        jPanel5.setLayout(new java.awt.GridLayout(4, 1, 0, 20));
+
+        $1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $1.setText("$1");
+        $1.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel5.add($1);
+
+        $5.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $5.setText("$5");
+        $5.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel5.add($5);
+
+        $10.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $10.setText("$10");
+        $10.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel5.add($10);
+
+        $20.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        $20.setText("$20");
+        $20.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel5.add($20);
+
+        add(jPanel5, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton $1;
+    public javax.swing.JButton $10;
+    public javax.swing.JButton $100;
+    public javax.swing.JButton $20;
+    public javax.swing.JButton $200;
+    public javax.swing.JButton $5;
+    public javax.swing.JButton $50;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    public javax.swing.JButton pick;
+    public javax.swing.JPasswordField pin;
+    public javax.swing.JButton save;
+    public javax.swing.JLabel title;
+    public javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }
