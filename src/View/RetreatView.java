@@ -33,6 +33,7 @@ public class RetreatView extends javax.swing.JPanel {
         $50.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $100.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $200.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
+        reset.setIcon(Helper.icon(GoogleMaterialDesignIcons.REFRESH, 48, Color.LIGHT_GRAY));
         save.setIcon(Helper.icon(GoogleMaterialDesignIcons.SAVE, 32, Color.decode("#0A3D62")));
     }
 
@@ -59,6 +60,7 @@ public class RetreatView extends javax.swing.JPanel {
         pick = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         pin = new javax.swing.JPasswordField();
         save = new javax.swing.JButton();
@@ -95,6 +97,7 @@ public class RetreatView extends javax.swing.JPanel {
         title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
         title.setText("To retreat");
         jPanel2.add(title, java.awt.BorderLayout.CENTER);
+        jPanel2.add(reset, java.awt.BorderLayout.LINE_END);
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
@@ -183,6 +186,7 @@ public class RetreatView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     public javax.swing.JButton pick;
     public javax.swing.JPasswordField pin;
+    public javax.swing.JButton reset;
     public javax.swing.JButton save;
     public javax.swing.JLabel title;
     public javax.swing.JTextField total;

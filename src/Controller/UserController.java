@@ -175,6 +175,16 @@ public class UserController implements Controller {
                 Helper.error("The pin must be a numeric value");
             }
         });
+
+        View.retreatView.reset.addActionListener((ae) -> {
+            View.retreatView.total.setText("");
+            View.retreatView.pin.setText("");
+            totalRetreated = 0;
+            temporalyTickets.clear();
+            for (Ticket t : ATMController.tickets) {
+                this.temporalyTickets.add(new Ticket(t.getType(), t.getSize()));
+            }
+        });
         //</editor-fold>
     }
 
