@@ -16,16 +16,22 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Optional;
 import javax.imageio.ImageIO;
 import javax.swing.JFormattedTextField;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.util.DefaultShadowGenerator;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -523,7 +529,22 @@ public class AdminController implements Controller {
         graph2Panel.setVisible(true);
         View.userControlView.graph2.add(graph2Panel);
 
-        //
+        View.userControlView.graph3.removeAll();
+        DefaultPieDataset datasetGraph3 = new DefaultPieDataset();
+        for (Person person : LoginController.persons) {
+            if (person instanceof User) {
+                datasetGraph3.setValue(person.getName(), ((User) person).getCountPinChanged());
+            }
+        }
+        JFreeChart graph3 = ChartFactory.createPieChart("Users who changed the pin", datasetGraph3, true, true, Locale.ENGLISH);
+        PieSectionLabelGenerator labels = new StandardPieSectionLabelGenerator(
+                "{0} : {1}",
+                 new DecimalFormat("0"), new DecimalFormat("0%"));
+        ((PiePlot) graph3.getPlot()).setLabelGenerator(labels);
+        ChartPanel graph3Panel = new ChartPanel(graph3);
+        graph3Panel.setVisible(true);
+        View.userControlView.graph3.add(graph3Panel);
+
         View.userControlView.pick.setIcon(Helper.roundImage(ATMController.properties.getLastPerson().getPick(), 192, 192));
         View.userControlView.name.setText(ATMController.properties.getLastPerson().toString());
         View.userControlView.date.setText(Person.dateFormat.format(ATMController.properties.getLastPerson().getLastAccess()));
