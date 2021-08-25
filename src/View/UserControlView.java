@@ -75,21 +75,21 @@ public class UserControlView extends javax.swing.JPanel {
         gridBagConstraints.weighty = 100.0;
         jPanelLastAcces.add(lastAcces, gridBagConstraints);
 
-        date.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        date.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        date.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
         jPanelLastAcces.add(date, gridBagConstraints);
 
         name.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        name.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
@@ -101,6 +101,7 @@ public class UserControlView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         jPanelLastAcces.add(pick, gridBagConstraints);
 

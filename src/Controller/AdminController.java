@@ -25,10 +25,13 @@ import javax.swing.JFormattedTextField;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.util.DefaultShadowGenerator;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
@@ -459,6 +462,8 @@ public class AdminController implements Controller {
 
     //<editor-fold defaultstate="collapsed" desc="Init User Control Module">
     public void userControl() {
+        ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
+        BarRenderer.setDefaultBarPainter(new StandardBarPainter());
         View.atmView.content.removeAll();
 
         View.userControlView.graph1.removeAll();
@@ -484,6 +489,13 @@ public class AdminController implements Controller {
             }
         }
         JFreeChart graph1 = ChartFactory.createLineChart("Retreats vs Deposits", "Users", "Retreats/Deposits", datasetGraph1);
+        graph1.setBackgroundPaint(View.userControlView.graph1.getBackground());
+        graph1.getCategoryPlot().setBackgroundPaint(View.userControlView.graph1.getBackground());
+        graph1.getTitle().setPaint(Color.WHITE);
+        graph1.getCategoryPlot().getDomainAxis().setTickLabelPaint(Color.WHITE);
+        graph1.getCategoryPlot().getRangeAxis().setTickLabelPaint(Color.WHITE);
+        graph1.getCategoryPlot().getDomainAxis().setLabelPaint(Color.WHITE);
+        graph1.getCategoryPlot().getRangeAxis().setLabelPaint(Color.WHITE);
         graph1.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
         graph1.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
         graph1.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
@@ -522,6 +534,13 @@ public class AdminController implements Controller {
                 }).sum() / LoginController.persons.stream().filter(person -> person instanceof User).count(),
                 "Deposits", "Users");
         JFreeChart graph2 = ChartFactory.createBarChart("Media of Deposits and Retreats", "Users", "Medias", datasetGraph2);
+        graph2.setBackgroundPaint(View.userControlView.graph2.getBackground());
+        graph2.getCategoryPlot().setBackgroundPaint(View.userControlView.graph2.getBackground());
+        graph2.getTitle().setPaint(Color.WHITE);
+        graph2.getCategoryPlot().getDomainAxis().setTickLabelPaint(Color.WHITE);
+        graph2.getCategoryPlot().getRangeAxis().setTickLabelPaint(Color.WHITE);
+        graph2.getCategoryPlot().getDomainAxis().setLabelPaint(Color.WHITE);
+        graph2.getCategoryPlot().getRangeAxis().setLabelPaint(Color.WHITE);
         graph2.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
         graph2.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
         graph2.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
@@ -537,9 +556,12 @@ public class AdminController implements Controller {
             }
         }
         JFreeChart graph3 = ChartFactory.createPieChart("Users who changed the pin", datasetGraph3, true, true, Locale.ENGLISH);
+        graph3.setBackgroundPaint(View.userControlView.graph3.getBackground());
+        graph3.getTitle().setPaint(Color.WHITE);
+        ((PiePlot) graph3.getPlot()).setBackgroundPaint(View.userControlView.graph3.getBackground());
         PieSectionLabelGenerator labels = new StandardPieSectionLabelGenerator(
-                "{0} : {1}",
-                 new DecimalFormat("0"), new DecimalFormat("0%"));
+                "{0} : ({1}, {2})",
+                new DecimalFormat("0"), new DecimalFormat("0%"));
         ((PiePlot) graph3.getPlot()).setLabelGenerator(labels);
         ChartPanel graph3Panel = new ChartPanel(graph3);
         graph3Panel.setVisible(true);
