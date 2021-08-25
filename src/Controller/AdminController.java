@@ -454,38 +454,76 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init User Control Module">
     public void userControl() {
         View.atmView.content.removeAll();
+
         View.userControlView.graph1.removeAll();
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset datasetGraph1 = new DefaultCategoryDataset();
         for (Person person : LoginController.persons) {
             if (person instanceof User) {
-                dataset.addValue(
+                datasetGraph1.addValue(
                         ((User) person).viewLatestTransactions().stream().mapToDouble(transaction -> {
                             if (transaction.getType().equals(Transaction.RETREAT)) {
                                 return transaction.getAmount();
                             }
                             return 0;
                         }).sum(),
-                         "Retreats", person.getName());
-                 dataset.addValue(
+                        "Retreats", person.getName());
+                datasetGraph1.addValue(
                         ((User) person).viewLatestTransactions().stream().mapToDouble(transaction -> {
                             if (transaction.getType().equals(Transaction.DEPOSIT)) {
                                 return transaction.getAmount();
                             }
                             return 0;
                         }).sum(),
-                         "Deposits", person.getName());
+                        "Deposits", person.getName());
             }
         }
-        JFreeChart rvd = ChartFactory.createLineChart("Retreats vs Deposits", "Users", "Retreats/Deposits", dataset);
-
-        rvd.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
-        rvd.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
-        rvd.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
-        LineAndShapeRenderer figures = (LineAndShapeRenderer) rvd.getCategoryPlot().getRenderer();
+        JFreeChart graph1 = ChartFactory.createLineChart("Retreats vs Deposits", "Users", "Retreats/Deposits", datasetGraph1);
+        graph1.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
+        graph1.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
+        graph1.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
+        LineAndShapeRenderer figures = (LineAndShapeRenderer) graph1.getCategoryPlot().getRenderer();
         figures.setDefaultShapesVisible(true);
-        ChartPanel rvdPanel = new ChartPanel(rvd);
-        rvdPanel.setVisible(true);
-        View.userControlView.graph1.add(rvdPanel);
+        ChartPanel graph1Panel = new ChartPanel(graph1);
+        graph1Panel.setVisible(true);
+        View.userControlView.graph1.add(graph1Panel);
+
+        View.userControlView.graph2.removeAll();
+        DefaultCategoryDataset datasetGraph2 = new DefaultCategoryDataset();
+        datasetGraph2.addValue(
+                LoginController.persons.stream().mapToDouble(person -> {
+                    if (person instanceof User) {
+                        return Helper.personToUser(person).viewLatestTransactions().stream().mapToDouble(transaction -> {
+                            if (transaction.getType().equals(Transaction.RETREAT)) {
+                                return transaction.getAmount();
+                            }
+                            return 0;
+                        }).sum();
+                    }
+                    return 0;
+                }).sum() / LoginController.persons.stream().filter(person -> person instanceof User).count(),
+                "Retreats", "Users");
+        datasetGraph2.addValue(
+                LoginController.persons.stream().mapToDouble(person -> {
+                    if (person instanceof User) {
+                        return Helper.personToUser(person).viewLatestTransactions().stream().mapToDouble(transaction -> {
+                            if (transaction.getType().equals(Transaction.DEPOSIT)) {
+                                return transaction.getAmount();
+                            }
+                            return 0;
+                        }).sum();
+                    }
+                    return 0;
+                }).sum() / LoginController.persons.stream().filter(person -> person instanceof User).count(),
+                "Deposits", "Users");
+        JFreeChart graph2 = ChartFactory.createBarChart("Media of Deposits and Retreats", "Users", "Medias", datasetGraph2);
+        graph2.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
+        graph2.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
+        graph2.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
+        ChartPanel graph2Panel = new ChartPanel(graph2);
+        graph2Panel.setVisible(true);
+        View.userControlView.graph2.add(graph2Panel);
+
+        //
         View.userControlView.pick.setIcon(Helper.roundImage(ATMController.properties.getLastPerson().getPick(), 192, 192));
         View.userControlView.name.setText(ATMController.properties.getLastPerson().toString());
         View.userControlView.date.setText(Person.dateFormat.format(ATMController.properties.getLastPerson().getLastAccess()));
