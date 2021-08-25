@@ -68,6 +68,10 @@ public class User extends Person implements Serializable {
         return this.latestTransactions;
     }
 
+    public void addTransaction(Transaction transaction) {
+        this.latestTransactions.add(transaction);
+    }
+
     @Override
     public void setPin(int Pin) {
         super.setPin(Pin);

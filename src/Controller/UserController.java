@@ -1,6 +1,7 @@
 package Controller;
 
 import Entity.Ticket;
+import Entity.Transaction;
 import Model.UserModel;
 import Others.Helper;
 import View.View;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -148,6 +150,9 @@ public class UserController implements Controller {
                         if (Helper.personToUser(ATMController.currentPerson).getCurrentBalance() >= totalRetreated) {
                             if (UserModel.retreat(totalRetreated, ATMController.currentPerson)) {
                                 Helper.success("Operation success");
+                                Helper.personToUser(ATMController.currentPerson).addTransaction(
+                                        new Transaction(totalRetreated, "Retreat", new Date())
+                                );
                                 Model.AdminModel.addCash(
                                         temporalyTickets.get(0).getSize(),
                                         temporalyTickets.get(1).getSize(),
@@ -197,28 +202,21 @@ public class UserController implements Controller {
                 } else if (ae.getSource() == View.depositView.$5) {
                     totalDeposited += 5;
                     temporalyTickets.get(1).setSize(temporalyTickets.get(1).getSize() + 1);
-
                 } else if (ae.getSource() == View.depositView.$10) {
-
                     totalDeposited += 10;
                     temporalyTickets.get(2).setSize(temporalyTickets.get(2).getSize() + 1);
-
                 } else if (ae.getSource() == View.depositView.$20) {
                     totalDeposited += 20;
                     temporalyTickets.get(3).setSize(temporalyTickets.get(3).getSize() + 1);
-
                 } else if (ae.getSource() == View.depositView.$50) {
                     totalDeposited += 50;
                     temporalyTickets.get(4).setSize(temporalyTickets.get(4).getSize() + 1);
-
                 } else if (ae.getSource() == View.depositView.$100) {
                     totalDeposited += 100;
                     temporalyTickets.get(5).setSize(temporalyTickets.get(5).getSize() + 1);
-
                 } else if (ae.getSource() == View.depositView.$200) {
                     totalDeposited += 200;
                     temporalyTickets.get(6).setSize(temporalyTickets.get(6).getSize() + 1);
-
                 }
                 View.depositView.total.setText(format.format(totalDeposited));
             }
@@ -239,6 +237,9 @@ public class UserController implements Controller {
                     if (totalDeposited + ATMController.properties.getCurrentBalance() <= 30000) {
                         if (UserModel.deposit(totalDeposited, ATMController.currentPerson)) {
                             Helper.success("Operation success");
+                            Helper.personToUser(ATMController.currentPerson).addTransaction(
+                                    new Transaction(totalDeposited, "Deposit", new Date())
+                            );
                             Model.AdminModel.addCash(
                                     temporalyTickets.get(0).getSize(),
                                     temporalyTickets.get(1).getSize(),
