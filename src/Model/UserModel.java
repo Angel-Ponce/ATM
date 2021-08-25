@@ -24,7 +24,8 @@ public class UserModel {
     }
 
     public static boolean deposit(int amount, Person person) {
-        return false;
+        Helper.personToUser(person).deposit(amount);
+        return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
     }
 
     public static ArrayList<Transaction> getLatestTransactions(Person person) {

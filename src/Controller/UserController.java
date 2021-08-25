@@ -17,6 +17,7 @@ import java.util.Locale;
 public class UserController implements Controller {
 
     private int totalRetreated = 0;
+    private int totalDeposited = 0;
     private final NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
     private ArrayList<Ticket> temporalyTickets = new ArrayList();
 
@@ -186,6 +187,94 @@ public class UserController implements Controller {
             }
         });
         //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Deposit Event">
+        ActionListener depositEvent = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (ae.getSource() == View.depositView.$1) {
+                    totalDeposited++;
+                    temporalyTickets.get(0).setSize(temporalyTickets.get(0).getSize() + 1);
+                } else if (ae.getSource() == View.depositView.$5) {
+                    totalDeposited += 5;
+                    temporalyTickets.get(1).setSize(temporalyTickets.get(1).getSize() + 1);
+
+                } else if (ae.getSource() == View.depositView.$10) {
+
+                    totalDeposited += 10;
+                    temporalyTickets.get(2).setSize(temporalyTickets.get(2).getSize() + 1);
+
+                } else if (ae.getSource() == View.depositView.$20) {
+                    totalDeposited += 20;
+                    temporalyTickets.get(3).setSize(temporalyTickets.get(3).getSize() + 1);
+
+                } else if (ae.getSource() == View.depositView.$50) {
+                    totalDeposited += 50;
+                    temporalyTickets.get(4).setSize(temporalyTickets.get(4).getSize() + 1);
+
+                } else if (ae.getSource() == View.depositView.$100) {
+                    totalDeposited += 100;
+                    temporalyTickets.get(5).setSize(temporalyTickets.get(5).getSize() + 1);
+
+                } else if (ae.getSource() == View.depositView.$200) {
+                    totalDeposited += 200;
+                    temporalyTickets.get(6).setSize(temporalyTickets.get(6).getSize() + 1);
+
+                }
+                View.depositView.total.setText(format.format(totalDeposited));
+            }
+        };
+
+        View.depositView.$1.addActionListener(depositEvent);
+        View.depositView.$5.addActionListener(depositEvent);
+        View.depositView.$10.addActionListener(depositEvent);
+        View.depositView.$20.addActionListener(depositEvent);
+        View.depositView.$50.addActionListener(depositEvent);
+        View.depositView.$100.addActionListener(depositEvent);
+        View.depositView.$200.addActionListener(depositEvent);
+
+        View.depositView.save.addActionListener((ae) -> {
+            String pin = String.valueOf(View.depositView.pin.getPassword());
+            if (pin.matches("\\d+")) {
+                if (ATMController.currentPerson.getPin() == Integer.parseInt(pin)) {
+                    if (totalDeposited + ATMController.properties.getCurrentBalance() <= 30000) {
+                        if (UserModel.deposit(totalDeposited, ATMController.currentPerson)) {
+                            Helper.success("Operation success");
+                            Model.AdminModel.addCash(
+                                    temporalyTickets.get(0).getSize(),
+                                    temporalyTickets.get(1).getSize(),
+                                    temporalyTickets.get(2).getSize(),
+                                    temporalyTickets.get(3).getSize(),
+                                    temporalyTickets.get(4).getSize(),
+                                    temporalyTickets.get(5).getSize(),
+                                    temporalyTickets.get(6).getSize()
+                            );
+                            totalDeposited = 0;
+                            View.depositView.total.setText("");
+                            View.depositView.pin.setText("");
+                        } else {
+                            Helper.error("Something went wrong");
+                        }
+                    } else {
+                        Helper.error("Limit of ATM has been exceded");
+                    }
+                } else {
+                    Helper.error("The pin is incorrectly");
+                }
+            } else {
+                Helper.error("The pin must be a numeric value");
+            }
+        });
+
+        View.depositView.reset.addActionListener((ae) -> {
+            View.depositView.total.setText("");
+            View.depositView.pin.setText("");
+            totalDeposited = 0;
+            temporalyTickets.clear();
+            for (Ticket t : ATMController.tickets) {
+                this.temporalyTickets.add(new Ticket(t.getType(), t.getSize()));
+            }
+        });
+        //</editor-fold>
     }
 
     //<editor-fold defaultstate="collapsed" desc="Init Update Pin Module">
@@ -212,4 +301,21 @@ public class UserController implements Controller {
         View.atmView.pack();
     }
     //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Init Deposit Module">
+    public void deposit() {
+        View.atmView.content.removeAll();
+        this.totalDeposited = 0;
+        View.depositView.pin.setText("");
+        View.depositView.total.setText("");
+        this.temporalyTickets.clear();
+        for (Ticket t : ATMController.tickets) {
+            this.temporalyTickets.add(new Ticket(t.getType(), t.getSize()));
+        }
+        View.atmView.content.add(View.depositView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
+    }
+    //</editor-fold>
+
 }

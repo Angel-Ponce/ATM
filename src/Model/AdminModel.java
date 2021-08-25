@@ -27,7 +27,11 @@ public class AdminModel {
             ATMController.tickets.set(4, new Ticket(50, $50));
             ATMController.tickets.set(5, new Ticket(100, $100));
             ATMController.tickets.set(6, new Ticket(200, $200));
-            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
+            ATMController.properties.setCurrentBalance(
+                    (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum()
+            );
+            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt")
+                    && Helper.saveObjectToFile(ATMController.properties, "/Files/Properties.txt");
         } catch (Exception e) {
         }
         return false;
@@ -42,7 +46,11 @@ public class AdminModel {
             ATMController.tickets.set(4, new Ticket(50, $50));
             ATMController.tickets.set(5, new Ticket(100, $100));
             ATMController.tickets.set(6, new Ticket(200, $200));
-            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
+            ATMController.properties.setCurrentBalance(
+                    (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum()
+            );
+            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt")
+                    && Helper.saveObjectToFile(ATMController.properties, "/Files/Properties.txt");
         } catch (Exception e) {
         }
         return false;
