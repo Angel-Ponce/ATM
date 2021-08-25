@@ -26,6 +26,7 @@ public class RetreatView extends javax.swing.JPanel {
         initComponents();
         pick.putClientProperty("JButton.buttonType", "square");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
+        total.putClientProperty("JTextField.placeholderText", "Total");
         $1.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $5.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $10.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
