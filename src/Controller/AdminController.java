@@ -454,26 +454,38 @@ public class AdminController implements Controller {
     //<editor-fold defaultstate="collapsed" desc="Init User Control Module">
     public void userControl() {
         View.atmView.content.removeAll();
+        View.userControlView.graph1.removeAll();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(1500, "Retreat", "Angel");
-        dataset.addValue(2000, "Deposit", "Angel");
-        dataset.addValue(3000, "Retreat", "Jossi");
-        dataset.addValue(2000, "Deposit", "Jossi");
-        dataset.addValue(7000, "Retreat", "Juana");
-        dataset.addValue(2500, "Deposit", "Juana");
-        dataset.addValue(5000, "Retreat", "Carlos");
-        dataset.addValue(1000, "Deposit", "Carlos");
-        dataset.addValue(1000, "Retreat", "Sami");
-        dataset.addValue(800, "Deposit", "Sami");
-        JFreeChart lineChart = ChartFactory.createLineChart("Retreats by all users", "Users", "Retreats", dataset);
-        lineChart.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
-        lineChart.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
-        lineChart.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
-        LineAndShapeRenderer figures = (LineAndShapeRenderer) lineChart.getCategoryPlot().getRenderer();
+        for (Person person : LoginController.persons) {
+            if (person instanceof User) {
+                dataset.addValue(
+                        ((User) person).viewLatestTransactions().stream().mapToDouble(transaction -> {
+                            if (transaction.getType().equals(Transaction.RETREAT)) {
+                                return transaction.getAmount();
+                            }
+                            return 0;
+                        }).sum(),
+                         "Retreats", person.getName());
+                 dataset.addValue(
+                        ((User) person).viewLatestTransactions().stream().mapToDouble(transaction -> {
+                            if (transaction.getType().equals(Transaction.DEPOSIT)) {
+                                return transaction.getAmount();
+                            }
+                            return 0;
+                        }).sum(),
+                         "Deposits", person.getName());
+            }
+        }
+        JFreeChart rvd = ChartFactory.createLineChart("Retreats vs Deposits", "Users", "Retreats/Deposits", dataset);
+
+        rvd.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.RED);
+        rvd.getCategoryPlot().getRenderer().setSeriesPaint(1, Color.GREEN);
+        rvd.getCategoryPlot().setShadowGenerator(new DefaultShadowGenerator());
+        LineAndShapeRenderer figures = (LineAndShapeRenderer) rvd.getCategoryPlot().getRenderer();
         figures.setDefaultShapesVisible(true);
-        ChartPanel chartPanel = new ChartPanel(lineChart);
-        chartPanel.setVisible(true);
-        View.userControlView.graph1.add(chartPanel);
+        ChartPanel rvdPanel = new ChartPanel(rvd);
+        rvdPanel.setVisible(true);
+        View.userControlView.graph1.add(rvdPanel);
         View.userControlView.pick.setIcon(Helper.roundImage(ATMController.properties.getLastPerson().getPick(), 192, 192));
         View.userControlView.name.setText(ATMController.properties.getLastPerson().toString());
         View.userControlView.date.setText(Person.dateFormat.format(ATMController.properties.getLastPerson().getLastAccess()));
