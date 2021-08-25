@@ -27,19 +27,40 @@ public class LastTransactionsView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
+        graph = new javax.swing.JPanel();
+        transactions = new javax.swing.JPanel();
+
+        setLayout(new java.awt.BorderLayout());
+
+        header.setLayout(new java.awt.BorderLayout());
+
+        title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("REPORT OF TRANSACTIONS");
+        header.add(title, java.awt.BorderLayout.CENTER);
+
+        add(header, java.awt.BorderLayout.PAGE_START);
+
+        container.setLayout(new java.awt.GridLayout(2, 1));
+
+        graph.setLayout(new java.awt.BorderLayout());
+        container.add(graph);
+
+        transactions.setLayout(new java.awt.GridLayout(0, 1, 0, 20));
+        container.add(transactions);
+
+        add(container, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel container;
+    public javax.swing.JPanel graph;
+    public javax.swing.JPanel header;
+    public javax.swing.JLabel title;
+    public javax.swing.JPanel transactions;
     // End of variables declaration//GEN-END:variables
 }
