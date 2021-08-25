@@ -13,6 +13,9 @@ public class Transaction implements Serializable {
     private String type;
     private Date date;
 
+    public static final String RETREAT = "RETREAT";
+    public static final String DEPOSIT = "DEPOSIT";
+
     public Transaction(int amount, String type, Date date) {
         this.amount = amount;
         this.type = type;

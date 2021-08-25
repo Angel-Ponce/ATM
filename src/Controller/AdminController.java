@@ -2,6 +2,7 @@ package Controller;
 
 import Entity.Person;
 import Entity.Ticket;
+import Entity.Transaction;
 import Entity.User;
 import Others.Helper;
 import View.JUser;
@@ -401,6 +402,10 @@ public class AdminController implements Controller {
     public void userConsult() {
         View.atmView.content.removeAll();
         View.userConsultView.users.removeAll();
+        View.userConsultView.actualAmount.setText("");
+        View.userConsultView.retreats.setText("");
+        View.userConsultView.maxRetreat.setText("");
+        View.userConsultView.lastAccess.setText("");
         LoginController.persons.forEach(person -> {
             if (person instanceof User) {
                 View.userConsultView.users.add(new JUser((User) person));
@@ -415,9 +420,20 @@ public class AdminController implements Controller {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            View.userConsultView.maxRetreat.setText(juser.getUser().getMaximumAmount() + "");
-                            View.userConsultView.actualAmount.setText(juser.getUser().getCurrentBalance() + "");
-                            //View.userConsultView.retreats.setText(juser.getUser().getRetreats());
+                            View.userConsultView.maxRetreat.setText(
+                                    UserController.USD.format(juser.getUser().getMaximumAmount())
+                            );
+                            View.userConsultView.actualAmount.setText(
+                                    UserController.USD.format(juser.getUser().getCurrentBalance())
+                            );
+                            View.userConsultView.retreats.setText(
+                                    UserController.USD.format(juser.getUser().viewLatestTransactions().stream().mapToDouble(transaction -> {
+                                        if (transaction.getType().equals(Transaction.RETREAT)) {
+                                            return transaction.getAmount();
+                                        }
+                                        return 0;
+                                    }).sum())
+                            );
                             View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
                         } catch (Exception e2) {
                         }

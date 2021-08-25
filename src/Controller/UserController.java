@@ -20,7 +20,7 @@ public class UserController implements Controller {
 
     private int totalRetreated = 0;
     private int totalDeposited = 0;
-    private final NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+    public static final NumberFormat USD = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
     private ArrayList<Ticket> temporalyTickets = new ArrayList();
 
     public UserController() {
@@ -130,7 +130,7 @@ public class UserController implements Controller {
                         Helper.error("Tickets of $200 are over");
                     }
                 }
-                View.retreatView.total.setText(format.format(totalRetreated));
+                View.retreatView.total.setText(USD.format(totalRetreated));
             }
         };
 
@@ -151,7 +151,7 @@ public class UserController implements Controller {
                             if (UserModel.retreat(totalRetreated, ATMController.currentPerson)) {
                                 Helper.success("Operation success");
                                 Helper.personToUser(ATMController.currentPerson).addTransaction(
-                                        new Transaction(totalRetreated, "Retreat", new Date())
+                                        new Transaction(totalRetreated, Transaction.RETREAT, new Date())
                                 );
                                 Model.AdminModel.addCash(
                                         temporalyTickets.get(0).getSize(),
@@ -218,7 +218,7 @@ public class UserController implements Controller {
                     totalDeposited += 200;
                     temporalyTickets.get(6).setSize(temporalyTickets.get(6).getSize() + 1);
                 }
-                View.depositView.total.setText(format.format(totalDeposited));
+                View.depositView.total.setText(USD.format(totalDeposited));
             }
         };
 
@@ -238,7 +238,7 @@ public class UserController implements Controller {
                         if (UserModel.deposit(totalDeposited, ATMController.currentPerson)) {
                             Helper.success("Operation success");
                             Helper.personToUser(ATMController.currentPerson).addTransaction(
-                                    new Transaction(totalDeposited, "Deposit", new Date())
+                                    new Transaction(totalDeposited, Transaction.DEPOSIT, new Date())
                             );
                             Model.AdminModel.addCash(
                                     temporalyTickets.get(0).getSize(),

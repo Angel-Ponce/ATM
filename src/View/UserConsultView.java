@@ -84,7 +84,8 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel1.setLayout(new java.awt.GridBagLayout());
 
-        maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        maxRetreat.setForeground(new java.awt.Color(255, 255, 255));
         maxRetreat.setBorderPainted(false);
         maxRetreat.setFocusable(false);
         maxRetreat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -108,16 +109,13 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel4.setLayout(new java.awt.GridBagLayout());
 
-        lastAccess.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        lastAccess.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        lastAccess.setForeground(new java.awt.Color(255, 255, 255));
         lastAccess.setBorderPainted(false);
         lastAccess.setFocusable(false);
         lastAccess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lastAccess.setPreferredSize(new java.awt.Dimension(192, 192));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        panel4.add(lastAccess, gridBagConstraints);
+        panel4.add(lastAccess, new java.awt.GridBagConstraints());
 
         lastAccessLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         lastAccessLabel.setText("Last Access");
@@ -136,7 +134,8 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel3.setLayout(new java.awt.GridBagLayout());
 
-        actualAmount.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        actualAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        actualAmount.setForeground(new java.awt.Color(255, 255, 255));
         actualAmount.setBorderPainted(false);
         actualAmount.setFocusable(false);
         actualAmount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -164,7 +163,8 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel2.setLayout(new java.awt.GridBagLayout());
 
-        retreats.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        retreats.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        retreats.setForeground(new java.awt.Color(255, 255, 255));
         retreats.setBorderPainted(false);
         retreats.setFocusable(false);
         retreats.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
