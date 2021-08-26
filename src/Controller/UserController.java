@@ -367,7 +367,18 @@ public class UserController implements Controller {
         View.lastTransactionsView.graph.add(chartPanel);
 
         //Adding last transactions
+        View.lastTransactionsView.transactions.removeAll();
         View.lastTransactionsView.transactions.add(new JTransaction("Amount", "Type", "Date"));
+        for (int i = Helper.personToUser(ATMController.currentPerson).viewLatestTransactions().size() - 1;
+                i >= Helper.personToUser(ATMController.currentPerson).viewLatestTransactions().size() - 5;
+                i--) {
+            if(i>=0){
+                View.lastTransactionsView.transactions.add(
+                        new JTransaction(
+                                Helper.personToUser(ATMController.currentPerson).viewLatestTransactions().get(i)));
+            }
+
+        }
 
         View.atmView.content.add(View.lastTransactionsView);
         View.atmView.content.repaint();
