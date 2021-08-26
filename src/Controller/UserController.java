@@ -4,6 +4,7 @@ import Entity.Ticket;
 import Entity.Transaction;
 import Model.UserModel;
 import Others.Helper;
+import View.JTransaction;
 import View.View;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -364,6 +365,10 @@ public class UserController implements Controller {
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setVisible(true);
         View.lastTransactionsView.graph.add(chartPanel);
+
+        //Adding last transactions
+        View.lastTransactionsView.transactions.add(new JTransaction("Amount", "Type", "Date"));
+
         View.atmView.content.add(View.lastTransactionsView);
         View.atmView.content.repaint();
         View.atmView.pack();

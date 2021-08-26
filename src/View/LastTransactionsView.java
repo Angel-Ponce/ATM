@@ -63,7 +63,7 @@ public class LastTransactionsView extends javax.swing.JPanel {
         graph.setLayout(new java.awt.BorderLayout());
         container.add(graph);
 
-        transactions.setLayout(new java.awt.GridLayout(0, 1, 0, 20));
+        transactions.setLayout(new javax.swing.BoxLayout(transactions, javax.swing.BoxLayout.Y_AXIS));
         container.add(transactions);
 
         add(container, java.awt.BorderLayout.CENTER);
