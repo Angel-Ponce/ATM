@@ -5,6 +5,10 @@
  */
 package View;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import javax.swing.UIManager;
+
 /**
  *
  * @author samyc
@@ -15,7 +19,17 @@ public class LastTransactionsView extends javax.swing.JPanel {
      * Creates new form LastTransactionsView
      */
     public LastTransactionsView() {
+        defaultTheme();
         initComponents();
+    }
+
+    public void defaultTheme() {
+        FlatArcDarkIJTheme.setup();
+        UIManager.put("Button.arc", 999);
+        UIManager.put("Component.arc", 999);
+        UIManager.put("ProgressBar.arc", 999);
+        UIManager.put("TextComponent.arc", 999);
+        FlatLaf.updateUI();
     }
 
     /**

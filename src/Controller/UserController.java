@@ -5,12 +5,23 @@ import Entity.Transaction;
 import Model.UserModel;
 import Others.Helper;
 import View.View;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.chart.util.DefaultShadowGenerator;
+import org.jfree.data.time.Second;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 
 /**
  *
@@ -319,4 +330,43 @@ public class UserController implements Controller {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Init Transactions Module">
+    public void transactions() {
+        ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
+        View.atmView.content.removeAll();
+        //Creatte a chart of transactions
+        View.lastTransactionsView.graph.removeAll();
+        TimeSeriesCollection dataset = new TimeSeriesCollection();
+        TimeSeries retreats = new TimeSeries("Retreats");
+        TimeSeries deposits = new TimeSeries("Deposits");
+        for (Transaction t : Helper.personToUser(ATMController.currentPerson).viewLatestTransactions()) {
+            if (t.getType().equals(Transaction.RETREAT)) {
+                retreats.add(new Second(t.getDate()), t.getAmount());
+            } else if (t.getType().equals(Transaction.DEPOSIT)) {
+                deposits.add(new Second(t.getDate()), t.getAmount());
+            }
+        }
+        dataset.addSeries(retreats);
+        dataset.addSeries(deposits);
+        JFreeChart chart = ChartFactory.createTimeSeriesChart("Transactions in the Time", "Date", "Amount", dataset, true, true, true);
+        chart.setBackgroundPaint(View.lastTransactionsView.graph.getBackground());
+        chart.getPlot().setBackgroundPaint(View.lastTransactionsView.graph.getBackground());
+        chart.getTitle().setPaint(Color.WHITE);
+        ((XYPlot) chart.getPlot()).getDomainAxis().setTickLabelPaint(Color.WHITE);
+        ((XYPlot) chart.getPlot()).getRangeAxis().setTickLabelPaint(Color.WHITE);
+        ((XYPlot) chart.getPlot()).getDomainAxis().setLabelPaint(Color.WHITE);
+        ((XYPlot) chart.getPlot()).getRangeAxis().setLabelPaint(Color.WHITE);
+        ((XYPlot) chart.getPlot()).getRenderer().setSeriesPaint(0, Color.RED);
+        ((XYPlot) chart.getPlot()).getRenderer().setSeriesPaint(1, Color.GREEN);
+        ((XYPlot) chart.getPlot()).setShadowGenerator(new DefaultShadowGenerator());
+        XYLineAndShapeRenderer figures = (XYLineAndShapeRenderer) ((XYPlot) chart.getPlot()).getRenderer();
+        figures.setDefaultShapesVisible(true);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setVisible(true);
+        View.lastTransactionsView.graph.add(chartPanel);
+        View.atmView.content.add(View.lastTransactionsView);
+        View.atmView.content.repaint();
+        View.atmView.pack();
+    }
+    //</editor-fold>
 }

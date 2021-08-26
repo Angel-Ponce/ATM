@@ -119,6 +119,10 @@ public class ATMController implements Controller {
             userController.deposit();
         });
 
+        View.atmView.transactions.addActionListener((ae) -> {
+            userController.transactions();
+        });
+
         View.atmView.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
