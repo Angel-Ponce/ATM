@@ -21,10 +21,11 @@ public class BalanceView extends javax.swing.JPanel {
     public BalanceView() {
         defaultTheme();
         initComponents();
+        pick1.putClientProperty("JButton.buttonType", "square");
+        pick2.putClientProperty("JButton.buttonType", "square");
     }
 
-    
-     public void defaultTheme() {
+    public void defaultTheme() {
         FlatArcDarkIJTheme.setup();
         UIManager.put("Button.arc", 999);
         UIManager.put("Component.arc", 999);
@@ -32,6 +33,7 @@ public class BalanceView extends javax.swing.JPanel {
         UIManager.put("TextComponent.arc", 999);
         FlatLaf.updateUI();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +55,7 @@ public class BalanceView extends javax.swing.JPanel {
         maximumAmount = new javax.swing.JLabel();
         maxAmount = new javax.swing.JLabel();
 
-        setLayout(new java.awt.GridLayout(3, 1));
+        setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -61,7 +63,10 @@ public class BalanceView extends javax.swing.JPanel {
         title.setText("Balance");
         jPanel2.add(title);
 
-        add(jPanel2);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 100.0;
+        add(jPanel2, gridBagConstraints);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -73,29 +78,31 @@ public class BalanceView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel3.add(pick1, gridBagConstraints);
 
-        avaliableAmount.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
+        avaliableAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
         avaliableAmount.setText("Avaliable amount");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 20);
         jPanel3.add(avaliableAmount, gridBagConstraints);
 
-        avAmount.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
+        avAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
         jPanel3.add(avAmount, gridBagConstraints);
 
-        add(jPanel3);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        add(jPanel3, gridBagConstraints);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -107,10 +114,9 @@ public class BalanceView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(pick2, gridBagConstraints);
 
-        maximumAmount.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
+        maximumAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
         maximumAmount.setText("Maximum amount");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -122,14 +128,20 @@ public class BalanceView extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 20);
         jPanel1.add(maximumAmount, gridBagConstraints);
 
-        maxAmount.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
+        maxAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
         gridBagConstraints.weighty = 100.0;
         jPanel1.add(maxAmount, gridBagConstraints);
 
-        add(jPanel1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        add(jPanel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -140,7 +152,7 @@ public class BalanceView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JLabel maxAmount;
-    public javax.swing.JLabel maximumAmount;
+    private javax.swing.JLabel maximumAmount;
     public javax.swing.JButton pick1;
     public javax.swing.JButton pick2;
     public javax.swing.JLabel title;
