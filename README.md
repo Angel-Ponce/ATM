@@ -1,2 +1,0 @@
-# ATM
-A simple ATM
