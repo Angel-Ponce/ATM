@@ -17,21 +17,21 @@ public class ATMModel {
 
     public static void logout(Person lastPerson) {
         ATMController.properties.setLastPerson(lastPerson);
-        Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt");
-        Helper.saveObjectToFile(ATMController.properties, "/Files/Properties.txt");
-        Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+        Helper.saveObjectToFile(ATMController.tickets, "database/Tickets.txt");
+        Helper.saveObjectToFile(ATMController.properties, "database/Properties.txt");
+        Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
     }
 
     public static ArrayList<Ticket> getTickets() {
-        return (ArrayList<Ticket>) Helper.getObjectFromFile("/Files/Tickets.txt");
+        return (ArrayList<Ticket>) Helper.getObjectFromFile("database/Tickets.txt");
     }
 
     public static Properties getProperties() {
-        return (Properties) Helper.getObjectFromFile("/Files/Properties.txt");
+        return (Properties) Helper.getObjectFromFile("database/Properties.txt");
     }
 
     public static void updateLastAccess(Person person, Date date) {
         person.setLastAccess(date);
-        Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+        Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
     }
 }

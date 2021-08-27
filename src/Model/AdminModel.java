@@ -15,7 +15,7 @@ public class AdminModel {
 
     public static boolean addUser(User user) {
         LoginController.persons.add(user);
-        return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+        return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
     }
 
     public static boolean initATM(int $1, int $5, int $10, int $20, int $50, int $100, int $200) {
@@ -30,8 +30,8 @@ public class AdminModel {
             ATMController.properties.setCurrentBalance(
                     (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum()
             );
-            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt")
-                    && Helper.saveObjectToFile(ATMController.properties, "/Files/Properties.txt");
+            return Helper.saveObjectToFile(ATMController.tickets, "database/Tickets.txt")
+                    && Helper.saveObjectToFile(ATMController.properties, "database/Properties.txt");
         } catch (Exception e) {
         }
         return false;
@@ -49,8 +49,8 @@ public class AdminModel {
             ATMController.properties.setCurrentBalance(
                     (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum()
             );
-            return Helper.saveObjectToFile(ATMController.tickets, "/Files/Tickets.txt")
-                    && Helper.saveObjectToFile(ATMController.properties, "/Files/Properties.txt");
+            return Helper.saveObjectToFile(ATMController.tickets, "database/Tickets.txt")
+                    && Helper.saveObjectToFile(ATMController.properties, "database/Properties.txt");
         } catch (Exception e) {
         }
         return false;
@@ -60,7 +60,7 @@ public class AdminModel {
         try {
             user.setCardNumber(newCardNumber);
             user.setEmail(String.valueOf(newCardNumber));
-            return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+            return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
         } catch (Exception e) {
         }
 
@@ -70,7 +70,7 @@ public class AdminModel {
     public static boolean changeLimit(int newLimit, User user) {
         try {
             user.setMaximumAmount(newLimit);
-            return Helper.saveObjectToFile(LoginController.persons, "/Files/Persons.txt");
+            return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
         } catch (Exception e) {
         }
         return false;

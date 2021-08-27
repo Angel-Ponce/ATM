@@ -20,7 +20,7 @@ public class LoginModel {
     }
 
     public static ArrayList<Person> getPersons() {
-        ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("/Files/Persons.txt");
+        ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("database/Persons.txt");
         if (persons != null) {
             return persons;
         }

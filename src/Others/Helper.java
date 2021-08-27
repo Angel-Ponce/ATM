@@ -15,7 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -39,14 +38,12 @@ public class Helper {
     public static Object getObjectFromFile(String path) {
         try {
             ObjectInputStream objectStream = new ObjectInputStream(
-                    new FileInputStream(
-                            new File(Helper.class.getResource(path).toURI())
-                    )
+                    new FileInputStream(path)
             );
             Object object = objectStream.readObject();
             objectStream.close();
             return object;
-        } catch (IOException | URISyntaxException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex);
         }
         return null;
@@ -55,14 +52,12 @@ public class Helper {
     public static boolean saveObjectToFile(Object object, String path) {
         try {
             ObjectOutputStream objectStream = new ObjectOutputStream(
-                    new FileOutputStream(
-                            new File(Helper.class.getResource(path).toURI())
-                    )
+                    new FileOutputStream(path)
             );
             objectStream.writeObject(object);
             objectStream.close();
             return true;
-        } catch (IOException | URISyntaxException ex) {
+        } catch (IOException ex) {
             System.err.println(ex);
         }
         return false;
