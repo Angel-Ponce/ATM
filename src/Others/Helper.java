@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -79,11 +78,13 @@ public class Helper {
 
     public static ImageIcon roundImage(Object o, int width, int height) {
         try {
-            BufferedImage master = ImageIO.read(new File(Helper.class.getResource("/Resources/default.png").toURI()));
+            BufferedImage master = ImageIO.read(Helper.class.getResource("/Resources/default.png"));
             if (o instanceof String) {
-                master = ImageIO.read(Helper.class.getResource(String.valueOf(o)));
+                master = ImageIO.read(new File(String.valueOf(o)));
             } else if (o instanceof File) {
                 master = ImageIO.read((File) o);
+            } else if (o instanceof URL) {
+                master = ImageIO.read((URL) o);
             }
 
             int diameter = Math.min(master.getWidth(), master.getHeight());
@@ -108,8 +109,7 @@ public class Helper {
             Image image = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
             return new ImageIcon(image);
         } catch (IOException ex) {
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(Helper.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex);
         }
         return new ImageIcon(
                 new ImageIcon(Helper.class.getResource("/Resources/default.png"))

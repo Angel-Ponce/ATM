@@ -24,9 +24,9 @@ public class Main {
 
     private static void register() {
         ArrayList<Person> persons = new ArrayList();
-        persons.add(new Admin("Angel", "Ponce", 20, "angel@gmail.com", 2304, null, "/Resources/angel.jpg"));
-        persons.add(new Admin("Samantha", "Chub", 19, "sami@gmail.com", 12345, null, "/Resources/sami.jpg"));
-        persons.add(new User(2304, 1000, 2000, "Josselin", "Tot", 20, "2304", 2304, new GregorianCalendar(2021, 7, 1, 12, 30, 0).getTime(), "/Resources/jossi.jpg"));
+        persons.add(new Admin("Angel", "Ponce", 20, "angel@gmail.com", 2304, null, "profiles/angel.jpg"));
+        persons.add(new Admin("Samantha", "Chub", 19, "sami@gmail.com", 12345, null, "profiles/sami.jpg"));
+        persons.add(new User(2304, 1000, 2000, "Josselin", "Tot", 20, "2304", 2304, new GregorianCalendar(2021, 7, 1, 12, 30, 0).getTime(), "profiles/jossi.jpg"));
         //addUsers(persons);
         boolean saved = Helper.saveObjectToFile(persons, "/Files/Persons.txt");
         System.out.println(saved);
@@ -48,7 +48,7 @@ public class Main {
     }
 
     private static void addUsers(ArrayList<Person> persons) {
-        User jorgePerez = new User(1, 500, 1500, "Jorge", "Peréz", 25, "1", 123, new GregorianCalendar(2021, 1, 17, 18, 33, 2).getTime(), "/Resources/default.png");
+        User jorgePerez = new User(1, 500, 1500, "Jorge", "Peréz", 25, "1", 123, new GregorianCalendar(2021, 1, 17, 18, 33, 2).getTime(), "profiles/default.png");
         jorgePerez.viewLatestTransactions().add(new Transaction(100, Transaction.DEPOSIT, new GregorianCalendar(2021, 0, 16, 16, 9, 48).getTime()));
         jorgePerez.viewLatestTransactions().add(new Transaction(200, Transaction.DEPOSIT, new GregorianCalendar(2021, 0, 17, 13, 7, 4).getTime()));
         persons.add(jorgePerez);

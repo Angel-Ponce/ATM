@@ -97,9 +97,9 @@ public class AdminController implements Controller {
                                         if (pick != null) {
                                             try {
                                                 BufferedImage buffer = ImageIO.read(pick);
-                                                boolean moved = ImageIO.write(buffer, "png", new File(System.getProperty("user.dir") + "/src/Resources/" + pick.getName()));
+                                                boolean moved = ImageIO.write(buffer, "png", new File("profiles/" + pick.getName()));
                                                 if (moved) {
-                                                    User user = new User(Integer.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "/Resources/" + pick.getName());
+                                                    User user = new User(Integer.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "profiles/" + pick.getName());
                                                     if (Model.AdminModel.addUser(user)) {
                                                         Helper.success("User added successfly");
                                                         View.createUserView.name.setText("");
@@ -111,7 +111,7 @@ public class AdminController implements Controller {
                                                         View.createUserView.initialAmount.setText("");
                                                         View.createUserView.maximumAmount.setText("");
                                                         View.createUserView.fileChooser.setSelectedFile(null);
-                                                        View.createUserView.pick.setIcon(Helper.roundImage("/Resources/default.png", 256, 256));
+                                                        View.createUserView.pick.setIcon(Helper.roundImage(getClass().getResource("/Resources/default.png"), 256, 256));
                                                     } else {
                                                         Helper.error("The user cant be added");
                                                     }
@@ -335,7 +335,7 @@ public class AdminController implements Controller {
         View.createUserView.initialAmount.setText("");
         View.createUserView.maximumAmount.setText("");
         View.createUserView.pin.setText("");
-        View.createUserView.pick.setIcon(Helper.roundImage("/Resources/default.png", 256, 256));
+        View.createUserView.pick.setIcon(Helper.roundImage(getClass().getResource("/Resources/default.png"), 256, 256));
         View.createUserView.fileChooser.setSelectedFile(null);
         View.atmView.content.add(View.createUserView);
         View.atmView.content.repaint();

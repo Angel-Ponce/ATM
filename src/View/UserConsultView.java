@@ -22,10 +22,10 @@ public class UserConsultView extends javax.swing.JPanel {
     public UserConsultView() {
         defaultTheme();
         initComponents();
-        maxRetreat.setIcon(Helper.roundImage("/Resources/c1.png", 192, 192));
-        retreats.setIcon(Helper.roundImage("/Resources/c2.png", 192, 192));
-        actualAmount.setIcon(Helper.roundImage("/Resources/c3.png", 192, 192));
-        lastAccess.setIcon(Helper.roundImage("/Resources/c4.png", 192, 192));
+        maxRetreat.setIcon(Helper.roundImage(getClass().getResource("/Resources/c1.png"), 192, 192));
+        retreats.setIcon(Helper.roundImage(getClass().getResource("/Resources/c2.png"), 192, 192));
+        actualAmount.setIcon(Helper.roundImage(getClass().getResource("/Resources/c3.png"), 192, 192));
+        lastAccess.setIcon(Helper.roundImage(getClass().getResource("/Resources/c4.png"), 192, 192));
     }
 
     public void defaultTheme() {
