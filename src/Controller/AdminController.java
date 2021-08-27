@@ -256,24 +256,28 @@ public class AdminController implements Controller {
             String pin = String.valueOf(View.changeCardNumberView.pin.getPassword());
             if (!oldCard.isEmpty()) {
                 if (!newCard.isEmpty()) {
-                    if (pin.matches("\\d+")) {
-                        Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
-                        if (authenticated.isPresent()) {
-                            User user = (User) authenticated.get();
-                            if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
-                                Helper.success("New card number has been update");
-                                View.changeCardNumberView.newCardNumber.setText("");
-                                View.changeCardNumberView.oldCardNumber.setText("");
-                                View.changeCardNumberView.pin.setText("");
-                            } else {
-                                Helper.error("Something went wrong");
-                            }
+                    if (!Model.LoginModel.alreadyExist(newCard, LoginController.persons)) {
+                        if (pin.matches("\\d+")) {
+                            Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
+                            if (authenticated.isPresent()) {
+                                User user = (User) authenticated.get();
+                                if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
+                                    Helper.success("New card number has been update");
+                                    View.changeCardNumberView.newCardNumber.setText("");
+                                    View.changeCardNumberView.oldCardNumber.setText("");
+                                    View.changeCardNumberView.pin.setText("");
+                                } else {
+                                    Helper.error("Something went wrong");
+                                }
 
+                            } else {
+                                Helper.error("Invalid data");
+                            }
                         } else {
-                            Helper.error("Invalid data");
+                            Helper.error("The pin must be a numeric value");
                         }
                     } else {
-                        Helper.error("The pin must be a numeric value");
+                        Helper.error("The card already exist");
                     }
                 } else {
                     Helper.error("Please fill in the new card field");
