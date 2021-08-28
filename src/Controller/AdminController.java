@@ -11,6 +11,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -151,84 +155,115 @@ public class AdminController implements Controller {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Init ATM Event">
-        PropertyChangeListener ticketEvent = (PropertyChangeEvent evt) -> {
-            try {
-                int $1 = Integer.parseInt(View.initATMView.$1.getText()) * 1;
-                int $5 = Integer.parseInt(View.initATMView.$5.getText()) * 5;
-                int $10 = Integer.parseInt(View.initATMView.$10.getText()) * 10;
-                int $20 = Integer.parseInt(View.initATMView.$20.getText()) * 20;
-                int $50 = Integer.parseInt(View.initATMView.$50.getText()) * 50;
-                int $100 = Integer.parseInt(View.initATMView.$100.getText()) * 100;
-                int $200 = Integer.parseInt(View.initATMView.$200.getText()) * 200;
-                if (($1 + $5 + $10 + $20 + $50 + $100 + $200) <= 10000) {
-                    View.initATMView.limitBar.setValue($1 + $5 + $10 + $20 + $50 + $100 + $200);
-                } else {
-                    Helper.error("The maximum limit is $10000");
-                    JFormattedTextField field = (JFormattedTextField) evt.getSource();
-                    field.setText("0");
-                }
-            } catch (NumberFormatException e) {
-                System.err.println(e);
+        FocusListener ticketEvent = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
             }
 
+            @Override
+            public void focusLost(FocusEvent fe) {
+                JFormattedTextField field = (JFormattedTextField) fe.getSource();
+                try {
+                    int $1 = Integer.parseInt(View.initATMView.$1.getText()) * 1;
+                    int $5 = Integer.parseInt(View.initATMView.$5.getText()) * 5;
+                    int $10 = Integer.parseInt(View.initATMView.$10.getText()) * 10;
+                    int $20 = Integer.parseInt(View.initATMView.$20.getText()) * 20;
+                    int $50 = Integer.parseInt(View.initATMView.$50.getText()) * 50;
+                    int $100 = Integer.parseInt(View.initATMView.$100.getText()) * 100;
+                    int $200 = Integer.parseInt(View.initATMView.$200.getText()) * 200;
+                    if (($1 + $5 + $10 + $20 + $50 + $100 + $200) <= 10000) {
+                        View.initATMView.limitBar.setValue($1 + $5 + $10 + $20 + $50 + $100 + $200);
+                    } else {
+                        field.setText("0");
+                        $1 = Integer.parseInt(View.initATMView.$1.getText()) * 1;
+                        $5 = Integer.parseInt(View.initATMView.$5.getText()) * 5;
+                        $10 = Integer.parseInt(View.initATMView.$10.getText()) * 10;
+                        $20 = Integer.parseInt(View.initATMView.$20.getText()) * 20;
+                        $50 = Integer.parseInt(View.initATMView.$50.getText()) * 50;
+                        $100 = Integer.parseInt(View.initATMView.$100.getText()) * 100;
+                        $200 = Integer.parseInt(View.initATMView.$200.getText()) * 200;
+                        View.initATMView.limitBar.setValue($1 + $5 + $10 + $20 + $50 + $100 + $200);
+                        Helper.error("The maximum limit is $10000");
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println(e);
+                }
+            }
         };
-        View.initATMView.$1.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$5.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$10.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$20.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$50.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$100.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.$200.addPropertyChangeListener("value", ticketEvent);
-        View.initATMView.save.addActionListener((ActionEvent e) -> {
-            try {
-                int $1 = Integer.parseInt(View.initATMView.$1.getText());
-                int $5 = Integer.parseInt(View.initATMView.$5.getText());
-                int $10 = Integer.parseInt(View.initATMView.$10.getText());
-                int $20 = Integer.parseInt(View.initATMView.$20.getText());
-                int $50 = Integer.parseInt(View.initATMView.$50.getText());
-                int $100 = Integer.parseInt(View.initATMView.$100.getText());
-                int $200 = Integer.parseInt(View.initATMView.$200.getText());
-                if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200)) {
-                    Helper.success("Tickets saved correctly");
-                } else {
-                    Helper.error("Something went wrong");
-                }
-            } catch (NumberFormatException er) {
-                Helper.error("Tickets must be numeric values");
-            }
+        View.initATMView.$1.addFocusListener(ticketEvent);
+        View.initATMView.$5.addFocusListener(ticketEvent);
+        View.initATMView.$10.addFocusListener(ticketEvent);
+        View.initATMView.$20.addFocusListener(ticketEvent);
+        View.initATMView.$50.addFocusListener(ticketEvent);
+        View.initATMView.$100.addFocusListener(ticketEvent);
+        View.initATMView.$200.addFocusListener(ticketEvent);
+        View.initATMView.save.addActionListener(
+                (ActionEvent e) -> {
+                    try {
+                        int $1 = Integer.parseInt(View.initATMView.$1.getText());
+                        int $5 = Integer.parseInt(View.initATMView.$5.getText());
+                        int $10 = Integer.parseInt(View.initATMView.$10.getText());
+                        int $20 = Integer.parseInt(View.initATMView.$20.getText());
+                        int $50 = Integer.parseInt(View.initATMView.$50.getText());
+                        int $100 = Integer.parseInt(View.initATMView.$100.getText());
+                        int $200 = Integer.parseInt(View.initATMView.$200.getText());
+                        if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200)) {
+                            Helper.success("Tickets saved correctly");
+                        } else {
+                            Helper.error("Something went wrong");
+                        }
+                    } catch (NumberFormatException er) {
+                        Helper.error("Tickets must be numeric values");
+                    }
 
-        });
+                }
+        );
 //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Add cash Event">
-        PropertyChangeListener addCashEvent = (PropertyChangeEvent pce) -> {
-            try {
-                int $1new = Integer.parseInt(View.addCashView.$1new.getText()) * 1 + Integer.parseInt(View.addCashView.$1actual.getText()) * 1;
-                int $5new = Integer.parseInt(View.addCashView.$5new.getText()) * 5 + Integer.parseInt(View.addCashView.$5actual.getText()) * 5;
-                int $10new = Integer.parseInt(View.addCashView.$10new.getText()) * 10 + Integer.parseInt(View.addCashView.$10actual.getText()) * 10;
-                int $20new = Integer.parseInt(View.addCashView.$20new.getText()) * 20 + Integer.parseInt(View.addCashView.$20actual.getText()) * 20;
-                int $50new = Integer.parseInt(View.addCashView.$50new.getText()) * 50 + Integer.parseInt(View.addCashView.$50actual.getText()) * 50;
-                int $100new = Integer.parseInt(View.addCashView.$100new.getText()) * 100 + Integer.parseInt(View.addCashView.$100actual.getText()) * 100;
-                int $200new = Integer.parseInt(View.addCashView.$200new.getText()) * 200 + Integer.parseInt(View.addCashView.$200actual.getText()) * 200;
-                if (($1new + $5new + $10new + $20new + $50new + $100new + $200new) <= 30000) {
-                    View.addCashView.limitBar.setValue($1new + $5new + $10new + $20new + $50new + $100new + $200new);
-                } else {
-                    Helper.error("The maximum limit is $30000");
-                    JFormattedTextField field = (JFormattedTextField) pce.getSource();
-                    field.setText("0");
+        FocusListener addCashEvent = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                JFormattedTextField field = (JFormattedTextField) fe.getSource();
+                try {
+                    int $1new = Integer.parseInt(View.addCashView.$1new.getText()) * 1 + Integer.parseInt(View.addCashView.$1actual.getText()) * 1;
+                    int $5new = Integer.parseInt(View.addCashView.$5new.getText()) * 5 + Integer.parseInt(View.addCashView.$5actual.getText()) * 5;
+                    int $10new = Integer.parseInt(View.addCashView.$10new.getText()) * 10 + Integer.parseInt(View.addCashView.$10actual.getText()) * 10;
+                    int $20new = Integer.parseInt(View.addCashView.$20new.getText()) * 20 + Integer.parseInt(View.addCashView.$20actual.getText()) * 20;
+                    int $50new = Integer.parseInt(View.addCashView.$50new.getText()) * 50 + Integer.parseInt(View.addCashView.$50actual.getText()) * 50;
+                    int $100new = Integer.parseInt(View.addCashView.$100new.getText()) * 100 + Integer.parseInt(View.addCashView.$100actual.getText()) * 100;
+                    int $200new = Integer.parseInt(View.addCashView.$200new.getText()) * 200 + Integer.parseInt(View.addCashView.$200actual.getText()) * 200;
+                    if (($1new + $5new + $10new + $20new + $50new + $100new + $200new) <= 30000) {
+                        View.addCashView.limitBar.setValue($1new + $5new + $10new + $20new + $50new + $100new + $200new);
+                    } else {
+                        field.setText("0");
+                        $1new = Integer.parseInt(View.addCashView.$1new.getText()) * 1 + Integer.parseInt(View.addCashView.$1actual.getText()) * 1;
+                        $5new = Integer.parseInt(View.addCashView.$5new.getText()) * 5 + Integer.parseInt(View.addCashView.$5actual.getText()) * 5;
+                        $10new = Integer.parseInt(View.addCashView.$10new.getText()) * 10 + Integer.parseInt(View.addCashView.$10actual.getText()) * 10;
+                        $20new = Integer.parseInt(View.addCashView.$20new.getText()) * 20 + Integer.parseInt(View.addCashView.$20actual.getText()) * 20;
+                        $50new = Integer.parseInt(View.addCashView.$50new.getText()) * 50 + Integer.parseInt(View.addCashView.$50actual.getText()) * 50;
+                        $100new = Integer.parseInt(View.addCashView.$100new.getText()) * 100 + Integer.parseInt(View.addCashView.$100actual.getText()) * 100;
+                        $200new = Integer.parseInt(View.addCashView.$200new.getText()) * 200 + Integer.parseInt(View.addCashView.$200actual.getText()) * 200;
+                        View.addCashView.limitBar.setValue($1new + $5new + $10new + $20new + $50new + $100new + $200new);
+                        Helper.error("The maximum limit is $30000");
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println(e);
                 }
-            } catch (NumberFormatException e) {
-                System.err.println(e);
             }
         };
-        View.addCashView.$1new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$5new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$10new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$20new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$50new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$100new.addPropertyChangeListener("value", addCashEvent);
-        View.addCashView.$200new.addPropertyChangeListener("value", addCashEvent);
 
+        View.addCashView.$1new.addFocusListener(addCashEvent);
+        View.addCashView.$5new.addFocusListener(addCashEvent);
+        View.addCashView.$10new.addFocusListener(addCashEvent);
+        View.addCashView.$20new.addFocusListener(addCashEvent);
+        View.addCashView.$50new.addFocusListener(addCashEvent);
+        View.addCashView.$100new.addFocusListener(addCashEvent);
+        View.addCashView.$200new.addFocusListener(addCashEvent);
         View.addCashView.save.addActionListener((ae) -> {
             try {
                 int $1new = Integer.parseInt(View.addCashView.$1new.getText()) + Integer.parseInt(View.addCashView.$1actual.getText());
@@ -240,87 +275,107 @@ public class AdminController implements Controller {
                 int $200new = Integer.parseInt(View.addCashView.$200new.getText()) + Integer.parseInt(View.addCashView.$200actual.getText());
                 if (Model.AdminModel.addCash($1new, $5new, $10new, $20new, $50new, $100new, $200new)) {
                     Helper.success("Cash added success");
+                    ArrayList<Ticket> tickets = ATMController.tickets;
+                    View.addCashView.$1actual.setText("" + tickets.get(0).getSize());
+                    View.addCashView.$5actual.setText("" + tickets.get(1).getSize());
+                    View.addCashView.$10actual.setText("" + tickets.get(2).getSize());
+                    View.addCashView.$20actual.setText("" + tickets.get(3).getSize());
+                    View.addCashView.$50actual.setText("" + tickets.get(4).getSize());
+                    View.addCashView.$100actual.setText("" + tickets.get(5).getSize());
+                    View.addCashView.$200actual.setText("" + tickets.get(6).getSize());
+                    View.addCashView.$1new.setText("0");
+                    View.addCashView.$5new.setText("0");
+                    View.addCashView.$10new.setText("0");
+                    View.addCashView.$20new.setText("0");
+                    View.addCashView.$50new.setText("0");
+                    View.addCashView.$100new.setText("0");
+                    View.addCashView.$200new.setText("0");
                 } else {
                     Helper.error("Something went wrong");
                 }
             } catch (Exception e) {
                 Helper.error("Tickets must be a numeric values");
             }
-        });
+        }
+        );
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Change card number Event">
-        View.changeCardNumberView.save.addActionListener((e) -> {
-            String oldCard = View.changeCardNumberView.oldCardNumber.getText();
-            String newCard = View.changeCardNumberView.newCardNumber.getText();
-            String pin = String.valueOf(View.changeCardNumberView.pin.getPassword());
-            if (!oldCard.isEmpty()) {
-                if (!newCard.isEmpty()) {
-                    if (!Model.LoginModel.alreadyExist(newCard, LoginController.persons)) {
-                        if (pin.matches("\\d+")) {
-                            Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
-                            if (authenticated.isPresent()) {
-                                User user = (User) authenticated.get();
-                                if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
-                                    Helper.success("New card number has been update");
-                                    View.changeCardNumberView.newCardNumber.setText("");
-                                    View.changeCardNumberView.oldCardNumber.setText("");
-                                    View.changeCardNumberView.pin.setText("");
-                                } else {
-                                    Helper.error("Something went wrong");
-                                }
+        View.changeCardNumberView.save.addActionListener(
+                (e) -> {
+                    String oldCard = View.changeCardNumberView.oldCardNumber.getText();
+                    String newCard = View.changeCardNumberView.newCardNumber.getText();
+                    String pin = String.valueOf(View.changeCardNumberView.pin.getPassword());
+                    if (!oldCard.isEmpty()) {
+                        if (!newCard.isEmpty()) {
+                            if (!Model.LoginModel.alreadyExist(newCard, LoginController.persons)) {
+                                if (pin.matches("\\d+")) {
+                                    Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
+                                    if (authenticated.isPresent()) {
+                                        User user = (User) authenticated.get();
+                                        if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
+                                            Helper.success("New card number has been update");
+                                            View.changeCardNumberView.newCardNumber.setText("");
+                                            View.changeCardNumberView.oldCardNumber.setText("");
+                                            View.changeCardNumberView.pin.setText("");
+                                        } else {
+                                            Helper.error("Something went wrong");
+                                        }
 
+                                    } else {
+                                        Helper.error("Invalid data");
+                                    }
+                                } else {
+                                    Helper.error("The pin must be a numeric value");
+                                }
                             } else {
-                                Helper.error("Invalid data");
+                                Helper.error("The card already exist");
                             }
                         } else {
-                            Helper.error("The pin must be a numeric value");
+                            Helper.error("Please fill in the new card field");
                         }
                     } else {
-                        Helper.error("The card already exist");
+                        Helper.error("Please fill in the old card field");
                     }
-                } else {
-                    Helper.error("Please fill in the new card field");
                 }
-            } else {
-                Helper.error("Please fill in the old card field");
-            }
-        });
+        );
 
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="Change limit Event">
-        View.changeMaximumAmountView.save.addActionListener((ae) -> {
-            String newLimit = View.changeMaximumAmountView.newLimit.getText();
-            String card = View.changeMaximumAmountView.cardNumber.getText();
-            String pin = String.valueOf(View.changeMaximumAmountView.pin.getPassword());
-            if (!newLimit.isEmpty()) {
-                if (!card.isEmpty()) {
-                    if (pin.matches("\\d+")) {
-                        Optional<Person> authenticated = Model.LoginModel.authenticate(card, Integer.parseInt(pin), LoginController.persons);
-                        if (authenticated.isPresent()) {
-                            User user = (User) authenticated.get();
-                            if (Model.AdminModel.changeLimit(Integer.parseInt(newLimit), user)) {
-                                Helper.success("New limit has been update");
-                                View.changeMaximumAmountView.newLimit.setText("");
-                                View.changeMaximumAmountView.cardNumber.setText("");
-                                View.changeMaximumAmountView.pin.setText("");
-                            } else {
-                                Helper.error("Something went wrong");
-                            }
+        View.changeMaximumAmountView.save.addActionListener(
+                (ae) -> {
+                    String newLimit = View.changeMaximumAmountView.newLimit.getText();
+                    String card = View.changeMaximumAmountView.cardNumber.getText();
+                    String pin = String.valueOf(View.changeMaximumAmountView.pin.getPassword());
+                    if (!newLimit.isEmpty()) {
+                        if (!card.isEmpty()) {
+                            if (pin.matches("\\d+")) {
+                                Optional<Person> authenticated = Model.LoginModel.authenticate(card, Integer.parseInt(pin), LoginController.persons);
+                                if (authenticated.isPresent()) {
+                                    User user = (User) authenticated.get();
+                                    if (Model.AdminModel.changeLimit(Integer.parseInt(newLimit), user)) {
+                                        Helper.success("New limit has been update");
+                                        View.changeMaximumAmountView.newLimit.setText("");
+                                        View.changeMaximumAmountView.cardNumber.setText("");
+                                        View.changeMaximumAmountView.pin.setText("");
+                                    } else {
+                                        Helper.error("Something went wrong");
+                                    }
 
+                                } else {
+                                    Helper.error("Invalid data");
+                                }
+                            } else {
+                                Helper.error("The pin must be a numeric value");
+                            }
                         } else {
-                            Helper.error("Invalid data");
+                            Helper.error("Please fill in the card field");
                         }
                     } else {
-                        Helper.error("The pin must be a numeric value");
+                        Helper.error("Please fill in the new limit field");
                     }
-                } else {
-                    Helper.error("Please fill in the card field");
                 }
-            } else {
-                Helper.error("Please fill in the new limit field");
-            }
-        });
+        );
 
         //</editor-fold>
     }
@@ -360,6 +415,23 @@ public class AdminController implements Controller {
         View.initATMView.$200.setText(tickets.get(6).getSize() + "");
         int total = (int) tickets.stream().mapToDouble(ticket -> ticket.getSize() * ticket.getType()).sum();
         View.initATMView.limitBar.setValue(total);
+        if (ATMController.properties.getCurrentBalance() >= 10000) {
+            View.initATMView.$1.setEnabled(false);
+            View.initATMView.$5.setEnabled(false);
+            View.initATMView.$10.setEnabled(false);
+            View.initATMView.$20.setEnabled(false);
+            View.initATMView.$50.setEnabled(false);
+            View.initATMView.$100.setEnabled(false);
+            View.initATMView.$200.setEnabled(false);
+        } else {
+            View.initATMView.$1.setEnabled(true);
+            View.initATMView.$5.setEnabled(true);
+            View.initATMView.$10.setEnabled(true);
+            View.initATMView.$20.setEnabled(true);
+            View.initATMView.$50.setEnabled(true);
+            View.initATMView.$100.setEnabled(true);
+            View.initATMView.$200.setEnabled(true);
+        }
         View.atmView.content.add(View.initATMView);
         View.atmView.content.repaint();
         View.atmView.pack();
