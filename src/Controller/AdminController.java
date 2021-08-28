@@ -481,50 +481,60 @@ public class AdminController implements Controller {
 
     //<editor-fold defaultstate="collapsed" desc="Init User Consult Module">
     public void userConsult() {
+
         View.atmView.content.removeAll();
         View.userConsultView.users.removeAll();
         View.userConsultView.actualAmount.setText("");
         View.userConsultView.retreats.setText("");
         View.userConsultView.maxRetreat.setText("");
         View.userConsultView.lastAccess.setText("");
-        LoginController.persons.forEach(person -> {
-            if (person instanceof User) {
-                View.userConsultView.users.add(new JUser((User) person));
-            }
-
-        });
-        View.userConsultView.users.repaint();
-        for (Component component : View.userConsultView.users.getComponents()) {
-            try {
-                JUser juser = (JUser) component;
-                ActionListener event = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        try {
-                            View.userConsultView.maxRetreat.setText(
-                                    UserController.USD.format(juser.getUser().getMaximumAmount())
-                            );
-                            View.userConsultView.actualAmount.setText(
-                                    UserController.USD.format(juser.getUser().getCurrentBalance())
-                            );
-                            View.userConsultView.retreats.setText(
-                                    UserController.USD.format(juser.getUser().viewLatestTransactions().stream().mapToDouble(transaction -> {
-                                        if (transaction.getType().equals(Transaction.RETREAT)) {
-                                            return transaction.getAmount();
-                                        }
-                                        return 0;
-                                    }).sum())
-                            );
-                            View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
-                        } catch (Exception e2) {
-                        }
+        Others.Process process = new Others.Process() {
+            @Override
+            public void callback() {
+                LoginController.persons.forEach(person -> {
+                    if (person instanceof User) {
+                        View.userConsultView.users.add(new JUser((User) person));
                     }
-                };
-                juser.name.addActionListener(event);
-                juser.pick.addActionListener(event);
-            } catch (Exception e) {
+
+                });
+                View.userConsultView.users.repaint();
+                for (Component component : View.userConsultView.users.getComponents()) {
+                    try {
+                        JUser juser = (JUser) component;
+                        ActionListener event = new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                try {
+                                    View.userConsultView.maxRetreat.setText(
+                                            UserController.USD.format(juser.getUser().getMaximumAmount())
+                                    );
+                                    View.userConsultView.actualAmount.setText(
+                                            UserController.USD.format(juser.getUser().getCurrentBalance())
+                                    );
+                                    View.userConsultView.retreats.setText(
+                                            UserController.USD.format(juser.getUser().viewLatestTransactions().stream().mapToDouble(transaction -> {
+                                                if (transaction.getType().equals(Transaction.RETREAT)) {
+                                                    return transaction.getAmount();
+                                                }
+                                                return 0;
+                                            }).sum())
+                                    );
+                                    View.userConsultView.lastAccess.setText(Person.dateFormat.format(juser.getUser().getLastAccess()));
+                                } catch (Exception e2) {
+                                }
+                            }
+                        };
+                        juser.name.addActionListener(event);
+                        juser.pick.addActionListener(event);
+                    } catch (Exception e) {
+                    }
+                }
+
             }
-        }
+        };
+        process.start();
+        
+
         View.atmView.content.add(View.userConsultView);
         View.atmView.content.repaint();
         View.atmView.pack();

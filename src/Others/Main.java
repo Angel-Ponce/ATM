@@ -52,5 +52,6 @@ public class Main {
         jorgePerez.viewLatestTransactions().add(new Transaction(100, Transaction.DEPOSIT, new GregorianCalendar(2021, 0, 16, 16, 9, 48).getTime()));
         jorgePerez.viewLatestTransactions().add(new Transaction(200, Transaction.DEPOSIT, new GregorianCalendar(2021, 0, 17, 13, 7, 4).getTime()));
         persons.add(jorgePerez);
+        
     }
 }
