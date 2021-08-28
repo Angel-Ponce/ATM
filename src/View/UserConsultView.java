@@ -64,11 +64,15 @@ public class UserConsultView extends javax.swing.JPanel {
         retreatsLabel = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
+        load = new javax.swing.JProgressBar();
 
         setLayout(new java.awt.GridBagLayout());
 
         scroll.setMinimumSize(new java.awt.Dimension(250, 20));
+        scroll.setPreferredSize(new java.awt.Dimension(250, 3));
 
+        users.setMinimumSize(new java.awt.Dimension(250, 0));
+        users.setPreferredSize(new java.awt.Dimension(250, 0));
         users.setLayout(new javax.swing.BoxLayout(users, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(users);
 
@@ -198,11 +202,23 @@ public class UserConsultView extends javax.swing.JPanel {
         gridBagConstraints.weighty = 100.0;
         add(information, gridBagConstraints);
 
-        header.setLayout(new java.awt.GridLayout(1, 0));
+        header.setLayout(new java.awt.GridBagLayout());
 
         title.setFont(new java.awt.Font("Montserrat", 1, 48)); // NOI18N
         title.setText("Users");
-        header.add(title);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 100.0;
+        gridBagConstraints.weighty = 100.0;
+        header.add(title, gridBagConstraints);
+
+        load.setFont(new java.awt.Font("Montserrat", 2, 18)); // NOI18N
+        load.setPreferredSize(new java.awt.Dimension(146, 30));
+        load.setStringPainted(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 100.0;
+        header.add(load, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -221,6 +237,7 @@ public class UserConsultView extends javax.swing.JPanel {
     public javax.swing.JPanel information;
     public javax.swing.JButton lastAccess;
     public javax.swing.JLabel lastAccessLabel;
+    public javax.swing.JProgressBar load;
     public javax.swing.JButton maxRetreat;
     public javax.swing.JLabel maxRetreatLabel;
     public javax.swing.JPanel panel1;

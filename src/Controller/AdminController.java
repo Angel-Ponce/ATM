@@ -35,6 +35,7 @@ import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.util.DefaultShadowGenerator;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import Others.Process;
 
 /**
  *
@@ -488,15 +489,20 @@ public class AdminController implements Controller {
         View.userConsultView.retreats.setText("");
         View.userConsultView.maxRetreat.setText("");
         View.userConsultView.lastAccess.setText("");
-        Others.Process process = new Others.Process() {
+        Process process = new Process() {
             @Override
             public void callback() {
-                LoginController.persons.forEach(person -> {
+                View.userConsultView.load.setMaximum(
+                        (int) LoginController.persons.stream().filter(person -> person instanceof User).count()
+                );
+                int counter = 0;
+                for (Person person : LoginController.persons) {
                     if (person instanceof User) {
                         View.userConsultView.users.add(new JUser((User) person));
+                        counter++;
+                        View.userConsultView.load.setValue(counter);
                     }
-
-                });
+                }
                 View.userConsultView.users.repaint();
                 for (Component component : View.userConsultView.users.getComponents()) {
                     try {
@@ -529,11 +535,9 @@ public class AdminController implements Controller {
                     } catch (Exception e) {
                     }
                 }
-
             }
         };
         process.start();
-        
 
         View.atmView.content.add(View.userConsultView);
         View.atmView.content.repaint();
