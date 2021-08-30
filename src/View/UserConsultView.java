@@ -71,8 +71,6 @@ public class UserConsultView extends javax.swing.JPanel {
         scroll.setMinimumSize(new java.awt.Dimension(250, 20));
         scroll.setPreferredSize(new java.awt.Dimension(250, 3));
 
-        users.setMinimumSize(new java.awt.Dimension(250, 0));
-        users.setPreferredSize(new java.awt.Dimension(250, 0));
         users.setLayout(new javax.swing.BoxLayout(users, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(users);
 
