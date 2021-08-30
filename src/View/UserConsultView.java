@@ -86,7 +86,7 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel1.setLayout(new java.awt.GridBagLayout());
 
-        maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        maxRetreat.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
         maxRetreat.setForeground(new java.awt.Color(255, 255, 255));
         maxRetreat.setBorderPainted(false);
         maxRetreat.setFocusable(false);
@@ -136,7 +136,7 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel3.setLayout(new java.awt.GridBagLayout());
 
-        actualAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        actualAmount.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
         actualAmount.setForeground(new java.awt.Color(255, 255, 255));
         actualAmount.setBorderPainted(false);
         actualAmount.setFocusable(false);
@@ -165,7 +165,7 @@ public class UserConsultView extends javax.swing.JPanel {
 
         panel2.setLayout(new java.awt.GridBagLayout());
 
-        retreats.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        retreats.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
         retreats.setForeground(new java.awt.Color(255, 255, 255));
         retreats.setBorderPainted(false);
         retreats.setFocusable(false);
