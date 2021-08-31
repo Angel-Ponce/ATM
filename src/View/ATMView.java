@@ -168,6 +168,7 @@ public class ATMView extends javax.swing.JFrame {
         addCash.setForeground(new java.awt.Color(255, 255, 255));
         addCash.setText("Add cash");
         addCash.setBorderPainted(false);
+        addCash.setEnabled(false);
         addCash.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addCash.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();

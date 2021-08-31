@@ -38,6 +38,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import Others.Process;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 
 /**
  *
@@ -249,6 +250,8 @@ public class AdminController implements Controller {
                         int $200 = Integer.parseInt(View.initATMView.$200.getText());
                         if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200)) {
                             Helper.success("Tickets saved correctly");
+                            View.atmView.addCash.setEnabled(true);
+                            ATMController.properties.setDate(ATMController.DATE_FORMAT.format(new Date()));
                         } else {
                             Helper.error("Something went wrong");
                         }

@@ -11,6 +11,7 @@ import View.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -25,6 +26,7 @@ public class ATMController implements Controller {
     public static ArrayList<Ticket> tickets;
     public static Properties properties;
     public static Person currentPerson;
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 
     public ATMController(LoginController loginController) {
         this.loginController = loginController;
@@ -38,6 +40,12 @@ public class ATMController implements Controller {
         //Read data
         tickets = Model.ATMModel.getTickets();
         properties = Model.ATMModel.getProperties();
+        String now = DATE_FORMAT.format(new Date());
+        if (properties.getDate().equals(now)) {
+            View.atmView.addCash.setEnabled(true);
+        } else {
+            View.atmView.addCash.setEnabled(false);
+        }
         //Sent propetys to system
         View.atmView.userName.setText(currentPerson.toString());
         View.atmView.user.setText(ATMController.currentPerson.getName());

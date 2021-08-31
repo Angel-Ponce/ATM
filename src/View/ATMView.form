@@ -196,6 +196,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add cash"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
