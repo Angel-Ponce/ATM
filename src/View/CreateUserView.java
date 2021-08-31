@@ -123,6 +123,7 @@ public class CreateUserView extends javax.swing.JPanel {
         container.add(lastName, gridBagConstraints);
 
         numberCard.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        numberCard.setEnabled(false);
         numberCard.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         numberCard.setPreferredSize(new java.awt.Dimension(4, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();

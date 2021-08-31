@@ -36,6 +36,8 @@ import org.jfree.chart.util.DefaultShadowGenerator;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import Others.Process;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -90,7 +92,7 @@ public class AdminController implements Controller {
             String age = View.createUserView.age.getText();
             if (!name.isEmpty() && !lastName.isEmpty()) {
                 if (!email.isEmpty()) {
-                    if (numberCard.matches("\\d+") && numberCard.equals(email)) {
+                    if (numberCard.matches("\\d+") && numberCard.equals(email) && numberCard.length() == 16) {
                         if (pin.matches("\\d+")) {
                             if (initialAmount.matches("\\d+")) {
                                 if (maximumAmount.matches("\\d+")) {
@@ -140,13 +142,31 @@ public class AdminController implements Controller {
                             Helper.error("The pin is a number, and is required");
                         }
                     } else {
-                        Helper.error("The number card is a number, and is required\nThe number card and email they must be equals");
+                        Helper.error("The number card is a number, and is required\nThe number card and email they must be equals\nThe number card don't have 16 characters");
                     }
                 } else {
                     Helper.error("The email is required");
                 }
             } else {
                 Helper.error("The name and lastname are required");
+            }
+        });
+        View.createUserView.email.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                String email = View.createUserView.email.getText();
+                if (email.matches("\\d+")) {
+                    if (email.length() >= 16) {
+                        String numberCard = email.trim().substring(0, 16);
+                        View.createUserView.email.setText(numberCard);
+                        View.createUserView.numberCard.setText(numberCard);
+                    } else {
+                        View.createUserView.numberCard.setText(email);
+                    }
+                } else {
+                    View.createUserView.email.setText(email.replaceAll("\\D*", ""));
+                    View.createUserView.numberCard.setText(email.replaceAll("\\D*", ""));
+                }
             }
         });
         //</editor-fold>
