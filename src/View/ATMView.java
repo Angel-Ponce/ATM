@@ -90,6 +90,7 @@ public class ATMView extends javax.swing.JFrame {
         amount = new javax.swing.JButton();
         separator = new javax.swing.JSeparator();
         content = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         bar = new javax.swing.JMenuBar();
         settings = new javax.swing.JMenu();
         user = new javax.swing.JMenu();
@@ -331,6 +332,11 @@ public class ATMView extends javax.swing.JFrame {
         container.add(barNavigation, gridBagConstraints);
 
         content.setLayout(new java.awt.BorderLayout());
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/tipoLogo.png"))); // NOI18N
+        content.add(logo, java.awt.BorderLayout.CENTER);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 85.0;
@@ -400,6 +406,7 @@ public class ATMView extends javax.swing.JFrame {
     public javax.swing.JPanel content;
     public javax.swing.JButton deposit;
     public javax.swing.JButton initATM;
+    public javax.swing.JLabel logo;
     public javax.swing.JMenuItem logout;
     public javax.swing.JButton pick;
     public javax.swing.JButton retreat;

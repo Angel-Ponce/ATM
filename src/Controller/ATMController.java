@@ -60,6 +60,7 @@ public class ATMController implements Controller {
             View.atmView.userControl.setVisible(false);
         }
         View.atmView.content.removeAll();
+        View.atmView.content.add(View.atmView.logo);
         View.atmView.setVisible(true);
         View.atmView.repaint();
         View.atmView.pack();
