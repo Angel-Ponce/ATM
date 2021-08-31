@@ -51,6 +51,7 @@ public class ATMView extends javax.swing.JFrame {
         transactions.putClientProperty("JButton.buttonType", "square");
         amount.putClientProperty("JButton.buttonType", "square");
         super.setLocationRelativeTo(null);
+        super.setIconImage(new ImageIcon(getClass().getResource("/Resources/logo.png")).getImage());
     }
 
     public void defaultTheme() {

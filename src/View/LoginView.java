@@ -8,6 +8,7 @@ package View;
 import Others.Image;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.*;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
@@ -29,6 +30,7 @@ public class LoginView extends javax.swing.JFrame {
         this.image.add(image);
         Image login = new Image(540, 752, "/Resources/loginDegradate.png");
         this.login.add(login);
+        super.setIconImage(new ImageIcon(getClass().getResource("/Resources/logo.png")).getImage());
     }
 
     private void defaultTheme() {
