@@ -103,7 +103,7 @@ public class AdminController implements Controller {
                                                 BufferedImage buffer = ImageIO.read(pick);
                                                 boolean moved = ImageIO.write(buffer, "png", new File("database/profiles/" + pick.getName()));
                                                 if (moved) {
-                                                    User user = new User(Integer.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "database/profiles/" + pick.getName());
+                                                    User user = new User(Long.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "database/profiles/" + pick.getName());
                                                     if (Model.AdminModel.addUser(user)) {
                                                         Helper.success("User added successfly");
                                                         View.createUserView.name.setText("");
