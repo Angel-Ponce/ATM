@@ -1,5 +1,6 @@
 package Controller;
 
+import Entity.Captcha;
 import Entity.Ticket;
 import Entity.Transaction;
 import Model.UserModel;
@@ -34,6 +35,7 @@ public class UserController implements Controller {
     private int totalDeposited = 0;
     public static final NumberFormat USD = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
     private ArrayList<Ticket> temporalyTickets = new ArrayList();
+    private Captcha captcha = new Captcha();
 
     public UserController() {
         events();
@@ -304,6 +306,9 @@ public class UserController implements Controller {
         View.atmView.content.removeAll();
         this.temporalyTickets.clear();
         this.totalRetreated = 0;
+        this.captcha = new Captcha();
+        View.retreatView.captchaImage.setIcon(this.captcha.getCaptcha());
+        View.retreatView.captcha.setText("");
         View.retreatView.total.setText("");
         View.retreatView.pin.setText("");
         for (Ticket t : ATMController.tickets) {
@@ -319,6 +324,9 @@ public class UserController implements Controller {
     public void deposit() {
         View.atmView.content.removeAll();
         this.totalDeposited = 0;
+        this.captcha = new Captcha();
+        View.depositView.captchaImage.setIcon(this.captcha.getCaptcha());
+        View.depositView.captcha.setText("");
         View.depositView.pin.setText("");
         View.depositView.total.setText("");
         this.temporalyTickets.clear();

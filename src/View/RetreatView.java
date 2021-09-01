@@ -27,6 +27,7 @@ public class RetreatView extends javax.swing.JPanel {
         pick.putClientProperty("JButton.buttonType", "square");
         pin.putClientProperty("JTextField.placeholderText", "Pin");
         total.putClientProperty("JTextField.placeholderText", "Total");
+        captcha.putClientProperty("JTextField.placeholderText", "Captcha");
         $1.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $5.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
         $10.setIcon(Helper.icon(GoogleMaterialDesignIcons.ADD_CIRCLE, 48, Color.GREEN));
@@ -65,6 +66,8 @@ public class RetreatView extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         pin = new javax.swing.JPasswordField();
         save = new javax.swing.JButton();
+        captchaImage = new javax.swing.JLabel();
+        captcha = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         $50 = new javax.swing.JButton();
         $100 = new javax.swing.JButton();
@@ -116,8 +119,22 @@ public class RetreatView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(save, gridBagConstraints);
+
+        captchaImage.setPreferredSize(new java.awt.Dimension(200, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel3.add(captchaImage, gridBagConstraints);
+
+        captcha.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        captcha.setPreferredSize(new java.awt.Dimension(250, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel3.add(captcha, gridBagConstraints);
 
         add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
@@ -180,6 +197,8 @@ public class RetreatView extends javax.swing.JPanel {
     public javax.swing.JButton $200;
     public javax.swing.JButton $5;
     public javax.swing.JButton $50;
+    public javax.swing.JTextField captcha;
+    public javax.swing.JLabel captchaImage;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
