@@ -158,35 +158,40 @@ public class UserController implements Controller {
 
         View.retreatView.save.addActionListener((ae) -> {
             String pin = String.valueOf(View.retreatView.pin.getPassword());
+            String token = View.retreatView.captcha.getText();
             if (pin.matches("\\d+")) {
                 if (ATMController.currentPerson.getPin() == Integer.parseInt(pin)) {
-                    if (Helper.personToUser(ATMController.currentPerson).getMaximumRetreatPerDay() >= totalRetreated) {
-                        if (Helper.personToUser(ATMController.currentPerson).getCurrentBalance() >= totalRetreated) {
-                            if (UserModel.retreat(totalRetreated, ATMController.currentPerson)) {
-                                Helper.success("Operation success");
-                                Helper.personToUser(ATMController.currentPerson).addTransaction(
-                                        new Transaction(totalRetreated, Transaction.RETREAT, new Date())
-                                );
-                                Model.AdminModel.addCash(
-                                        temporalyTickets.get(0).getSize(),
-                                        temporalyTickets.get(1).getSize(),
-                                        temporalyTickets.get(2).getSize(),
-                                        temporalyTickets.get(3).getSize(),
-                                        temporalyTickets.get(4).getSize(),
-                                        temporalyTickets.get(5).getSize(),
-                                        temporalyTickets.get(6).getSize()
-                                );
-                                totalRetreated = 0;
-                                View.retreatView.total.setText("");
-                                View.retreatView.pin.setText("");
+                    if (token.equals(captcha.getToken())) {
+                        if (Helper.personToUser(ATMController.currentPerson).getMaximumRetreatPerDay() >= totalRetreated) {
+                            if (Helper.personToUser(ATMController.currentPerson).getCurrentBalance() >= totalRetreated) {
+                                if (UserModel.retreat(totalRetreated, ATMController.currentPerson)) {
+                                    Helper.success("Operation success");
+                                    Helper.personToUser(ATMController.currentPerson).addTransaction(
+                                            new Transaction(totalRetreated, Transaction.RETREAT, new Date())
+                                    );
+                                    Model.AdminModel.addCash(
+                                            temporalyTickets.get(0).getSize(),
+                                            temporalyTickets.get(1).getSize(),
+                                            temporalyTickets.get(2).getSize(),
+                                            temporalyTickets.get(3).getSize(),
+                                            temporalyTickets.get(4).getSize(),
+                                            temporalyTickets.get(5).getSize(),
+                                            temporalyTickets.get(6).getSize()
+                                    );
+                                    totalRetreated = 0;
+                                    View.retreatView.total.setText("");
+                                    View.retreatView.pin.setText("");
+                                } else {
+                                    Helper.error("Something went wrong");
+                                }
                             } else {
-                                Helper.error("Something went wrong");
+                                Helper.error("The money is insufficient");
                             }
                         } else {
-                            Helper.error("The money is insufficient");
+                            Helper.error("Limit of retreat is over");
                         }
                     } else {
-                        Helper.error("Limit of retreat is over");
+                        Helper.error("The token is invalid");
                     }
                 } else {
                     Helper.error("The pin is incorrectly");
@@ -246,31 +251,36 @@ public class UserController implements Controller {
 
         View.depositView.save.addActionListener((ae) -> {
             String pin = String.valueOf(View.depositView.pin.getPassword());
+            String token = View.depositView.captcha.getText();
             if (pin.matches("\\d+")) {
                 if (ATMController.currentPerson.getPin() == Integer.parseInt(pin)) {
-                    if (totalDeposited + ATMController.properties.getCurrentBalance() <= 30000) {
-                        if (UserModel.deposit(totalDeposited, ATMController.currentPerson)) {
-                            Helper.success("Operation success");
-                            Helper.personToUser(ATMController.currentPerson).addTransaction(
-                                    new Transaction(totalDeposited, Transaction.DEPOSIT, new Date())
-                            );
-                            Model.AdminModel.addCash(
-                                    temporalyTickets.get(0).getSize(),
-                                    temporalyTickets.get(1).getSize(),
-                                    temporalyTickets.get(2).getSize(),
-                                    temporalyTickets.get(3).getSize(),
-                                    temporalyTickets.get(4).getSize(),
-                                    temporalyTickets.get(5).getSize(),
-                                    temporalyTickets.get(6).getSize()
-                            );
-                            totalDeposited = 0;
-                            View.depositView.total.setText("");
-                            View.depositView.pin.setText("");
+                    if (token.equals(captcha.getToken())) {
+                        if (totalDeposited + ATMController.properties.getCurrentBalance() <= 30000) {
+                            if (UserModel.deposit(totalDeposited, ATMController.currentPerson)) {
+                                Helper.success("Operation success");
+                                Helper.personToUser(ATMController.currentPerson).addTransaction(
+                                        new Transaction(totalDeposited, Transaction.DEPOSIT, new Date())
+                                );
+                                Model.AdminModel.addCash(
+                                        temporalyTickets.get(0).getSize(),
+                                        temporalyTickets.get(1).getSize(),
+                                        temporalyTickets.get(2).getSize(),
+                                        temporalyTickets.get(3).getSize(),
+                                        temporalyTickets.get(4).getSize(),
+                                        temporalyTickets.get(5).getSize(),
+                                        temporalyTickets.get(6).getSize()
+                                );
+                                totalDeposited = 0;
+                                View.depositView.total.setText("");
+                                View.depositView.pin.setText("");
+                            } else {
+                                Helper.error("Something went wrong");
+                            }
                         } else {
-                            Helper.error("Something went wrong");
+                            Helper.error("Limit of ATM has been exceded");
                         }
                     } else {
-                        Helper.error("Limit of ATM has been exceded");
+                        Helper.error("The token is invalid");
                     }
                 } else {
                     Helper.error("The pin is incorrectly");
