@@ -158,7 +158,7 @@ public class UserController implements Controller {
             String pin = String.valueOf(View.retreatView.pin.getPassword());
             if (pin.matches("\\d+")) {
                 if (ATMController.currentPerson.getPin() == Integer.parseInt(pin)) {
-                    if (Helper.personToUser(ATMController.currentPerson).getMaximumAmount() >= totalRetreated) {
+                    if (Helper.personToUser(ATMController.currentPerson).getMaximumRetreatPerDay() >= totalRetreated) {
                         if (Helper.personToUser(ATMController.currentPerson).getCurrentBalance() >= totalRetreated) {
                             if (UserModel.retreat(totalRetreated, ATMController.currentPerson)) {
                                 Helper.success("Operation success");
@@ -394,6 +394,8 @@ public class UserController implements Controller {
         ));
         View.balanceView.maxAmount.setText(USD.format(
                 Helper.personToUser(ATMController.currentPerson).getMaximumAmount()
+        ) + " / " + USD.format(
+                Helper.personToUser(ATMController.currentPerson).getMaximumRetreatPerDay()
         ));
         View.atmView.content.add(View.balanceView);
         View.atmView.content.repaint();

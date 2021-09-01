@@ -128,7 +128,7 @@ public class BalanceView extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 20);
         jPanel1.add(maximumAmount, gridBagConstraints);
 
-        maxAmount.setFont(new java.awt.Font("Montserrat", 1, 30)); // NOI18N
+        maxAmount.setFont(new java.awt.Font("Montserrat", 1, 20)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 100.0;
@@ -152,7 +152,7 @@ public class BalanceView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JLabel maxAmount;
-    private javax.swing.JLabel maximumAmount;
+    public javax.swing.JLabel maximumAmount;
     public javax.swing.JButton pick1;
     public javax.swing.JButton pick2;
     public javax.swing.JLabel title;
