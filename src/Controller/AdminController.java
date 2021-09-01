@@ -350,13 +350,13 @@ public class AdminController implements Controller {
                     String newCard = View.changeCardNumberView.newCardNumber.getText();
                     String pin = String.valueOf(View.changeCardNumberView.pin.getPassword());
                     if (!oldCard.isEmpty()) {
-                        if (!newCard.isEmpty()) {
+                        if (!newCard.isEmpty() && newCard.length() == 16) {
                             if (!Model.LoginModel.alreadyExist(newCard, LoginController.persons)) {
                                 if (pin.matches("\\d+")) {
                                     Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
                                     if (authenticated.isPresent()) {
                                         User user = (User) authenticated.get();
-                                        if (Model.AdminModel.changeCardNumber(Integer.parseInt(newCard), user)) {
+                                        if (Model.AdminModel.changeCardNumber(Long.parseLong(newCard), user)) {
                                             Helper.success("New card number has been update");
                                             View.changeCardNumberView.newCardNumber.setText("");
                                             View.changeCardNumberView.oldCardNumber.setText("");
@@ -375,13 +375,33 @@ public class AdminController implements Controller {
                                 Helper.error("The card already exist");
                             }
                         } else {
-                            Helper.error("Please fill in the new card field");
+                            Helper.error("Please fill in the new card field\n The new card don't have 16 characters");
                         }
                     } else {
                         Helper.error("Please fill in the old card field");
                     }
                 }
         );
+
+        View.changeCardNumberView.newCardNumber.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                String newCard = View.changeCardNumberView.newCardNumber.getText();
+                if (newCard.matches("\\d+")) {
+                    if (newCard.matches("0+\\d*")) {
+                        newCard = newCard.replaceAll("0", "");
+                    }
+                    if (newCard.length() >= 16) {
+                        String numberCard = newCard.trim().substring(0, 16);
+                        View.changeCardNumberView.newCardNumber.setText(numberCard);
+                    } else {
+                        View.changeCardNumberView.newCardNumber.setText(newCard);
+                    }
+                } else {
+                    View.changeCardNumberView.newCardNumber.setText(newCard.replaceAll("\\D*", ""));
+                }
+            }
+        });
 
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="Change limit Event">

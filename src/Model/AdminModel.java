@@ -56,7 +56,7 @@ public class AdminModel {
         return false;
     }
 
-    public static boolean changeCardNumber(int newCardNumber, User user) {
+    public static boolean changeCardNumber(long newCardNumber, User user) {
         try {
             user.setCardNumber(newCardNumber);
             user.setEmail(String.valueOf(newCardNumber));
