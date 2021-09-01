@@ -10,6 +10,8 @@ import View.View;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,7 +61,7 @@ public class UserController implements Controller {
             String newPin = String.valueOf(View.changePinView.newPassword.getPassword());
             String confirmPin = String.valueOf(View.changePinView.confirmPassword.getPassword());
             if (oldPin.matches("\\d+")) {
-                if (newPin.matches("\\d+")) {
+                if (newPin.matches("\\d+") && newPin.length() == 4) {
                     if (confirmPin.matches("\\d+")) {
                         if (newPin.equals(confirmPin)) {
                             if (oldPin.equals(String.valueOf(ATMController.currentPerson.getPin()))) {
@@ -82,10 +84,29 @@ public class UserController implements Controller {
                         Helper.error("The pin must be a numeric value");
                     }
                 } else {
-                    Helper.error("The new pin must be a numeric value");
+                    Helper.error("The new pin must be a numeric value\n The pin don't have 4 characters");
                 }
             } else {
                 Helper.error("The old pin must be a numeric value");
+            }
+        });
+
+        View.changePinView.newPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                String pin = String.valueOf(View.changePinView.newPassword.getPassword());
+                if (pin.matches("\\d+")) {
+                    if (pin.matches("0+\\d*")) {
+                        pin = pin.replaceAll("0", "");
+                    }
+                    if (pin.length() >= 4) {
+                        View.changePinView.newPassword.setText(pin.substring(0, 4));
+                    } else {
+                        View.changePinView.newPassword.setText(pin);
+                    }
+                } else {
+                    View.changePinView.newPassword.setText(pin.replaceAll("\\D*", ""));
+                }
             }
         });
 
