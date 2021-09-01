@@ -202,6 +202,9 @@ public class UserController implements Controller {
                                     totalRetreated = 0;
                                     View.retreatView.total.setText("");
                                     View.retreatView.pin.setText("");
+                                    this.captcha = new Captcha();
+                                    View.retreatView.captchaImage.setIcon(captcha.getCaptcha());
+                                    View.retreatView.captcha.setText("");
                                 } else {
                                     Helper.error("Something went wrong");
                                 }
@@ -294,6 +297,9 @@ public class UserController implements Controller {
                                 totalDeposited = 0;
                                 View.depositView.total.setText("");
                                 View.depositView.pin.setText("");
+                                this.captcha = new Captcha();
+                                View.depositView.captchaImage.setIcon(captcha.getCaptcha());
+                                View.depositView.captcha.setText("");
                             } else {
                                 Helper.error("Something went wrong");
                             }
