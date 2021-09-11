@@ -1,7 +1,10 @@
 package Model;
 
+import Entity.Admin;
 import Entity.Person;
-import Others.Helper;
+import Entity.User;
+import Others.Connecter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -20,12 +23,44 @@ public class LoginModel {
     }
 
     public static ArrayList<Person> getPersons() {
-        ArrayList<Person> persons = (ArrayList<Person>) Helper.getObjectFromFile("database/Persons.txt");
-        if (persons != null) {
-            return persons;
+        ArrayList<Person> persons = new ArrayList();
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            c.ps = c.con.prepareStatement("SELECT * FROM \"user\"");
+            c.rs = c.ps.executeQuery();
+            while (c.rs.next()) {
+                User user = new User(
+                        c.rs.getLong("card_number"),
+                        c.rs.getInt("current_balance"),
+                        c.rs.getInt("maximum_amount"),
+                        c.rs.getString("name"),
+                        c.rs.getString("last_name"),
+                        c.rs.getInt("age"),
+                        c.rs.getString("email"),
+                        c.rs.getInt("pin"),
+                        c.rs.getTimestamp("last_access"),
+                        c.rs.getString("pick")
+                );
+                persons.add(user);
+            }
+            c.ps = c.con.prepareStatement("SELECT * FROM \"admin\"");
+            c.rs = c.ps.executeQuery();
+            while (c.rs.next()) {
+                Admin admin = new Admin(
+                        c.rs.getString("name"),
+                        c.rs.getString("last_name"),
+                        c.rs.getInt("age"),
+                        c.rs.getString("email"),
+                        c.rs.getInt("pin"),
+                        c.rs.getTimestamp("last_access"),
+                        c.rs.getString("pick"));
+                persons.add(admin);
+            }
+            c.con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
         }
-        {
-            return new ArrayList<>();
-        }
+        return persons;
     }
 }
