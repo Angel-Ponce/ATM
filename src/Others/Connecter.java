@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class Connecter {
 
     private static final String URL = "jdbc:sqlserver://localhost:1434;databaseName=ATM;";
-    private static final String USER = "samATM";
+    private static final String USER = "ATM";
     private static final String PASSWORD = "123";
     public PreparedStatement ps;
     public ResultSet rs;
