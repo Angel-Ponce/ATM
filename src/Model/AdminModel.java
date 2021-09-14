@@ -4,7 +4,10 @@ import Controller.ATMController;
 import Controller.LoginController;
 import Entity.Ticket;
 import Entity.User;
+import Others.Connecter;
 import Others.Helper;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +18,30 @@ public class AdminModel {
 
     public static boolean addUser(User user) {
         LoginController.persons.add(user);
-        return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
+        Timestamp time = Timestamp.valueOf(Model.TIMESTAMP.format(user.getLastAccess()));
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            c.ps = c.con.prepareStatement("INSERT INTO \"user\"(card_number,name,last_name,age,email,pin,last_access,pick,current_balance,maximum_amount,count_pin_changed) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            c.ps.setLong(1, user.getCardNumber());
+            c.ps.setString(2, user.getName());
+            c.ps.setString(3, user.getLastName());
+            c.ps.setInt(4, user.getAge());
+            c.ps.setString(5, user.getEmail());
+            c.ps.setInt(6, user.getPin());
+            c.ps.setTimestamp(7, time);
+            c.ps.setString(8, user.getPick());
+            c.ps.setInt(9, user.getCurrentBalance());
+            c.ps.setInt(10, user.getMaximumAmount());
+            c.ps.setInt(11, user.getCountPinChanged());
+            int r = c.ps.executeUpdate();
+            if (r > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return false;
     }
 
     public static boolean initATM(int $1, int $5, int $10, int $20, int $50, int $100, int $200) {
