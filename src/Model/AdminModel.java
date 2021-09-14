@@ -137,9 +137,21 @@ public class AdminModel {
 
     public static boolean changeLimit(int newLimit, User user) {
         try {
-            user.setMaximumAmount(newLimit);
-            return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
+            try {
+                Connecter c = new Connecter();
+                c.con = c.getConnection();
+                c.ps = c.con.prepareStatement("UPDATE \"user\" SET maximum_amount = ? WHERE card_number = ?");
+                c.ps.setInt(1, newLimit);
+                c.ps.setLong(2, user.getCardNumber());
+                c.ps.executeUpdate();
+                user.setMaximumAmount(newLimit);
+                c.con.close();
+                return true;
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
         } catch (Exception e) {
+            System.err.println(e);
         }
         return false;
     }
