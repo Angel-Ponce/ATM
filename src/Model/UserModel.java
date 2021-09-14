@@ -58,10 +58,10 @@ public class UserModel {
                 c.ps = c.con.prepareStatement("UPDATE \"user\" SET current_balance = ? WHERE card_number = ?");
                 c.ps.setInt(1, ((User) person).getCurrentBalance());
                 c.ps.setLong(2, ((User) person).getCardNumber());
-                insertTransaction(Transaction.RETREAT, amount, new Date(), ((User) person).getCardNumber());
                 int r = c.ps.executeUpdate();
                 if (r > 0) {
                     c.con.close();
+                    insertTransaction(Transaction.RETREAT, amount, new Date(), ((User) person).getCardNumber());
                     return true;
                 }
                 c.con.close();
@@ -81,10 +81,10 @@ public class UserModel {
                 c.ps = c.con.prepareStatement("UPDATE \"user\" SET current_balance = ? WHERE card_number = ?");
                 c.ps.setInt(1, ((User) person).getCurrentBalance());
                 c.ps.setLong(2, ((User) person).getCardNumber());
-                insertTransaction(Transaction.DEPOSIT, amount, new Date(), ((User) person).getCardNumber());
                 int r = c.ps.executeUpdate();
                 if (r > 0) {
                     c.con.close();
+                    insertTransaction(Transaction.DEPOSIT, amount, new Date(), ((User) person).getCardNumber());
                     return true;
                 }
                 c.con.close();
@@ -100,12 +100,13 @@ public class UserModel {
         try {
             Connecter c = new Connecter();
             c.con = c.getConnection();
-            c.ps = c.con.prepareStatement("SELECT * FROM transaction WHERE card_number = ?");
+            c.ps = c.con.prepareStatement("SELECT * FROM \"transaction\" WHERE card_number = ?");
             c.ps.setLong(1, user.getCardNumber());
             c.rs = c.ps.executeQuery();
             while (c.rs.next()) {
                 transactions.add(new Transaction(c.rs.getInt("amount"), c.rs.getString("type"), c.rs.getTimestamp("date")));
             }
+            c.con.close();
         } catch (SQLException e) {
             System.err.println(e);
         }

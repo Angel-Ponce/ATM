@@ -43,8 +43,6 @@ public class LoginModel {
                         c.rs.getTimestamp("last_access"),
                         c.rs.getString("pick")
                 );
-                ArrayList<Transaction> transactions = UserModel.getTransactionPerUser(user);
-                transactions.forEach(t -> user.addTransaction(t));
                 persons.add(user);
             }
             c.ps = c.con.prepareStatement("SELECT * FROM \"admin\"");
@@ -64,6 +62,12 @@ public class LoginModel {
         } catch (SQLException e) {
             System.err.println(e);
         }
+        persons.forEach(p -> {
+            if (p instanceof User) {
+                ArrayList<Transaction> transactions = UserModel.getTransactionPerUser((User) p);
+                transactions.forEach(t -> ((User) p).addTransaction(t));
+            }
+        });
         return persons;
     }
 }

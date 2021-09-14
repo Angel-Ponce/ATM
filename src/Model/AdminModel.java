@@ -35,6 +35,7 @@ public class AdminModel {
             c.ps.setInt(11, user.getCountPinChanged());
             int r = c.ps.executeUpdate();
             if (r > 0) {
+                c.con.close();
                 return true;
             }
             c.con.close();
@@ -67,6 +68,7 @@ public class AdminModel {
                 }
                 c.ps = c.con.prepareStatement("UPDATE properties SET current_balance=?");
                 c.ps.setInt(1, ATMController.properties.getCurrentBalance());
+                c.ps.executeUpdate();
                 c.con.close();
                 return true;
             } catch (SQLException e) {
@@ -101,6 +103,7 @@ public class AdminModel {
                 }
                 c.ps = c.con.prepareStatement("UPDATE properties SET current_balance=?");
                 c.ps.setInt(1, ATMController.properties.getCurrentBalance());
+                c.ps.executeUpdate();
                 c.con.close();
                 return true;
             } catch (SQLException e) {

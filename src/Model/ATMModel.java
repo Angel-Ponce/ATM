@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.ATMController;
+import Entity.Admin;
 //import Controller.LoginController;
 //import Entity.Admin;
 import Entity.Person;
@@ -121,7 +122,9 @@ public class ATMModel {
                             rs.getTimestamp("last_access"),
                             rs.getString("pick")
                     );
-                    return new Properties(c.rs.getString("theme"), c.rs.getInt("current_balance"), user, c.rs.getString("date"));
+                    Properties properties = new Properties(c.rs.getString("theme"), c.rs.getInt("current_balance"), user, c.rs.getString("date"));
+                    c.con.close();
+                    return properties;
                 }
             }
             c.con.close();
@@ -141,11 +144,12 @@ public class ATMModel {
                 c.ps = c.con.prepareStatement("UPDATE \"user\" SET last_access=?");
                 c.ps.setTimestamp(1, time);
                 c.ps.executeUpdate();
-            } else if (person instanceof Person) {
+            } else if (person instanceof Admin) {
                 c.ps = c.con.prepareStatement("UPDATE \"admin\" SET last_access=?");
                 c.ps.setTimestamp(1, time);
                 c.ps.executeUpdate();
             }
+            c.con.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
