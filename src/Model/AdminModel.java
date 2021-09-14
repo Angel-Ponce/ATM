@@ -56,9 +56,23 @@ public class AdminModel {
             ATMController.properties.setCurrentBalance(
                     (int) ATMController.tickets.stream().mapToDouble(ticket -> ticket.getType() * ticket.getSize()).sum()
             );
-            return Helper.saveObjectToFile(ATMController.tickets, "database/Tickets.txt")
-                    && Helper.saveObjectToFile(ATMController.properties, "database/Properties.txt");
+            try {
+                Connecter c = new Connecter();
+                c.con = c.getConnection();
+                for (int i = 0; i < ATMController.tickets.size(); i++) {
+                    c.ps = c.con.prepareStatement("UPDATE ticket SET size = ? WHERE type = ?");
+                    c.ps.setInt(1, ATMController.tickets.get(i).getSize());
+                    c.ps.setInt(2, ATMController.tickets.get(i).getType());
+                    c.ps.executeUpdate();
+                }
+                c.ps = c.con.prepareStatement("UPDATE properties SET current_balance=?");
+                c.ps.setInt(1, ATMController.properties.getCurrentBalance());
+                c.con.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
         } catch (Exception e) {
+            System.err.println(e);
         }
         return false;
     }
