@@ -43,6 +43,7 @@ public class LoginModel {
                         c.rs.getTimestamp("last_access"),
                         c.rs.getString("pick")
                 );
+                user.setCountPinChanged(c.rs.getInt("count_pin_changed"));
                 persons.add(user);
             }
             c.ps = c.con.prepareStatement("SELECT * FROM \"admin\"");

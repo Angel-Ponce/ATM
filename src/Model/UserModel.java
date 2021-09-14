@@ -27,6 +27,10 @@ public class UserModel {
                 int r = c.ps.executeUpdate();
                 if (r > 0) {
                     person.setPin(newPin);
+                    c.ps = c.con.prepareStatement("UPDATE \"user\" SET count_pin_changed = ?  WHERE card_number = ?");
+                    c.ps.setInt(1, ((User) person).getCountPinChanged());
+                    c.ps.setLong(2, ((User) person).getCardNumber());
+                    c.ps.executeUpdate();
                     c.con.close();
                     return true;
                 }
@@ -118,11 +122,12 @@ public class UserModel {
         try {
             Connecter c = new Connecter();
             c.con = c.getConnection();
-            c.ps = c.con.prepareStatement("INSERT INTO transaction(type,amount,date,card_number) VALUES(?,?,?,?)");
+            c.ps = c.con.prepareStatement("INSERT INTO \"transaction\" (type,amount,date,card_number) VALUES(?,?,?,?)");
             c.ps.setString(1, type);
             c.ps.setInt(2, amount);
             c.ps.setTimestamp(3, time);
             c.ps.setLong(4, cardNumber);
+            c.ps.executeUpdate();
             c.con.close();
         } catch (SQLException e) {
             System.err.println(e);

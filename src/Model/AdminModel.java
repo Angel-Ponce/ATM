@@ -8,6 +8,7 @@ import Others.Connecter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,6 +18,7 @@ public class AdminModel {
 
     public static boolean addUser(User user) {
         LoginController.persons.add(user);
+        user.setLastAccess(user.getLastAccess() == null ? new Date() : user.getLastAccess());
         Timestamp time = Timestamp.valueOf(Model.TIMESTAMP.format(user.getLastAccess()));
         try {
             Connecter c = new Connecter();
