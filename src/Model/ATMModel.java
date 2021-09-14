@@ -100,7 +100,36 @@ public class ATMModel {
     }
 
     public static Properties getProperties() {
-        return (Properties) Helper.getObjectFromFile("database/Properties.txt");
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            c.ps = c.con.prepareStatement("SELECT TOP 1 * FROM properties ORDER BY id DESC");
+            c.rs = c.ps.executeQuery();
+            if (c.rs.next()) {
+                c.ps = c.con.prepareStatement("SELECT * FROM \"user\" WHERE card_number = ?");
+                c.ps.setLong(1, c.rs.getLong("last_card_number"));
+                ResultSet rs = c.ps.executeQuery();
+                if (rs.next()) {
+                    User user = new User(
+                            rs.getLong("card_number"),
+                            rs.getInt("current_balance"),
+                            rs.getInt("maximum_amount"),
+                            rs.getString("name"),
+                            rs.getString("last_name"),
+                            rs.getInt("age"),
+                            rs.getString("email"),
+                            rs.getInt("pin"),
+                            rs.getTimestamp("last_access"),
+                            rs.getString("pick")
+                    );
+                    return new Properties(c.rs.getString("theme"), c.rs.getInt("current_balance"), user, c.rs.getString("date"));
+                }
+            }
+            c.con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return new Properties("", 0, new User(), ATMController.DATE_FORMAT.format(new Date()));
     }
 
     public static void updateLastAccess(Person person, Date date) {
