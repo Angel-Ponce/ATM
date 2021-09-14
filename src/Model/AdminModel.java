@@ -113,10 +113,23 @@ public class AdminModel {
 
     public static boolean changeCardNumber(long newCardNumber, User user) {
         try {
-            user.setCardNumber(newCardNumber);
-            user.setEmail(String.valueOf(newCardNumber));
-            return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
+            try {
+                Connecter c = new Connecter();
+                c.con = c.getConnection();
+                c.ps = c.con.prepareStatement("UPDATE \"user\" SET card_number = ? WHERE card_number = ?");
+                c.ps.setLong(1, newCardNumber);
+                c.ps.setLong(2, user.getCardNumber());
+                c.ps.executeUpdate();
+                c.con.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            } finally {
+                user.setCardNumber(newCardNumber);
+                user.setEmail(String.valueOf(newCardNumber));
+                return true;
+            }
         } catch (Exception e) {
+            System.err.println(e);
         }
 
         return false;
