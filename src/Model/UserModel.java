@@ -1,12 +1,10 @@
 package Model;
 
-import Controller.LoginController;
 import Entity.Admin;
 import Entity.Person;
 import Entity.Transaction;
 import Entity.User;
 import Others.Connecter;
-import Others.Helper;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -52,7 +50,6 @@ public class UserModel {
     }
 
     public static boolean retreat(int amount, Person person) {
-
         try {
             Connecter c = new Connecter();
             c.con = c.getConnection();

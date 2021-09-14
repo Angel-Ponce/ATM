@@ -5,7 +5,6 @@ import Controller.LoginController;
 import Entity.Ticket;
 import Entity.User;
 import Others.Connecter;
-import Others.Helper;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ public class AdminModel {
             if (r > 0) {
                 return true;
             }
+            c.con.close();
         } catch (SQLException e) {
             System.err.println(e);
         }

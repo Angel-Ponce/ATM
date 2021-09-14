@@ -2,6 +2,7 @@ package Model;
 
 import Entity.Admin;
 import Entity.Person;
+import Entity.Transaction;
 import Entity.User;
 import Others.Connecter;
 import java.sql.SQLException;
@@ -42,6 +43,8 @@ public class LoginModel {
                         c.rs.getTimestamp("last_access"),
                         c.rs.getString("pick")
                 );
+                ArrayList<Transaction> transactions = UserModel.getTransactionPerUser(user);
+                transactions.forEach(t -> user.addTransaction(t));
                 persons.add(user);
             }
             c.ps = c.con.prepareStatement("SELECT * FROM \"admin\"");
