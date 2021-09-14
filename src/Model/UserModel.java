@@ -76,12 +76,43 @@ public class UserModel {
     }
 
     public static boolean deposit(int amount, Person person) {
-        Helper.personToUser(person).deposit(amount);
-        return Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            if (person instanceof User) {
+                ((User) person).deposit(amount);
+                c.ps = c.con.prepareStatement("UPDATE \"user\" SET current_balance = ? WHERE card_number = ?");
+                c.ps.setInt(1, ((User) person).getCurrentBalance());
+                c.ps.setLong(2, ((User) person).getCardNumber());
+                insertTransaction(Transaction.DEPOSIT, amount, new Date(), ((User) person).getCardNumber());
+                int r = c.ps.executeUpdate();
+                if (r > 0) {
+                    c.con.close();
+                    return true;
+                }
+                c.con.close();
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return false;
     }
 
-    public static ArrayList<Transaction> getLatestTransactions(Person person) {
-        return null;
+    public static ArrayList<Transaction> getTransactionPerUser(User user) {
+        ArrayList<Transaction> transactions = new ArrayList();
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            c.ps = c.con.prepareStatement("SELECT * FROM transaction WHERE card_number = ?");
+            c.ps.setLong(1, user.getCardNumber());
+            c.rs = c.ps.executeQuery();
+            while (c.rs.next()) {
+                transactions.add(new Transaction(c.rs.getInt("amount"), c.rs.getString("type"), c.rs.getTimestamp("date")));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return transactions;
     }
 
     public static void insertTransaction(String type, int amount, Date date, long cardNumber) {
