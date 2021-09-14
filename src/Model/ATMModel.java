@@ -9,6 +9,7 @@ import Entity.Ticket;
 import Entity.User;
 import Others.Connecter;
 import Others.Helper;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -79,7 +80,23 @@ public class ATMModel {
     }
 
     public static ArrayList<Ticket> getTickets() {
-        return (ArrayList<Ticket>) Helper.getObjectFromFile("database/Tickets.txt");
+        ArrayList<Ticket> tickets = new ArrayList();
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            c.ps = c.con.prepareStatement("SELECT * FROM ticket");
+            c.rs = c.ps.executeQuery();
+            while (c.rs.next()) {
+                tickets.add(new Ticket(
+                        c.rs.getInt("type"),
+                        c.rs.getInt("size")
+                ));
+            }
+            c.con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return tickets;
     }
 
     public static Properties getProperties() {
