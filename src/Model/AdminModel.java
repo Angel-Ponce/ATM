@@ -116,17 +116,17 @@ public class AdminModel {
             try {
                 Connecter c = new Connecter();
                 c.con = c.getConnection();
-                c.ps = c.con.prepareStatement("UPDATE \"user\" SET card_number = ? WHERE card_number = ?");
+                c.ps = c.con.prepareStatement("UPDATE \"user\" SET card_number = ?, email = ? WHERE card_number = ?");
                 c.ps.setLong(1, newCardNumber);
-                c.ps.setLong(2, user.getCardNumber());
+                c.ps.setString(2, String.valueOf(newCardNumber));
+                c.ps.setLong(3, user.getCardNumber());
                 c.ps.executeUpdate();
-                c.con.close();
-            } catch (SQLException e) {
-                System.err.println(e);
-            } finally {
                 user.setCardNumber(newCardNumber);
                 user.setEmail(String.valueOf(newCardNumber));
+                c.con.close();
                 return true;
+            } catch (SQLException e) {
+                System.err.println(e);
             }
         } catch (Exception e) {
             System.err.println(e);
