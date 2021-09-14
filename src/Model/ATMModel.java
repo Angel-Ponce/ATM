@@ -134,6 +134,21 @@ public class ATMModel {
 
     public static void updateLastAccess(Person person, Date date) {
         person.setLastAccess(date);
-        Helper.saveObjectToFile(LoginController.persons, "database/Persons.txt");
+        Timestamp time = Timestamp.valueOf(Model.TIMESTAMP.format(date));
+        try {
+            Connecter c = new Connecter();
+            c.con = c.getConnection();
+            if (person instanceof User) {
+                c.ps = c.con.prepareStatement("UPDATE \"user\" SET last_access=?");
+                c.ps.setTimestamp(1, time);
+                c.ps.executeUpdate();
+            } else if (person instanceof Person) {
+                c.ps = c.con.prepareStatement("UPDATE \"admin\" SET last_access=?");
+                c.ps.setTimestamp(1, time);
+                c.ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 }
