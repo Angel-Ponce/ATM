@@ -356,7 +356,7 @@ public class AdminController implements Controller {
                                     Optional<Person> authenticated = Model.LoginModel.authenticate(oldCard, Integer.parseInt(pin), LoginController.persons);
                                     if (authenticated.isPresent()) {
                                         User user = (User) authenticated.get();
-                                        if (Model.AdminModel.changeCardNumber(Long.parseLong(newCard), user)) {
+                                        if (Model.AdminModel.changeCardNumber(Long.parseLong(newCard), user, Helper.personToAdmin(ATMController.currentPerson))) {
                                             Helper.success("New card number has been update");
                                             View.changeCardNumberView.newCardNumber.setText("");
                                             View.changeCardNumberView.oldCardNumber.setText("");

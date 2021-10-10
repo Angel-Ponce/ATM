@@ -137,7 +137,7 @@ public class AdminModel {
         return false;
     }
 
-    public static boolean changeCardNumber(long newCardNumber, User user) {
+    public static boolean changeCardNumber(long newCardNumber, User user, Admin admin) {
         try {
             try {
                 Connecter c = new Connecter();
@@ -151,6 +151,13 @@ public class AdminModel {
                 if (user.getCardNumber() == Helper.personToUser(ATMController.properties.getLastPerson()).getCardNumber()) {
                     Helper.personToUser(ATMController.properties.getLastPerson()).setCardNumber(newCardNumber);
                 }
+                c.ps = c.con.prepareStatement("INSERT INTO admin_update_card(email_admin,card_number,old_card_number,new_card_number,\"date\") VALUES (?,?,?,?,?)");
+                c.ps.setString(1, admin.getEmail());
+                c.ps.setLong(2, newCardNumber);
+                c.ps.setLong(3, user.getCardNumber());
+                c.ps.setLong(4, newCardNumber);
+                c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
+                c.ps.executeUpdate();
                 user.setCardNumber(newCardNumber);
                 user.setEmail(String.valueOf(newCardNumber));
                 c.con.close();
