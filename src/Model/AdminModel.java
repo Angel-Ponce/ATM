@@ -96,7 +96,7 @@ public class AdminModel {
         return false;
     }
 
-    public static boolean addCash(int $1, int $5, int $10, int $20, int $50, int $100, int $200) {
+    public static boolean addCash(int $1, int $5, int $10, int $20, int $50, int $100, int $200, Admin admin) {
         try {
             ATMController.tickets.set(0, new Ticket(1, $1));
             ATMController.tickets.set(1, new Ticket(5, $5));
@@ -120,6 +120,13 @@ public class AdminModel {
                 c.ps = c.con.prepareStatement("UPDATE properties SET current_balance=?");
                 c.ps.setInt(1, ATMController.properties.getCurrentBalance());
                 c.ps.executeUpdate();
+                if (admin != null) {
+                    c.ps = c.con.prepareStatement("INSERT INTO admin_init_atm (email_admin,balance,\"date\") VALUES(?,?,?)");
+                    c.ps.setString(1, admin.getEmail());
+                    c.ps.setInt(2, ATMController.properties.getCurrentBalance());
+                    c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
+                    c.ps.executeUpdate();
+                }
                 c.con.close();
                 return true;
             } catch (SQLException e) {

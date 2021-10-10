@@ -197,7 +197,8 @@ public class UserController implements Controller {
                                             temporalyTickets.get(3).getSize(),
                                             temporalyTickets.get(4).getSize(),
                                             temporalyTickets.get(5).getSize(),
-                                            temporalyTickets.get(6).getSize()
+                                            temporalyTickets.get(6).getSize(),
+                                            null
                                     );
                                     totalRetreated = 0;
                                     View.retreatView.total.setText("");
@@ -292,7 +293,8 @@ public class UserController implements Controller {
                                         temporalyTickets.get(3).getSize(),
                                         temporalyTickets.get(4).getSize(),
                                         temporalyTickets.get(5).getSize(),
-                                        temporalyTickets.get(6).getSize()
+                                        temporalyTickets.get(6).getSize(),
+                                        null
                                 );
                                 totalDeposited = 0;
                                 View.depositView.total.setText("");

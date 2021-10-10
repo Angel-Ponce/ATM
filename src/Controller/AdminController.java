@@ -316,7 +316,7 @@ public class AdminController implements Controller {
                 int $50new = Integer.parseInt(View.addCashView.$50new.getText()) + Integer.parseInt(View.addCashView.$50actual.getText());
                 int $100new = Integer.parseInt(View.addCashView.$100new.getText()) + Integer.parseInt(View.addCashView.$100actual.getText());
                 int $200new = Integer.parseInt(View.addCashView.$200new.getText()) + Integer.parseInt(View.addCashView.$200actual.getText());
-                if (Model.AdminModel.addCash($1new, $5new, $10new, $20new, $50new, $100new, $200new)) {
+                if (Model.AdminModel.addCash($1new, $5new, $10new, $20new, $50new, $100new, $200new, Helper.personToAdmin(ATMController.currentPerson))) {
                     Helper.success("Cash added success");
                     ArrayList<Ticket> tickets = ATMController.tickets;
                     View.addCashView.$1actual.setText("" + tickets.get(0).getSize());
