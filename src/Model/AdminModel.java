@@ -5,6 +5,7 @@ import Controller.LoginController;
 import Entity.Ticket;
 import Entity.User;
 import Others.Connecter;
+import Others.Helper;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -126,6 +127,10 @@ public class AdminModel {
                 c.ps.setString(2, String.valueOf(newCardNumber));
                 c.ps.setLong(3, user.getCardNumber());
                 c.ps.executeUpdate();
+                //Comprobe if the user is the latest user to login into system
+                if (user.getCardNumber() == Helper.personToUser(ATMController.properties.getLastPerson()).getCardNumber()) {
+                    Helper.personToUser(ATMController.properties.getLastPerson()).setCardNumber(newCardNumber);
+                }
                 user.setCardNumber(newCardNumber);
                 user.setEmail(String.valueOf(newCardNumber));
                 c.con.close();
