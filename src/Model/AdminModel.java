@@ -156,7 +156,7 @@ public class AdminModel {
                 c.ps.setLong(2, newCardNumber);
                 c.ps.setLong(3, user.getCardNumber());
                 c.ps.setLong(4, newCardNumber);
-                c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
+                c.ps.setTimestamp(5, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
                 c.ps.executeUpdate();
                 user.setCardNumber(newCardNumber);
                 user.setEmail(String.valueOf(newCardNumber));
@@ -172,7 +172,7 @@ public class AdminModel {
         return false;
     }
 
-    public static boolean changeLimit(int newLimit, User user) {
+    public static boolean changeLimit(int newLimit, User user, Admin admin) {
         try {
             try {
                 Connecter c = new Connecter();
@@ -180,6 +180,13 @@ public class AdminModel {
                 c.ps = c.con.prepareStatement("UPDATE \"user\" SET maximum_amount = ? WHERE card_number = ?");
                 c.ps.setInt(1, newLimit);
                 c.ps.setLong(2, user.getCardNumber());
+                c.ps.executeUpdate();
+                c.ps = c.con.prepareStatement("INSERT INTO admin_update_limit(email_admin,card_number,old_limit,new_limit,\"date\") VALUES (?,?,?,?,?)");
+                c.ps.setString(1, admin.getEmail());
+                c.ps.setLong(2, user.getCardNumber());
+                c.ps.setLong(3, user.getMaximumAmount());
+                c.ps.setLong(4, newLimit);
+                c.ps.setTimestamp(5, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
                 c.ps.executeUpdate();
                 user.setMaximumAmount(newLimit);
                 c.con.close();

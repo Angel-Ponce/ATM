@@ -416,7 +416,7 @@ public class AdminController implements Controller {
                                 Optional<Person> authenticated = Model.LoginModel.authenticate(card, Integer.parseInt(pin), LoginController.persons);
                                 if (authenticated.isPresent()) {
                                     User user = (User) authenticated.get();
-                                    if (Model.AdminModel.changeLimit(Integer.parseInt(newLimit), user)) {
+                                    if (Model.AdminModel.changeLimit(Integer.parseInt(newLimit), user, Helper.personToAdmin(ATMController.currentPerson))) {
                                         Helper.success("New limit has been update");
                                         View.changeMaximumAmountView.newLimit.setText("");
                                         View.changeMaximumAmountView.cardNumber.setText("");
