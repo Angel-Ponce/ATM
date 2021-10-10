@@ -39,7 +39,7 @@ public class AdminModel {
             c.ps.setInt(11, user.getCountPinChanged());
             int r = c.ps.executeUpdate();
             if (r > 0) {
-                c.ps = c.con.prepareStatement("INSERT INTO admin_register_user (email_admin,card_number,\"date\",) VALUES(?,?,?)");
+                c.ps = c.con.prepareStatement("INSERT INTO admin_register_user (email_admin,card_number,\"date\") VALUES(?,?,?)");
                 c.ps.setString(1, admin.getEmail());
                 c.ps.setLong(2, user.getCardNumber());
                 c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
@@ -121,7 +121,7 @@ public class AdminModel {
                 c.ps.setInt(1, ATMController.properties.getCurrentBalance());
                 c.ps.executeUpdate();
                 if (admin != null) {
-                    c.ps = c.con.prepareStatement("INSERT INTO admin_init_atm (email_admin,balance,\"date\") VALUES(?,?,?)");
+                    c.ps = c.con.prepareStatement("INSERT INTO admin_add_cash (email_admin,balance,\"date\") VALUES(?,?,?)");
                     c.ps.setString(1, admin.getEmail());
                     c.ps.setInt(2, ATMController.properties.getCurrentBalance());
                     c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
