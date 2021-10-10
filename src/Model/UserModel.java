@@ -5,6 +5,7 @@ import Entity.Person;
 import Entity.Transaction;
 import Entity.User;
 import Others.Connecter;
+import Others.Helper;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -26,11 +27,17 @@ public class UserModel {
                 c.ps.setLong(2, ((User) person).getCardNumber());
                 int r = c.ps.executeUpdate();
                 if (r > 0) {
-                    person.setPin(newPin);
                     c.ps = c.con.prepareStatement("UPDATE \"user\" SET count_pin_changed = ?  WHERE card_number = ?");
                     c.ps.setInt(1, ((User) person).getCountPinChanged());
                     c.ps.setLong(2, ((User) person).getCardNumber());
                     c.ps.executeUpdate();
+                    c.ps = c.con.prepareStatement("INSERT INTO admin_update_card(card_number,old_pin,new_pin,\"date\") VALUES (?,?,?,?)");
+                    c.ps.setLong(1, Helper.personToUser(person).getCardNumber());
+                    c.ps.setInt(2, Helper.personToUser(person).getPin());
+                    c.ps.setInt(3, newPin);
+                    c.ps.setTimestamp(4, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
+                    c.ps.executeUpdate();
+                    person.setPin(newPin);
                     c.con.close();
                     return true;
                 }
@@ -47,6 +54,7 @@ public class UserModel {
                 }
                 c.con.close();
             }
+
         } catch (SQLException e) {
             System.err.println(e);
         }
