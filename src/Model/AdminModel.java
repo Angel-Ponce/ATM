@@ -2,6 +2,7 @@ package Model;
 
 import Controller.ATMController;
 import Controller.LoginController;
+import Entity.Admin;
 import Entity.Ticket;
 import Entity.User;
 import Others.Connecter;
@@ -17,7 +18,7 @@ import java.util.Date;
  */
 public class AdminModel {
 
-    public static boolean addUser(User user) {
+    public static boolean addUser(User user, Admin admin) {
         LoginController.persons.add(user);
         user.setLastAccess(user.getLastAccess() == null ? new Date() : user.getLastAccess());
         Timestamp time = Timestamp.valueOf(Model.TIMESTAMP.format(user.getLastAccess()));
@@ -38,8 +39,15 @@ public class AdminModel {
             c.ps.setInt(11, user.getCountPinChanged());
             int r = c.ps.executeUpdate();
             if (r > 0) {
-                c.con.close();
-                return true;
+                c.ps = c.con.prepareStatement("INSERT INTO admin_register_user (email_admin,card_number,\"date\",) VALUES(?,?,?)");
+                c.ps.setString(1, admin.getEmail());
+                c.ps.setLong(2, user.getCardNumber());
+                c.ps.setTimestamp(3, Timestamp.valueOf(Model.TIMESTAMP.format(new Date())));
+                int r2 = c.ps.executeUpdate();
+                if (r2 > 0) {
+                    c.con.close();
+                    return true;
+                }
             }
             c.con.close();
         } catch (SQLException e) {

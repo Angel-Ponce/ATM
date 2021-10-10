@@ -104,7 +104,7 @@ public class AdminController implements Controller {
                                                 boolean moved = ImageIO.write(buffer, "png", new File("database/profiles/" + pick.getName()));
                                                 if (moved) {
                                                     User user = new User(Long.valueOf(numberCard), Integer.valueOf(initialAmount), Integer.valueOf(maximumAmount), name, lastName, Integer.valueOf(age), email, Integer.valueOf(pin), null, "database/profiles/" + pick.getName());
-                                                    if (Model.AdminModel.addUser(user)) {
+                                                    if (Model.AdminModel.addUser(user, Helper.personToAdmin(ATMController.currentPerson))) {
                                                         Helper.success("User added successfly");
                                                         View.createUserView.name.setText("");
                                                         View.createUserView.lastName.setText("");
