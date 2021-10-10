@@ -248,7 +248,7 @@ public class AdminController implements Controller {
                         int $50 = Integer.parseInt(View.initATMView.$50.getText());
                         int $100 = Integer.parseInt(View.initATMView.$100.getText());
                         int $200 = Integer.parseInt(View.initATMView.$200.getText());
-                        if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200)) {
+                        if (Model.AdminModel.initATM($1, $5, $10, $20, $50, $100, $200, Helper.personToAdmin(ATMController.currentPerson))) {
                             Helper.success("Tickets saved correctly");
                             View.atmView.addCash.setEnabled(true);
                             ATMController.properties.setDate(ATMController.DATE_FORMAT.format(new Date()));
