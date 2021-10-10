@@ -31,7 +31,7 @@ public class UserModel {
                     c.ps.setInt(1, ((User) person).getCountPinChanged());
                     c.ps.setLong(2, ((User) person).getCardNumber());
                     c.ps.executeUpdate();
-                    c.ps = c.con.prepareStatement("INSERT INTO admin_update_card(card_number,old_pin,new_pin,\"date\") VALUES (?,?,?,?)");
+                    c.ps = c.con.prepareStatement("INSERT INTO user_update_pin(card_number,old_pin,new_pin,\"date\") VALUES (?,?,?,?)");
                     c.ps.setLong(1, Helper.personToUser(person).getCardNumber());
                     c.ps.setInt(2, Helper.personToUser(person).getPin());
                     c.ps.setInt(3, newPin);
