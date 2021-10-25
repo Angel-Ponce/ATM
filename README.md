@@ -1,5 +1,5 @@
 # ATM 💰
-A simple ATM `1.0v` 
+A simple ATM `2.0v` 
 
 ## Features ✔
 ### `General`
@@ -7,6 +7,7 @@ A simple ATM `1.0v`
 - Authentication
 - Properties management
 - Pretty UI/UX
+- Database engine
 
 ### `Admin level`
 - Tickets management ($1, $5, $10, $20, $50, $100, $200) USD
@@ -15,6 +16,7 @@ A simple ATM `1.0v`
 - Update number card
 - Update limit of withdrawal
 - Add new users
+- Actions historial
 
 ### `User level`
 - Update pin/password
@@ -22,30 +24,44 @@ A simple ATM `1.0v`
 - Deposit
 - View latest transactions
 - View balance information
+- Actions historial
 
 ## How to use? ⚙
 
-First, you need compile the code, we don't have an executable version yet
+You can get the source code in this repo, or download de `.jar` executable at `store/ATM.jar`
 
 ### Know the database management
 
-| File | Type | Description |
+| Element | Type | Description |
 |:----:|:----:|:-----------:|
 | database | directory 📂 | Save all type of data in it |
 | profiles | direcotry 📂 | Save all pictures of users and admins |
-| Persons.txt | Bin File 🗄 | Save all informatioin of the entitys Admin and User |
-| Tickets.txt | Bin File 🗄 | Save all information of the entity Ticket |
-| Properties.txt | Bin File 🗄 | Save all information of the ATM properties (Theme, current amount, last person loged) | 
+| ticet | table 📊 | Save the tickets information type and size |
+| token | table 📊 | Save all tokens |
+| admin | table 📊 | Save information of the admins entity |
+| admin_update_limit | table 📊 | Save all historial of limits updated |
+| admin_register_user | table 📊 | Save all historial of users registered by an admin |
+| admin_init_atm | table 📊 | Save all historial of atm init by an admin |
+| admin_add_cash | table 📊 | Save all historial of money added to the atm by an admin |
+| admin_update_card | table 📊 | Save all historial of card numbers udpated |
+| user | table 📊 | Save all information of the user entity |
+| user_update_pin | table 📊 |  Save all historial of pin updated |
+| transactions | table 📊 | Save information of the users transaction, retreats and deposits |
+| propertes | table 📊 | Save information about atm properties |
 
-Initially the ATM start with 1 Admin and 1 User
+Scheme 
 
-`Admin credentials`
-- email = admin@gmail.com
-- pin/password = 12345
+![image](https://user-images.githubusercontent.com/60164099/138621383-96fd808e-21cd-4eb6-ba3a-7f550574efbc.png)
 
-`User credentials`
-- email = 112358
-- pin/password = 112358
+### Databse engine 🗄️
+
+You can find the `ATM.sql` file to mount the database schema (donwload or copy the sql scripts) [here](https://github.com/Angel-Ponce/ATM/blob/master/ATM.sql).
+
+**Remember that this project run only on localhost environment**
+
+You can configurate the database credentials on `src/Others/Connecter.java` file
+
+We recomend you to use the [SQLServer JDBC Driver](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-ver15)
 
 ### Knowing that, you are ready to use and prove this ATM version
 
@@ -55,7 +71,7 @@ Initially the ATM start with 1 Admin and 1 User
 $ git clone https://github.com/Angel-Ponce/ATM.git 
 ```
 
-Please, be patient, we are working on the executable version
+or donwload the [`.jar`](https://github.com/Angel-Ponce/ATM/raw/master/store/ATM.jar) executable
 
 # Addons
 We know that creating data to test can be tedious and boring, we are working on a plugin that can optimize this part of the ATM test.
@@ -78,6 +94,8 @@ Please, go to [ATMSeeder](https://github.com/Angel-Ponce/ATMSeeder) Repository t
   ```
 4. Now, use the cli application to generate your data
 5. Test your generated data
+6. **Remember, to run the ATMSeeder plugin, make sure your database is absolutely empty
+7. You're safe, the ATMSeeder has been update to run over this ATM version
 
 ### Feel free to contribuite
 ### Enjoy
